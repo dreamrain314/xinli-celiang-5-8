@@ -1,0 +1,2486 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>心理测量学 第五~八讲 图解（含真实作业数据与作业反馈）</title>
+<style>
+:root { color-scheme: light dark; }
+:root { --background:#ffffff; --foreground:#1a1a1a; --card:#f7f7f8; --card-foreground:#1a1a1a;
+  --muted:#f0f0f2; --muted-foreground:#666a73; --border:#e3e4e8; --primary:#3b5bdb; --primary-foreground:#ffffff;
+  --accent:#eef1fd; --popover:#ffffff; --popover-foreground:#1a1a1a;
+  --viz-series-1:#3b5bdb; --viz-series-2:#c2410c; --orange:#c2410c; --green:#2f9e44; --red:#c92a2a;
+  --blue:#3b5bdb; --purple:#7048a8; }
+@media (prefers-color-scheme: dark) {
+  :root { --background:#141518; --foreground:#e8e9ec; --card:#1d1f24; --card-foreground:#e8e9ec;
+    --muted:#24262c; --muted-foreground:#9aa0ab; --border:#33363e; --primary:#748ffc; --primary-foreground:#0f1013;
+    --accent:#23262e; --popover:#1d1f24; --popover-foreground:#e8e9ec;
+    --viz-series-1:#748ffc; --viz-series-2:#f08c4a; --orange:#f08c4a; --green:#69c778; --red:#f0647a;
+    --blue:#748ffc; --purple:#b197fc; }
+}
+body { margin:0; background:var(--background); color:var(--foreground);
+  font-family:-apple-system,"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif; }
+#cl-jiangjie { max-width:920px; margin:0 auto; padding:28px 20px 80px; }
+h1 { font-size:24px; } h2 { font-size:20px; } h3 { font-size:16px; }
+p { margin:8px 0; }
+.card { background:var(--card); color:var(--card-foreground); border:1px solid var(--border); border-radius:10px; }
+.btn { font:inherit; font-size:13px; padding:5px 14px; border-radius:8px; cursor:pointer;
+  background:var(--card); color:var(--foreground); border:1px solid var(--border); }
+.btn[aria-pressed="true"] { background:var(--primary); color:var(--primary-foreground); border-color:var(--primary); }
+.btn.btn-xs { font-size:12px; padding:2px 10px; }
+.nav.nav-pills { display:flex; gap:8px; flex-wrap:wrap; margin:14px 0 4px; padding:0; list-style:none; }
+.nav-link { font:inherit; font-size:14px; padding:6px 16px; border-radius:999px; cursor:pointer;
+  background:transparent; color:var(--muted-foreground); border:1px solid transparent; }
+.nav-link.active, .nav-link[aria-selected="true"] { background:var(--primary); color:var(--primary-foreground); }
+.viz-controls { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin:10px 0; }
+.form-label { font-size:14px; }
+.form-range { flex:1; min-width:140px; accent-color:var(--primary); }
+.form-check { display:flex; align-items:center; gap:8px; }
+.form-check-input { accent-color:var(--primary); width:15px; height:15px; }
+.table { width:100%; border-collapse:collapse; font-size:13px; }
+.table th, .table td { text-align:left; padding:6px 10px; border-bottom:1px solid var(--border); }
+.table th { color:var(--muted-foreground); font-weight:500; }
+.table-responsive { overflow-x:auto; }
+.text-muted { color:var(--muted-foreground); }
+.text-small { font-size:12px; }
+.tabular-nums { font-variant-numeric: tabular-nums; }
+code { background:var(--muted); border-radius:4px; padding:1px 6px; font-size:13px; }
+ul, ol { padding-left:22px; }
+</style>
+</head>
+<body>
+<div id="cl-jiangjie">
+<style>
+#cl-jiangjie { line-height: 1.75; position: relative; }
+#cl-jiangjie .lead { font-size: 15px; }
+#cl-jiangjie .beat { text-align: center; margin: 14px 0; color: var(--muted-foreground); }
+#cl-jiangjie h2 { margin-top: 28px; }
+#cl-jiangjie h3 { margin-top: 20px; }
+#cl-jiangjie .formula { font-family: ui-monospace, Consolas, monospace; background: var(--muted); border-radius: 8px; padding: 8px 14px; display: inline-block; margin: 6px 0; }
+#cl-jiangjie .mat { color: var(--blue); font-weight: 500; }
+#cl-jiangjie .mat2 { color: var(--purple); font-weight: 500; }
+#cl-jiangjie .mat3 { color: var(--orange); font-weight: 500; }
+#cl-jiangjie .mat4 { color: var(--green); font-weight: 500; }
+#cl-jiangjie .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+#cl-jiangjie .threecol { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+#cl-jiangjie .fourcol { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+@media (max-width: 760px) { #cl-jiangjie .twocol, #cl-jiangjie .threecol, #cl-jiangjie .fourcol { grid-template-columns: 1fr; } }
+#cl-jiangjie svg text { fill: var(--foreground); font-size: 12px; }
+#cl-jiangjie svg .lbl { fill: var(--muted-foreground); }
+#cl-jiangjie .pillbtns { display: flex; gap: 8px; margin: 8px 0; flex-wrap: wrap; }
+#cl-jiangjie .quiz .ans { display: none; margin-top: 6px; }
+#cl-jiangjie .quiz .ans.show { display: block; }
+#cl-jiangjie .val-ok { color: var(--green); font-weight: 500; }
+#cl-jiangjie .val-warn { color: var(--orange); font-weight: 500; }
+#cl-jiangjie .val-bad { color: var(--red); font-weight: 500; }
+#cl-jiangjie .viz-tip { display: none; position: absolute; z-index: 30; max-width: 260px;
+  background: var(--popover, var(--card)); color: var(--popover-foreground, var(--foreground));
+  border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px; font-size: 12px;
+  pointer-events: none; box-shadow: 0 4px 16px rgba(0,0,0,.15); }
+#cl-jiangjie .hbar { display: flex; align-items: center; gap: 10px; margin: 6px 0; }
+#cl-jiangjie .hbar .hbar-label { width: 130px; font-size: 13px; text-align: right; flex: none; }
+#cl-jiangjie .hbar .hbar-track { flex: 1; height: 18px; background: var(--muted); border-radius: 4px; position: relative; }
+#cl-jiangjie .hbar .hbar-fill { height: 100%; border-radius: 4px; background: var(--viz-series-1); }
+#cl-jiangjie .hbar .hbar-val { width: 64px; font-size: 13px; flex: none; }
+#cl-jiangjie .cellbar { background: var(--muted); border-radius: 3px; height: 12px; width: 100%; max-width: 130px; position: relative; display: inline-block; vertical-align: middle; margin-right: 6px; }
+#cl-jiangjie .cellbar > span { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 3px; background: var(--viz-series-1); }
+#cl-jiangjie .heat { text-align: center; font-variant-numeric: tabular-nums; }
+#cl-jiangjie table.hw td, #cl-jiangjie table.hw th { text-align: center; }
+#cl-jiangjie tr.hw-sig td { background: var(--accent); }
+#cl-jiangjie .leg { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; color: var(--muted-foreground); margin-right: 14px; }
+#cl-jiangjie .leg .sw { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+#cl-jiangjie .stat-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 10px 0; }
+#cl-jiangjie .stat-cards .card { padding: 10px 14px; }
+#cl-jiangjie .stat-cards .k { font-size: 12px; color: var(--muted-foreground); }
+#cl-jiangjie .stat-cards .v { font-size: 22px; font-weight: 500; font-variant-numeric: tabular-nums; }
+</style>
+
+<header>
+  <h1>心理测量学 · 第五～八讲 图解</h1>
+  <p class="lead">探索性因子分析（EFA）、验证性因素分析（CFA）、测验的项目分析、项目反应理论（IRT）——用人话，从零讲起。每讲配专有名词速查表和「什么时候用得上」，最后有作业真实 SPSS 数据页与作业反馈汇总页。</p>
+  <div class="nav nav-pills" role="tablist" aria-label="章节">
+    <button class="nav-link" id="tab-l5" role="tab" aria-controls="panel-l5" aria-selected="false" type="button">第五讲 · EFA</button>
+    <button class="nav-link active" id="tab-l6" role="tab" aria-controls="panel-l6" aria-selected="true" type="button">第六讲 · CFA</button>
+    <button class="nav-link" id="tab-l7" role="tab" aria-controls="panel-l7" aria-selected="false" type="button">第七讲 · 项目分析</button>
+    <button class="nav-link" id="tab-hw" role="tab" aria-controls="panel-hw" aria-selected="false" type="button">作业实战 · 真实数据</button>
+    <button class="nav-link" id="tab-l8" role="tab" aria-controls="panel-l8" aria-selected="false" type="button">第八讲 · IRT</button>
+    <button class="nav-link" id="tab-fb" role="tab" aria-controls="panel-fb" aria-selected="false" type="button">作业反馈汇总</button>
+    <button class="nav-link" id="tab-map" role="tab" aria-controls="panel-map" aria-selected="false" type="button">对照 · 自测</button>
+  </div>
+</header>
+
+<!-- ============ 第六讲 ============ -->
+<section id="panel-l5" role="tabpanel" aria-labelledby="tab-l5" hidden>
+<h2>0. 开场白：算得出信度，挖得出结构</h2>
+<p>你编好了一份量表，或者拿到一份现成的量表数据。摆在面前的永远是两个问题：这套题「可信吗」——分数稳不稳、题目是不是在齐心协力测同一个东西；这套题「到底测到了什么」——分数背后藏着几个特质。上一讲我们已经把「效度」的概念讲清楚了，但留了一个尾巴：结构效度说起来是「分数结构符合理论」，它到底怎么用数据算出来？</p>
+<p>这一讲就补上这个尾巴。前半场在 SPSS 里把信度算出来：多级计分用克隆巴赫 α，答对答错 0/1 计分用库理信度，多层量表和成套测验的总分用分层 α 系数。后半场进入正题——探索性因子分析（EFA）：一种数据驱动的统计技术，让「题目之间有多像」自己说出背后有几个维度，再用大五人格的真实数据走完五步流程。</p>
+<p>路线一句话：先把信度算到手（α、K-R、分层 α）→ 给效度攒三类证据（内容、结构、效标）→ 搞懂 EFA 的方差分解原理和三个核心概念 → 五步跑出因子结构并学会读斜交旋转的输出。</p>
+<p class="text-small text-muted">上一讲的作业反馈与丢分点已整理在「作业反馈汇总」页，建议先看那一页再来学这一讲。</p>
+
+<h2>1. 专有名词速查表</h2>
+<div class="table-responsive">
+<table class="table">
+<thead><tr><th>名词</th><th>一句话人话解释</th><th>在哪节出场</th></tr></thead>
+<tbody>
+<tr><td>重测信度</td><td>同一份测验隔段时间测两次，看两次分数的相关</td><td>3.1</td></tr>
+<tr><td>复本信度</td><td>两套等值的测验各测一次，看两版分数的相关</td><td>3.1</td></tr>
+<tr><td>分半信度</td><td>把一套题对半分成两半，看两半分数的相关</td><td>3.1</td></tr>
+<tr><td>同质性信度</td><td>看各道题是否在齐心协力测同一个特质</td><td>3.1</td></tr>
+<tr><td>克隆巴赫 α</td><td>最常用的同质性（内部一致性）信度指标</td><td>3.1</td></tr>
+<tr><td>Alpha if Item Deleted</td><td>删掉该题后，全量表 α 会变成多少</td><td>3.1</td></tr>
+<tr><td>库理信度（K-R20/21）</td><td>答对答错 0/1 计分测验专用的信度公式</td><td>3.2</td></tr>
+<tr><td>分层 α 系数</td><td>多种计分/多维度量表总分的信度指标</td><td>3.3</td></tr>
+<tr><td>合成分数</td><td>几个分测验加权加起来得到的总分</td><td>3.3</td></tr>
+<tr><td>双向细目表</td><td>知识内容×认知层次的命题对照表</td><td>3.4</td></tr>
+<tr><td>内容效度</td><td>题目内容是否覆盖要测的范围</td><td>3.4</td></tr>
+<tr><td>结构效度</td><td>分数背后的结构是否符合理论</td><td>3.4</td></tr>
+<tr><td>效标</td><td>用来对照的外部标准，如期末成绩</td><td>3.4</td></tr>
+<tr><td>效标关联效度</td><td>测验分数与效标的相关高低</td><td>3.4</td></tr>
+<tr><td>探索性因子分析（EFA）</td><td>数据驱动地找出题目背后的因子</td><td>3.5</td></tr>
+<tr><td>验证性因子分析（CFA）</td><td>按理论先定结构，再用数据检验</td><td>3.5</td></tr>
+<tr><td>因子</td><td>一组题目共同背后的潜在特质</td><td>3.5</td></tr>
+<tr><td>共同方差</td><td>一组题目之间共享的那部分变异</td><td>3.6</td></tr>
+<tr><td>唯一方差</td><td>某题独有、与他人无关的变异总和</td><td>3.6</td></tr>
+<tr><td>因素载荷</td><td>题目与因子之间相关的强弱程度</td><td>3.7</td></tr>
+<tr><td>共同度</td><td>某题方差中被所有因子解释的比例</td><td>3.7</td></tr>
+<tr><td>特征值</td><td>一个因子解释的总方差大小</td><td>3.7</td></tr>
+<tr><td>Bartlett 球形检验</td><td>查变量间是否相关，是 EFA 的前提</td><td>3.8</td></tr>
+<tr><td>KMO 检验</td><td>查题目间相关强弱，越接近 1 越适合</td><td>3.8</td></tr>
+<tr><td>碎石图</td><td>特征值从大到小的下降折线图</td><td>3.8</td></tr>
+<tr><td>PCA / PAF</td><td>两种抽取因子的方法：主成分/主轴因子</td><td>3.8</td></tr>
+<tr><td>varimax / oblimin</td><td>两种旋转：因子互不相关/允许相关</td><td>3.8</td></tr>
+<tr><td>模式矩阵 / 结构矩阵</td><td>斜交旋转输出：载荷表/相关表</td><td>3.9</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>2. 什么时候用得上这一讲</h2>
+<div class="card">
+<ul>
+<li>如果你手头有一份多题量表的一次施测数据（如 11 个分测验、175 人）→ 用克隆巴赫 α → 得到内部一致性信度和「该删哪道题」的线索。</li>
+<li>如果你手头的测验按答对/答错 0/1 计分 → 用库理信度 K-R20/K-R21 → 得到这份 0/1 测验的信度。</li>
+<li>如果你手头是一套多层试卷或几个分测验要报总分 → 用分层 α / 合成分数信度公式 → 得到总分这个数的信度。</li>
+<li>如果你想检查一份试卷题目内容是否覆盖考纲 → 用双向细目表 → 得到内容效度证据。</li>
+<li>如果你有一大堆题目、不知道背后有几个维度 → 用 EFA 五步流程 → 得到因子个数、每题归属和因子命名。</li>
+</ul>
+</div>
+
+<h2>3.1 信度体系与克隆巴赫 α：把「可信」算出来</h2>
+<div class="card"><p><strong>什么时候用得上：</strong>你拿到一份多题量表的一次施测数据，想知道这套题内部是否互相一致，也就是同质性信度。信度家族其实有四兄弟：重测信度（隔段时间测两次看相关）、复本信度（两套等值卷看相关）、分半信度（一套题对半分看相关）、同质性信度（看各题是否齐心）。前三种都要施测两次或者拆卷，而克隆巴赫 α 只要一次施测就能算，所以日常检验量表最常用它。它产出两个决定：这套题能不能用、哪道题在拖后腿。</p></div>
+<p><strong>直觉：</strong>把量表想成一个合唱团。如果每个人唱的是同一首旋律，总音量就稳，谁缺席都不太影响整体——这就是「同质」，信度高。要是有人唱的是另一首歌，总效果就随机波动大，今天听一个样明天听一个样。α 回答的问题就是：这 k 道题，是不是在合唱同一首歌？</p>
+<p><strong>术语与公式：</strong>克隆巴赫 α（Cronbach's α）刻画量表的内部一致性信度。它的标准化形式只依赖两个量：</p>
+<p class="formula">α = k·r̄ / ( 1 + (k−1)·r̄ )</p>
+<p>公式里 <strong>k</strong> 是量表题目数；<strong>r̄</strong> 是题目两两之间相关的平均值。题目越多、题间相关越高，α 就越大——这两条就是这个公式的全部含义。SPSS 里的操作路径：<strong>Analyze → Scale → Reliability Analysis</strong>，把题目移入 Items 框，Model 选 Alpha；在 Statistics 对话框勾选 Scale if item deleted，才能拿到删题诊断表。课件例子用 wiscsem.sav（n=175，11 个分测验），输出 Reliability Statistics 表给出 Cronbach's Alpha = <span class="val-warn">.791</span>，标准化后的 α 为 .790，题数 11。配套的 Item-Total Statistics 表里有一列「Cronbach's Alpha if Item Deleted」：某题这一格的数字比总 α 还大，说明删掉它 α 反而会升高。本例 10 个分测验删掉后 α 都降到 .759~.787，唯独 coding 的校正题总相关只有 .079，删掉它 α 升到 .813——它就是那个跑调的团员。</p>
+<p><strong>判读与常见坑：</strong>按 0.9/0.8/0.7 三条线判读：α≥<span class="val-ok">0.9 很好</span>；0.8~0.9 <span class="val-ok">良好</span>；0.7~0.8 <span class="val-warn">可接受</span>；&lt;0.7 <span class="val-bad">偏低</span>。课件例子的 .791 落在可接受一档。<strong>常见坑一：</strong>上一讲作业里个别同学把信效度关系写反——「信度越高效度一般也会越高」是错的，信度只是前提，不是保证。<strong>常见坑二：</strong>看到 if Item Deleted 更大就立刻删题。先看这道题在理论上该不该留，删完之后 α 要重新算重新报，不能拿旧表充数。</p>
+
+<h3>演示 1：α 演示器——题目数与题间相关如何抬高铁 α</h3>
+<p class="text-small text-muted">拖动滑块改变题目数 k 和平均题间相关 r̄，看 α 怎么变。默认值 k=11、r̄=.26，正好还原课件里「11 题、α=.791」的例子（用上方公式反推可得平均题间相关约 .26）。</p>
+<div class="viz-controls">
+  <label class="form-label" for="rng-l5ak">题目数 k：<span id="lbl-l5ak" class="tabular-nums">11</span></label>
+  <input type="range" class="form-range" id="rng-l5ak" min="2" max="20" step="1" value="11">
+  <label class="form-label" for="rng-l5ar">平均题间相关 r̄：<span id="lbl-l5ar" class="tabular-nums">0.26</span></label>
+  <input type="range" class="form-range" id="rng-l5ar" min="0" max="95" step="1" value="26">
+</div>
+<div id="out-l5alpha" aria-live="polite" class="tabular-nums"></div>
+<svg id="svg-l5alpha" viewBox="0 0 620 280" style="width:100%;height:auto" role="img" aria-label="α 随平均题间相关变化的曲线图"></svg>
+
+<h2>3.2 库理信度 K-R20 / K-R21：0/1 计分专用</h2>
+<div class="card"><p><strong>什么时候用得上：</strong>你的测验是判断题、选择题这类按「答对=1、答错=0」计分的题目，想做信度检验。0/1 变量的方差被难度完全决定，普通的信度公式里有些量是重复的，于是有更直接的专用公式——库理信度（Kuder-Richardson reliability）。它只服务二分计分数据：K-R20 需要每道题的难度，K-R21 只要平均难度。产出决定：这套 0/1 测验可信到什么程度。</p></div>
+<p><strong>直觉：</strong>一份判断题卷子，如果会做的人大多数题都对、不会做的人大多数题都错，那每人总分就分得清清楚楚，两次考试名次也稳——这就是高信度。反过来，如果人人都靠猜、每题对错五五开，总分就纯属抽签。库理信度做的事：看「会不会」这个真本事能不能透过 0/1 的对错稳定地冒出来。</p>
+<p><strong>术语与公式：</strong>课件数据 Kuder-Richardson.xlsx（n=22，6 题）。K-R20 公式为：</p>
+<p class="formula">r<sub>xx</sub>(K-R20) = K/(K−1) · ( 1 − Σp<sub>i</sub>q<sub>i</sub> / s²<sub>X</sub> )</p>
+<p class="formula">r<sub>xx</sub>(K-R21) = K/(K−1) · ( 1 − K·p̄q̄ / s²<sub>X</sub> )</p>
+<p>公式里 <strong>K</strong> 是题目总数；<strong>p<sub>i</sub></strong> 是第 i 题的答对比例（难度），<strong>q<sub>i</sub></strong>=1−p<sub>i</sub> 是答错比例；<strong>s²<sub>X</sub></strong> 是全部被试总分的方差；<strong>p̄、q̄</strong> 是用平均难度代入的 p 和 q。K-R20 逐题统计难度，更精确；K-R21 只用平均难度，是 K-R20 的简算近似。与 Cronbach's α 的关系一句话：把 0/1 数据直接去算 α，得到的数就是 K-R20——α 是 K-R20 推广到多级计分后的通用版本。</p>
+<p><strong>判读与常见坑：</strong>判读线与 α 相同：≥<span class="val-ok">0.9 很好</span>、0.8~0.9 <span class="val-ok">良好</span>、0.7~0.8 <span class="val-warn">可接受</span>、&lt;0.7 <span class="val-bad">偏低</span>。<strong>常见坑一：</strong>多级计分（如五点量表）不能用 K-R，要回到 α；K-R 只认 0/1。<strong>常见坑二：</strong>K-R21 假设各题难度差不多，题目难度悬殊时它会把信度估低——报告时要说明用的是 20 还是 21。</p>
+
+<h2>3.3 分层 α 与合成分数信度：总分也要讲可信</h2>
+<div class="card"><p><strong>什么时候用得上：</strong>一套试题里混着多种计分方式，或者涉及多个测评维度（比如阅读测验里既有选择题又有作文）。这时候不能拿整卷跑一个普通的 α 就了事，因为不同层内部的信度不一样。分层 α 系数（stratified alpha）和成套测验合成分数信度公式就是干这个的：把总分这个数的信度算清楚。产出决定：这个总分能不能拿去解释和比较。</p></div>
+<p><strong>直觉：</strong>三股材质不同的绳子拧成一根粗绳，你想知道整根粗绳结不结实。只测其中一股是不够的——细的那股一拉就断，整根绳的强度就被它拖累。分层 α 的思路：把每一层「不可靠的部分」（方差×(1−该层信度)）分别抠出来加总，再看看它占总分方差的比例。</p>
+<p><strong>术语与公式：</strong>合成分数（composite score）就是学生 p 在 k 个分测验上的加权之和：</p>
+<p class="formula">Z<sub>p</sub> = w<sub>0</sub> + Σ<sub>i=1..k</sub> w<sub>i</sub>·X<sub>pi</sub></p>
+<p>分层 α 系数（同样形式也用于合成分数信度 ρ<sub>ZZ′</sub>，合成分数情形每层还要乘上权重平方 w<sub>i</sub>²）：</p>
+<p class="formula">α<sub>strat</sub> = 1 − Σ σ²<sub>Xi</sub>·(1 − ρ<sub>Xi</sub>) / σ²<sub>X</sub></p>
+<p class="formula">ρ<sub>ZZ′</sub> = 1 − Σ w<sub>i</sub>²·σ²<sub>Xi</sub>·(1 − ρ<sub>Xi</sub>) / σ²<sub>Z</sub></p>
+<p>公式里 <strong>σ²<sub>Xi</sub></strong> 是第 i 层题目所有原始分之和的方差；<strong>ρ<sub>Xi</sub></strong>（课件写作 ρ<sub>XiXi′</sub>）是第 i 层题目自己的测量信度，比如这层的 Cronbach's α；<strong>σ²<sub>X</sub></strong>（合成分数情形为 σ²<sub>Z</sub>）是所有题目原始分之和的方差；<strong>w<sub>i</sub></strong> 是第 i 个分测验的权重。哪层方差占比大、信度又低，它对总分信度的拖累就大。</p>
+<p><strong>判读与常见坑：</strong>算出来的总分信度仍按 <span class="val-ok">0.9 / 0.8</span>、<span class="val-warn">0.7</span> 的线判读。<strong>常见坑：</strong>把各层 α 求个平均当作总分信度——错，层与层之间方差的相对大小（σ²<sub>Xi</sub> 占比）才是权重的来源，各层信度的贡献要按方差加权，不能简单平均。</p>
+
+<h2>3.4 效度三分类与双向细目表</h2>
+<div class="card"><p><strong>什么时候用得上：</strong>你编了一份新测验，或者要论证一份在用测验「真的测到了想测的东西」。效度证据分三类收集：内容效度看题目覆盖全不全；结构效度看分数背后的结构对不对；效标关联效度看分数能不能预测或对应外部标准。产出决定：这份测验可以用于什么目的、不能用于什么目的。</p></div>
+<p><strong>直觉：</strong>像验一辆二手车。翻说明书核对车况描述是否对版——内容效度；拆开看发动机的结构是不是宣传的那种——结构效度；实际开一段看油耗是不是真达到标称——效标关联效度。三条线各自独立取证，都过了才敢说这车（测验）名副其实。</p>
+<p><strong>术语与公式：</strong>这一节没有公式，有一张关键工具表。<strong>内容效度</strong>（Content Validity）靠列<strong>双向细目表</strong>：行为=认知层次、列=学习内容，逐格规定题量。课件几何测验的例子：</p>
+<div class="table-responsive"><table class="table">
+<thead><tr><th>认知层次/学习内容</th><th>定义几何概念</th><th>计算几何问题</th><th>几何推理</th></tr></thead>
+<tbody>
+<tr><td>记忆</td><td>2题</td><td>1题</td><td>0题</td></tr>
+<tr><td>理解</td><td>1题</td><td>2题</td><td>1题</td></tr>
+<tr><td>应用</td><td>0题</td><td>3题</td><td>2题</td></tr>
+<tr><td>分析</td><td>0题</td><td>1题</td><td>2题</td></tr>
+</tbody></table></div>
+<p>语文测验的双向细目表则细化到每一道题，行是知识主题，逐题写明考点、题型、目标层次、预估难度、出处与分值：</p>
+<div class="table-responsive"><table class="table">
+<thead><tr><th>知识主题</th><th>题号</th><th>知识考点</th><th>题型</th><th>目标层次</th><th>预估难度</th><th>出处</th><th>分值</th></tr></thead>
+<tbody>
+<tr><td>基础知识与运用</td><td>1</td><td>汉语拼音认读汉字，根据汉字读拼音填空</td><td>填空题</td><td>识记</td><td>易</td><td>教材练习</td><td>2分</td></tr>
+<tr><td>基础知识与运用</td><td>2</td><td>正确书写常用汉字</td><td>填空题</td><td>识记</td><td>易</td><td>教材练习</td><td>2分</td></tr>
+<tr><td>现代文阅读</td><td>7-14</td><td>整体感知，把握内容；理解重要语句的丰富内涵，分析其在文中的作用</td><td>简答题</td><td>理解</td><td>中</td><td>教材课文</td><td>2-3分</td></tr>
+<tr><td>写作</td><td>25</td><td>写作能力，能记叙生活中的人、事、物，表达感受和见解</td><td>写作题</td><td>综合</td><td>难</td><td>课外自编</td><td>30分</td></tr>
+</tbody></table></div>
+<p><strong>结构效度</strong>（Construct Validity）有三条取证途径：因子分析（本讲后半场的正题）、相容效度（新测验与测同一特质的旧测验分数的相关要高）、区分效度（与测不同概念的测验的相关要低）。<strong>效标关联效度</strong>看分数与<strong>效标</strong>（外部对照标准，如语文考试阅读部分得分）的相关，按取效标的时间分两种：<strong>预测效度</strong>——现在测验、将来取效标，看预测力；<strong>同时效度</strong>——效标与测验同时取，看当下对应。上一讲作业里还有同学提出「发展差异验证」：六年级学生阅读平均分应显著高于五年级，这也是结构效度的一种证据。</p>
+<p><strong>判读与常见坑：</strong><strong>常见坑一：</strong>「信度越高效度一般也会越高」——上一讲作业里的真实丢分点，错。信度高只说明分数稳定，测的可能是「稳定地测错」。<strong>常见坑二：</strong>内容效度靠拍脑袋「我觉得覆盖了」；必须拿双向细目表逐题对照，看每格题量是否符合教学大纲的比例。<strong>常见坑三：</strong>以为做完因子分析结构效度就齐活了——相容效度、区分效度是并列的证据线，缺一不完整。</p>
+
+<h2>3.5 探索性因子分析（EFA）：让数据说出题目背后的结构</h2>
+<div class="card"><p><strong>什么时候用得上：</strong>你手里有一组题目（比如 8 道统计焦虑自评题），不知道它们到底测了几个共同特质。EFA（Exploratory Factor Analysis）用于检验量表的结构效度：考查多个变量之间的相互关系，并用它们共同的潜在特质来解释。产出决定：这些题目背后有几个因子、每道题跟哪个因子亲。不做的话，你只能靠猜来给量表分维度。</p></div>
+<p><strong>直觉：</strong>闭上眼听一段合唱，你能猜出背后有几个声部吗？靠的就是不同歌手声音的「相似性」——一起起伏的应该归同一个声部。EFA 干的是同一件事：看题目之间的相关，一起波动的题归为一组，每组背后放一个看不见的「声部」——因子（factor）。</p>
+<p><strong>术语与公式：</strong>课件的定义原话：一种用来探讨变量潜在结构的统计分析技术。看一组 8 道题（1-非常不同意，5-非常同意）：Item1 一想到今天有心理统计课我就想哭；Item2 同学们嘲笑我不会用SPSS；Item3 理解自由度的概念对我就是小菜一碟；Item4 梦见皮尔逊用相关系数来恐吓我；Item5 抽样分布对我来讲太难懂了；Item6 我几乎没有分析数据方面的经验；Item7 SPSS操作总是和我过意不去；Item8 我从来都不擅长与数字有关的学科。要回答的问题是：这些题是不是在测一个共同的「统计焦虑」特质？注意 EFA 的两个工作方式：同时考虑所有变量以及变量之间的相互关系；基于变量之间的相关来探索潜在结构——所以它是<strong>数据驱动</strong>的方法。与它相对的 CFA（Confirmatory Factor Analysis，验证性因子分析）是<strong>理论驱动</strong>：研究者先按理论定好结构，再检验数据是否吻合。</p>
+<div class="table-responsive"><table class="table">
+<thead><tr><th>对比点</th><th>EFA（探索性）</th><th>CFA（验证性）</th></tr></thead>
+<tbody>
+<tr><td>驱动方式</td><td>数据驱动，数据决定因子结构</td><td>理论驱动，由研究者决定因子结构</td></tr>
+<tr><td>因子数量</td><td>取决于一系列判断标准</td><td>数量及其相关性取决于理论</td></tr>
+<tr><td>题目归属</td><td>每个题目会负载到所有的因素上</td><td>按理论模型指定哪些题属于哪些因子</td></tr>
+<tr><td>旋转</td><td>选择能形成简单结构的旋转方式</td><td>——</td></tr>
+<tr><td>模型评价</td><td>基于理论和结构观感</td><td>模型拟合、载荷的显著性检验等</td></tr>
+</tbody></table></div>
+<p><strong>判读与常见坑：</strong><strong>常见坑一：</strong>把 EFA 当成「分组工具」，以为它会自动把题目分好组——不会，每个题目在所有因子上都有载荷，只是大小不同。<strong>常见坑二：</strong>EFA 探索出来的结构是「这份数据说的」，不等于结构成立；它需要下一步被验证——这正是第六讲 CFA 要干的事。</p>
+
+<h2>3.6 方差分解：每道题的波动从哪来</h2>
+<div class="card"><p><strong>什么时候用得上：</strong>想真正看懂 EFA 的输出，得先知道它的原理：把每道题观测分数的变异拆开。凡是你要解释「为什么这题共同度高、那题共同度低」「为什么因子能解释一部分方差」，都要回到这个分解。产出：对「抽取了多少方差、剩下多少」的完整理解。</p></div>
+<p><strong>直觉：</strong>期末全班的平均成绩为什么有高有低？可以拆成三份：全班一起复习带来的共同起伏；有人额外请了家教只影响他自己；还有临场猜对题目的纯运气。EFA 眼里的一道题分数也一样：共同因子推动的部分大家同涨同落，剩下的部分各有各的来头。</p>
+<p><strong>术语与公式：</strong>每个观测变量（项目）的方差可以写成因子加残差的形式：</p>
+<p class="formula">X<sub>i</sub> = a<sub>i1</sub>·F<sub>1</sub> + a<sub>i2</sub>·F<sub>2</sub> + … + a<sub>im</sub>·F<sub>m</sub> + U<sub>i</sub>　（i = 1, 2, …, n）</p>
+<p>公式里 <strong>X<sub>i</sub></strong> 是第 i 道题（观测变量）；<strong>F<sub>1</sub>…F<sub>m</sub></strong> 是 m 个公因子；<strong>a<sub>im</sub></strong> 是对应的因子系数；<strong>U<sub>i</sub></strong> 是第 i 题独有的部分。<strong>共同方差</strong>（Common variance）是一组观测变量（项目）之间共享的差异量——观测变量之间的相关越高，共同方差所占的比例也越大。<strong>唯一方差</strong>包含<strong>特殊方差</strong>（Specific variance）和<strong>误差方差</strong>（Error variance）两部分，两部分无法分离。特殊方差是指与其他题目无关、而与具体特定题目有关的变异（比如那道题碰巧考了某人请过家教的知识点）；误差方差是指与其他题目无关、也与具体特定题目无关的随机变异。所以整体上一道题的方差分三块：</p>
+<div class="leg">观测变量方差 = 共同方差（抽取的方差）＋ 特殊方差 ＋ 误差方差（后两者合称未抽取的方差）</div>
+<p><strong>判读与常见坑：</strong><strong>常见坑：</strong>既然特殊方差和误差方差无法分离，就不要在报告里声称「本研究的特殊方差是××、误差方差是××」——它们合并在一起叫唯一方差，EFA 只抽取共同方差部分。</p>
+
+<h3>演示 2：方差分解堆叠条——题目间相关越高，共同方差越大</h3>
+<p class="text-small text-muted">拖动滑块改变题目间平均相关。单因子近似下，共同方差占比约等于平均相关；剩下的唯一方差里特殊与误差各画一半——仅为示意，课件的结论是这两部分无法分离。</p>
+<div class="viz-controls">
+  <label class="form-label" for="rng-l5vr">题目间平均相关：<span id="lbl-l5vr" class="tabular-nums">0.40</span></label>
+  <input type="range" class="form-range" id="rng-l5vr" min="5" max="95" step="1" value="40">
+  <button type="button" class="btn" id="btn-l5vh" aria-pressed="false">高亮唯一方差</button>
+</div>
+<div id="out-l5var" aria-live="polite" class="tabular-nums"></div>
+<svg id="svg-l5var" viewBox="0 0 620 170" style="width:100%;height:auto" role="img" aria-label="观测变量方差三分解堆叠条"></svg>
+
+<h2>3.7 因素载荷、共同度与特征值：读懂 EFA 的三个数</h2>
+<div class="card"><p><strong>什么时候用得上：</strong>EFA 跑完，SPSS 吐出一大表数字。要把表读出含义，只需要搞懂三个量：因素载荷、共同度、特征值。它们分别回答「这道题跟这个因子有多亲」「这道题被因子们解释了几成」「这个因子总共解释了多少方差」。产出：判断哪些题留、因子有几个的全部依据。</p></div>
+<p><strong>直觉：</strong>把因子想成音响，题目想成喇叭。载荷就是这道喇叭接在该音响上的音量旋钮——旋钮越大，这道题跟着这个因子起舞越紧。共同度是一台喇叭被「所有音响」驱动起来的总比例。特征值是一个音响带动全部喇叭的总功率。</p>
+<p><strong>术语与公式：</strong>三个定义共用同一个模型式 X<sub>i</sub> = a<sub>i1</sub>F<sub>1</sub> + … + a<sub>im</sub>F<sub>m</sub> + U<sub>i</sub>。<strong>因素载荷</strong>描述公因素对观测变量（项目）变异的解释程度，可以解释为每个观测变量与抽取的公因素之间的相关；当因素间相互独立时，标准化因素载荷在数值上等于观测变量与因素之间的相关系数。<strong>共同度</strong>（communality，记作 h<sub>i</sub>²）是观测变量方差中由公因素解释的比例：</p>
+<p class="formula">h<sub>i</sub>² = a<sub>i1</sub>² + a<sub>i2</sub>² + … + a<sub>im</sub>²</p>
+<p>共同度取值介于 0-1 之间，值越大表示公因素对这个观测变量变异的解释比例越高。<strong>特征值</strong>（eigenvalue）是每个公因素对数据变异的解释能力，即该因素所解释的总方差——F<sub>1</sub> 的特征值 = a<sub>11</sub>² + a<sub>21</sub>² + … + a<sub>n1</sub>²（把所有题目在 F<sub>1</sub> 上的载荷平方加总）。课件的三题例子看一遍就全懂了：</p>
+<p class="formula">x<sub>1</sub> = 0.95·f<sub>1</sub> + 0.22·f<sub>2</sub> + u<sub>1</sub>　　x<sub>2</sub> = 0.45·f<sub>1</sub> + 0.52·f<sub>2</sub> + u<sub>2</sub>　　x<sub>3</sub> = 0.15·f<sub>1</sub> + 0.92·f<sub>2</sub> + u<sub>3</sub></p>
+<p>因素载荷：因素 f<sub>1</sub> 对观测变量 x<sub>1</sub> 的影响是 0.95。抽取的两个因素对 x<sub>1</sub> 变异的解释（共同度）= 0.95² + 0.22² = <span class="val-ok">0.9509</span>。因素 f<sub>1</sub> 的贡献（特征值）= 0.95² + 0.45² + 0.15² = <span class="val-ok">1.1275</span>。</p>
+<p><strong>判读与常见坑：</strong>共同度接近 <span class="val-ok">1</span> 说明该题几乎完全被公因子解释；接近 <span class="val-warn">0</span> 说明这道题基本在「单干」。<strong>常见坑：</strong>共同度是载荷的<strong>平方和</strong>，不是载荷之和——0.95 和 0.22 直接相加得 1.17，超出了方差上限，一眼假；平方后才对（0.9509）。</p>
+
+<h2>3.8 EFA 五步流程：从前提检验到因子命名</h2>
+<div class="card"><p><strong>什么时候用得上：</strong>拿到一份现成的多题量表数据（课件数据 personality.sav：Item 01~Item 44，n=459），想知道它背后有几个维度。五步流程给出完整作业路径：前提检验 → 决定因子数量 → 抽取因子 → 因子旋转 → 因子命名。产出：一份可以写进报告的因子结构。SPSS 菜单位置：Analyze → Dimension Reduction → Factor。</p></div>
+<p><strong>直觉：</strong>像淘金五步。先确认这条河里真的有金子（前提检验）；再估计有几条矿脉（决定因子数）；然后开挖（抽取）；挖出来的沙金要筛掉泥沙、让每颗金子各就各位（旋转）；最后给每堆金子贴上标签（命名）。跳过任何一步，挖出来的都可能是烂泥。</p>
+<p><strong>Step 0　前提检验：</strong>两个检验都是「通行证」。<strong>Bartlett 球形检验</strong>检验各变量是否各自独立：零假设是相关阵为单位阵，所以需要拒绝零假设才能做因素分析——若不拒绝，说明变量可能各自独立提供信息，不适合做。课件示例输出：KMO 取样适切性量数 .527，巴特利特球形检验近似卡方 19.094、自由度 6、显著性 .004——.004&lt;.05，拒绝零假设，通行。<strong>KMO 检验</strong>检查变量间的相关性与偏相关性，公式为：</p>
+<p class="formula">KMO = ΣΣ<sub>i≠j</sub> r<sub>ij</sub>² / ( ΣΣ<sub>i≠j</sub> r<sub>ij</sub>² + ΣΣ<sub>i≠j</sub> α<sub>ij</sub>² )</p>
+<p>公式里 <strong>r<sub>ij</sub></strong> 是变量 i 与 j 的简单相关系数，<strong>α<sub>ij</sub></strong> 是偏相关系数：偏相关越接近 0，KMO 越接近 1。KMO 统计量越接近于 1，变量间相关性越强、偏相关性越弱，因子分析效果越好。取值在 0~1 之间：课件文字线是 <span class="val-ok">0.7 以上效果比较好</span>、<span class="val-bad">0.5 以下不适合做因子分析</span>；Kaiser 度量表更细：&gt;0.8 非常适合，0.7~0.8 适合，0.6~0.7 比较适合，&lt;0.6 不适合。示例的 .527 就是个勉强过关的例子。</p>
+<p><strong>Step 1　决定因子数量：</strong>三条判据合着看。其一<strong>特征值&gt;1</strong>：课件输出表里 44 个成分中有 10 个特征值大于 1（依次 7.280、4.192、3.041、2.548、2.253、1.594、1.318、1.224、1.154、1.044）；其二<strong>因子解释的方差百分比</strong>：其中 5 个解释了超过 5% 的方差（16.545%、9.527%、6.910%、5.790%、5.121%），第 6 个只有 3.624%；其三<strong>碎石图</strong>（Scree Plot）：特征值从 7.28 陡降，到第 5 个成分之后曲线明显变平——「肘部」之后都是碎石。综合三判据，决定提取 5 个成分。</p>
+<p><strong>Step 2　抽取因子：</strong>按决定的因子数量抽取。抽取方法两种：<strong>主成分分析</strong>（PCA，Principal Component Analysis）和<strong>主轴因子分析</strong>（PAF，Principal Axis Factoring）。课件例子用 PCA。</p>
+<p><strong>Step 3　因子旋转：</strong>旋转是为了让载荷形成<strong>简单结构</strong>——每道题只在少数因子上有大载荷。方法选无旋转、<strong>最大方差旋转</strong>（varimax，正交旋转：因子互不相关）或<strong>斜交旋转</strong>（oblimin：允许因子相关）。别忘了 Options 对话框里勾选 Sorted by size 和 Suppress small coefficients（Absolute value below .30）——绝对值低于 .30 的载荷不显示，表才读得清。旋转前 pers03「does a thorough job」在多个成分上都有中等载荷（.510、.434…），旋转后集中在成分 1 上（.717），一眼可判归属。旋转后 5 个成分解释了总变异的 <span class="val-warn">43.89%</span>。</p>
+<p><strong>Step 4　因子命名：</strong>用旋转后的载荷表（看每列大载荷集中在哪些题上）为成分命名。课件命名出经典的大五人格：</p>
+<ul>
+<li>C1 尽责性（Conscientiousness）：Item 3, 18, 33, 23, 28, 13, 8, 38, 43</li>
+<li>C2 外向性（Extraversion）：Item 21, 1, 36, 6, 31, 26, 16, 11</li>
+<li>C3 神经质（Neuroticism）：Item 14, 9, 19, 24, 34, 39, 4, 29</li>
+<li>C4 宜人性（Agreeableness）：Item 2, 22, 32, 42, 7, 37, 27, 12, 17</li>
+<li>C5 开放性（Openness）：Item 40, 30, 25, 44, 20, 15, 5, 10, 41, 35</li>
+</ul>
+<p><strong>判读与常见坑：</strong>KMO<span class="val-bad">&lt;0.5 不要做</span>；Bartlett <span class="val-bad">不显著不要做</span>；两者过了也只是「准入」。<strong>常见坑一：</strong>只认特征值&gt;1 这一条——本例它给出 10 个因子，而方差解释率与碎石图都指向 5 个，最终提取的是 5 个；三条判据要合着用。<strong>常见坑二：</strong>忘勾 Suppress small coefficients（&lt;.30），载荷表里小数糊成一片，命名无从下手。</p>
+
+<h3>演示 3：碎石图——三个判据怎么合着用</h3>
+<p class="text-small text-muted">曲线取自课件 Total Variance Explained 表列出的前 12 个成分的真实特征值（44 个成分只画课件给出的部分）。拖动滑块改变「特征值&gt;阈值」的阈值线，看保留的因子数怎么变；再对照方差解释率判据和课件「提取 5 个成分」的结论。</p>
+<div class="viz-controls">
+  <label class="form-label" for="rng-l5st">特征值阈值：<span id="lbl-l5st" class="tabular-nums">1.00</span></label>
+  <input type="range" class="form-range" id="rng-l5st" min="50" max="750" step="5" value="100">
+</div>
+<div id="out-l5scree" aria-live="polite" class="tabular-nums"></div>
+<svg id="svg-l5scree" viewBox="0 0 620 300" style="width:100%;height:auto" role="img" aria-label="碎石图与特征值阈值线"></svg>
+
+<h2>3.9 斜交旋转输出：模式矩阵 ≠ 结构矩阵</h2>
+<div class="card"><p><strong>什么时候用得上：</strong>你怀疑几个因子之间本身相关（比如「焦虑」和「抑郁」），于是选了 oblimin 斜交旋转。这时 SPSS 会吐出两张矩阵和一个成分相关性表，读错表就会报错载荷。产出决定：题目归哪个因子、因子之间到底有多相关、要不要回头改用 varimax。</p></div>
+<p><strong>直觉：</strong>正交旋转像规定两个声部各唱各的、互不配合；斜交旋转允许声部相互靠拢。一旦允许靠拢，「这道题分给哪个声部」和「这道题跟哪个声部听起来像」就变成了两件事——前者是纯配方（模式），后者混入了声部之间的相互影响（结构）。</p>
+<p><strong>术语与公式：</strong><strong>模式矩阵</strong>（Pattern Matrix）给的是<strong>因子载荷</strong>——每个题目在自己因子上的唯一归属系数，命名和归组用它；<strong>结构矩阵</strong>（Structure Matrix）给的是<strong>因子与项目之间的相关性</strong>——已经混入因子间相关的影响。课件输出里两张表并列：模式矩阵中 pers03 在成分 1 载荷 .720，结构矩阵中同题对成分 1 是 .733。换算关系用一个课件里的例子算清楚：Item1 与 Factors 的相关——Varimax 下对 Factor1 为 0.6、对 Factor2 为 0.1；换成 Oblimin 且两因子相关为 0.4 时：</p>
+<p class="formula">对 Factor1：0.6×1 + 0.1×0.4 = 0.64　　对 Factor2：0.6×0.4 + 0.1×1 = 0.34</p>
+<p>也就是说：结构 = 模式系数乘以因子相关矩阵之后的结果；因子间相关不为 0 时，两列结构值都会被「抬高」。<strong>成分相关性表</strong>（Component Correlation Matrix）报告旋转后因子间相关，课件例子里相关非常低（介于 -.200 到 .182）——Oblimin 旋转后的因子之间的相关非常低，或许采用 Varimax 会更好。</p>
+<p><strong>判读与常见坑：</strong>成分相关普遍 <span class="val-ok">很低（|r|&lt;.30 左右）</span>→ 用回 varimax 更简洁；中等以上相关才值得留在斜交。<strong>常见坑：</strong>斜交旋转后拿结构矩阵的数字当「载荷」报告、或用它来决定题目归属——归属要看模式矩阵；结构矩阵里的数是被因子间相关「串了味」的相关。</p>
+
+<h2>4. 本讲在课程里的位置</h2>
+<p>上一讲（第四讲）讲完效度三类证据，留下的问题正是「结构效度怎么用数据算出来」。这一讲给出了答案的前半：EFA 用数据驱动的方式把题目背后的因子挖出来——特征值、碎石图、旋转、命名，一条链跑通，大五人格就是现成的成品。但 EFA 的结果依赖这一份数据和你选的旋转方式，「探索出来的结构」还不等于「结构成立」——它需要被理论驱动的验证性因子分析（CFA）检验：按理论指定题目归属，看模型拟合、做载荷的显著性检验。这是第六讲要解决的事。</p>
+<p>本讲作业：用 Phobias.sav 估计该量表的 Cronbach's alpha，并做主成分分析——决定成分的数量、决定旋转方法、报告因子载荷并为成分命名。做完后对照「作业反馈汇总」页的对应块核对丢分点。</p>
+</section>
+
+
+<section id="panel-l6" role="tabpanel" aria-labelledby="tab-l6">
+
+<h2>0. 开场白：上一讲让数据自己说话，这一讲轮到你验收</h2>
+<p>第五讲用探索性因素分析（EFA）把量表的维度摸了出来：几个因子、每题挂在哪个因子上。但那是<b>数据自己长出来的结构</b>——软件说分两个因子就两个，万一换个样本就变样，万一分出来的因子毫无心理学意义呢？探索给你的是图纸草稿，草稿不能直接当验收报告用。</p>
+<p>这一讲的验证性因素分析（CFA）把主动权交回给你：<b>你先按理论画好图纸</b>——几个因子、每题挂在哪、因子之间什么关系，全都事先指定；然后让数据来验收这张图纸。EFA 是探索，CFA 是验收，两者方向相反、缺一不可。</p>
+<p>本讲路线一句话：先弄清 EFA 和 CFA 差在哪，再拆开 CFA 的核心等式与模型识别，然后学会读拟合指标，最后上 R（lavaan）和 Mplus 实操。</p>
+<p class="text-small text-muted">上一讲的作业反馈与丢分点已整理在「作业反馈汇总」页，建议先看那一页再来学这一讲。</p>
+
+<h2>1. 专有名词速查表</h2>
+<div class="table-responsive">
+<table class="table">
+  <thead><tr><th>名词</th><th>一句话人话解释</th><th>在哪节出场</th></tr></thead>
+  <tbody>
+    <tr><td>EFA 探索性因素分析</td><td>让数据自己长结构，事先不知几个因子</td><td>3.1</td></tr>
+    <tr><td>CFA 验证性因素分析</td><td>先按理论画好图纸，再让数据验收</td><td>3.1</td></tr>
+    <tr><td>oblimin</td><td>一种斜交旋转法，允许因子相关</td><td>3.1</td></tr>
+    <tr><td>PCA 主成分分析</td><td>用题目预测成分，成分是题目组合</td><td>3.2</td></tr>
+    <tr><td>Σ</td><td>模型算出来的题目间协方差矩阵</td><td>3.3</td></tr>
+    <tr><td>Λ</td><td>因子载荷矩阵：每题挂哪个因子、多紧</td><td>3.3</td></tr>
+    <tr><td>Φ</td><td>因子协方差矩阵：因子之间什么关系</td><td>3.3</td></tr>
+    <tr><td>Ψ</td><td>独特方差：每题因子解释不了的部分</td><td>3.3</td></tr>
+    <tr><td>模型识别</td><td>信息量够不够估计全部待估参数</td><td>3.4</td></tr>
+    <tr><td>自由度 df</td><td>信息量减去待估参数个数的余量</td><td>3.4</td></tr>
+    <tr><td>定标尺两法</td><td>固定第一题载荷为 1，或固定因子方差为 1</td><td>3.5</td></tr>
+    <tr><td>路径图符号</td><td>椭圆因子、矩形题目、双箭头协方差</td><td>3.5</td></tr>
+    <tr><td>χ² 卡方</td><td>样本与模型协方差之差，理想不显著</td><td>3.6</td></tr>
+    <tr><td>RMSEA</td><td>每单位自由度摊到的近似误差</td><td>3.6</td></tr>
+    <tr><td>CFI</td><td>相对基线模型改善的比例</td><td>3.6</td></tr>
+    <tr><td>AIC / BIC</td><td>带参数惩罚的模型比较指标，越小越好</td><td>3.6</td></tr>
+    <tr><td>lavaan</td><td>R 做 CFA 的包，=~ 读作“测量”</td><td>3.7</td></tr>
+    <tr><td>Mplus</td><td>独立 CFA 软件，数据绝不能带表头</td><td>3.7</td></tr>
+    <tr><td>标准化路径系数</td><td>统一量纲后的载荷，报告首选</td><td>3.7</td></tr>
+    <tr><td>Omega</td><td>算信度的指标，与 CFA 画图无关</td><td>3.7</td></tr>
+    <tr><td>模式矩阵 / 结构矩阵</td><td>斜交后的两套载荷：回归系数 / 相关系数</td><td>3.1</td></tr>
+    <tr><td>Heywood case</td><td>共同度超过方差的罕见估计错误</td><td>3.1</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>2. 什么时候用得上这一讲</h2>
+<div class="card" style="padding:12px 16px">
+  <p style="margin:4px 0">如果你手头有上一讲 EFA 分出的因子结构 → 用 CFA 在数据上验收 → 得到「这个结构站不站得住」。</p>
+  <p style="margin:4px 0">如果你想比较两种理论结构谁更对 → 用 CFA 分别拟合、比 AIC/BIC → 得到该采用哪个模型的证据。</p>
+  <p style="margin:4px 0">如果你写报告要给量表的结构效度举证 → 用 CFA 报告标准化载荷与拟合指标 → 得到效度证据链。</p>
+  <p style="margin:4px 0">如果你在 SPSS 里点了「因素分析」，想搞清它到底算的是什么 → 用 PCA 与 FA 的方向对比 → 得到默认结果为什么不能直接当因素分析解释。</p>
+  <p style="margin:4px 0">如果你拿到 R 和 Mplus 两份输出不知道信哪个 → 用两软件差异与标准化系数的报告口径 → 得到写作业的正确姿势。</p>
+</div>
+
+<h2>3.1 EFA 快速回顾：数据自己长出来的结构长什么样</h2>
+<div class="card" style="padding:12px 16px">
+  <p style="margin:2px 0"><b>什么时候用得上：</b>你已经收到一批量表数据，但说不清它该分几个维度。EFA 让软件自己去找结构：先做前提检验，再抽因子、旋转、命名。它产出的因子结构，正是这一讲 CFA 要拿去验收的图纸草稿。跳过前提检验硬做，后面抽出来的东西自己都不敢信。</p>
+</div>
+<p>先重温直觉：EFA 的姿势是把一堆题目丢给软件，每个因子都试着连接所有题目，最后按载荷大小“认亲”。开跑之前有两道安检——<b>Bartlett 球形检验</b>（原假设是变量各自独立；检验显著 = 拒绝独立，说明变量间有相关，可以做因子分析）和 <b>KMO 检验</b>（看变量间相关相对偏相关够不够强，取值 0～1，越接近 1 越好；0.7 以上效果比较好，0.5 以下不适合做因子分析）。</p>
+<p>术语与流程四步走：<b>①前提检验</b>（KMO 大于 0.5、Bartlett 显著、相关矩阵大多大于 0.3）→ <b>②抽取因素</b>（主成分分析法或主轴因素法，按特征根大于 1、总方差解释率、碎石图定个数）→ <b>③因子旋转</b>（varimax 正交 / oblimin 斜交）→ <b>④因子命名</b>（按题项内容起名）。课件示例数据 KMO=0.550，落在“勉强可做”区，配合 Bartlett 显著（χ²=73.582，p&lt;.001）就能做，但谈不上理想。</p>
+<h3>演示：KMO 标尺——把任意 KMO 值放到尺子上看能不能做</h3>
+<div class="viz-controls">
+  <label class="form-label" for="l6-kmo-slider" style="min-width:170px">KMO = <b id="l6-kmo-val" class="tabular-nums">0.55</b></label>
+  <input type="range" class="form-range" id="l6-kmo-slider" min="0.2" max="1" step="0.01" value="0.55" style="flex:1; min-width:180px">
+</div>
+<svg id="l6-kmo-svg" viewBox="0 0 880 96" role="img" aria-label="KMO 判读标尺" style="width:100%;"></svg>
+<p aria-live="polite" id="l6-kmo-judge"></p>
+<h3>演示：EFA 与 CFA 的路径图切换——点按钮看两种思路的差别</h3>
+<div class="pillbtns" role="group" aria-label="切换 EFA 与 CFA 模式">
+  <button class="btn" type="button" id="l6-btn-efa" aria-pressed="true">看 EFA（探索）</button>
+  <button class="btn" type="button" id="l6-btn-cfa" aria-pressed="false">看 CFA（验证）</button>
+</div>
+<svg id="l6-efacfa-svg" viewBox="0 0 640 240" role="img" aria-label="EFA 与 CFA 的路径图对比" style="width:100%; max-width:640px;"></svg>
+<div class="leg"><span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:var(--muted-foreground);opacity:.55"></span>试探连线（虚线）</div>
+<div class="leg"><span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:var(--viz-series-1)"></span>最终载荷</div>
+<p id="l6-efacfa-note" aria-live="polite"></p>
+<p>课件原话：CFA 已知数据结构——研究者<b>指定</b>潜在因素数量、<b>指定</b>哪个题目属于哪个因子、把与给定因子无关的载荷全部设为“零”、因子相关可以直接估计（<b>无需旋转</b>）。这就是“验证”两个字的含义。</p>
+<p><b>判读与常见坑：</b>KMO 在 0.5 以下<span class="val-bad">不适合做因子分析</span>，0.5～0.7 <span class="val-warn">勉强可做</span>，0.7 以上<span class="val-ok">效果比较好</span>。常见坑：以为做 CFA 也要像 EFA 那样先旋转——CFA 结构事先指定，因子相关直接估计，不存在旋转这一步。另一个作业反馈：做 CFA <b>不需要</b>预先处理反向计分题（想处理的话 R 里一行 <code>6 - x</code> 就够，或在 Excel 里操作）。</p>
+<div class="card" style="padding:12px 16px; margin-top:12px">
+  <p style="margin:2px 0"><b>正交还是斜交？课件给的判断顺序：</b></p>
+  <p class="text-small" style="margin:4px 0">① 看理论意义（因子理论上该不该相关）→ ② 看旋转后因子相关矩阵稀不稀疏（相关大多 &lt; 0.3 才算稀疏）→ ③ 看双载荷（交叉载荷）严不严重，交叉载荷一般由因素间相关较高导致 → ④ 拿不准就用 CFA 验证。心理测量里的因子（如外倾性和焦虑）大多相关，默认斜交更稳。</p>
+</div>
+<div class="card" style="padding:12px 16px; margin-top:12px">
+  <p style="margin:2px 0"><b>小冷知识：oblimin 的模式矩阵里载荷超过 1，正常吗？</b></p>
+  <p class="text-small" style="margin:4px 0">课件作业问题里有人看到载荷 1.020 就吓得改回正交旋转。其实斜交旋转后有两套载荷——<b>模式矩阵</b>（回归系数）和<b>结构矩阵</b>（相关系数）。载荷能超过 1 有三种解释：① 分析用的是<b>协方差矩阵</b>（变量未标准化），载荷其实是协方差、回归系数，不必局限在 [-1, 1]；② <b>斜交旋转</b>后模式载荷是回归系数不是相关系数，即使分析的是相关矩阵，模式载荷也可以超出 [-1, 1]；③ 罕见的 <b>Heywood case</b>（共同度超过方差，常见于变量太少、撑不起要抽的因子数），软件会报错——这才是真正要警惕的情况。所以“看到 1.020 就改正交”是没必要的。</p>
+</div>
+
+<h2>3.2 PCA 与 FA：方向正好相反，别混为一谈</h2>
+<div class="card" style="padding:12px 16px">
+  <p style="margin:2px 0"><b>什么时候用得上：</b>你在 SPSS 里点「因素分析」，默认抽取方法其实是主成分分析（PCA）。报告结果前必须说清自己用的是 PCA 还是真正的因素分析（FA），因为两者方向相反、含义不同。手头有相关矩阵或原始数据、想降维或找结构时，先想清楚要的是哪一种。</p>
+</div>
+<p>直觉上，PCA 是<b>在多维空间里换一个坐标系</b>：第一根轴（主成分 1）指向数据最分散的方向，第二根轴与它垂直、承接剩余方差最大的方向，以此类推。主成分是“算出来”的坐标轴，不是“藏在题目背后”的心理构念。FA 则反过来，假设题目是被少数几个共同因素<b>带动</b>的，每题还带一份解释不了的残差。</p>
+<p>术语与公式：PCA 的数学本质是对协方差矩阵做特征分解。</p>
+<p class="formula">S = PΛP′，第 k 个主成分是 z<sub>k</sub> = Xp<sub>k</sub></p>
+<p>其中 S 是题目间的协方差矩阵，P 是特征向量矩阵，Λ 是特征值矩阵，X 是题目分数矩阵。PCA 里<b>题目数 = 成分数</b>；FA 里<b>因素数 &lt; 题目数</b>，题目是因素的线性组合、带残差。</p>
+<svg id="l6-pcafa-svg" viewBox="0 0 640 150" role="img" aria-label="PCA 与 FA 的箭头方向对比" style="width:100%; max-width:640px;"></svg>
+<div class="twocol">
+  <div class="card" style="padding:12px 16px">
+    <h3>主成分分析 PCA</h3>
+    <p style="margin:4px 0">用<b>题目</b>预测<b>成分</b></p>
+    <p style="margin:4px 0">成分是题目的线性组合</p>
+    <p style="margin:4px 0">题目数 = 成分数</p>
+    <p style="margin:4px 0">没选中的成分不是不存在，只是被忽略</p>
+  </div>
+  <div class="card" style="padding:12px 16px">
+    <h3>因素分析 FA</h3>
+    <p style="margin:4px 0">用<b>因素</b>预测<b>题目</b></p>
+    <p style="margin:4px 0">题目是因素的线性组合，<b>带残差</b></p>
+    <p style="margin:4px 0">因素数量 &lt; 题目数量</p>
+    <p style="margin:4px 0">承认每个题目都有解释不了的部分</p>
+  </div>
+</div>
+<p><b>判读与常见坑：</b>PCA 结果要按“成分”解释，FA 结果才按“因子/构念”解释。常见坑：<span class="val-bad">把 SPSS 默认的 PCA 输出直接当成因素分析来解释</span>——方向是反的，含义完全不同。</p>
+
+<h2>3.3 CFA 的核心等式：一个等式管到底</h2>
+<div class="card" style="padding:12px 16px">
+  <p style="margin:2px 0"><b>什么时候用得上：</b>图纸画好了（几个因子、每题挂哪），接下来要用一个数学框架把“模型算出来的题目关系”写出来，才能跟真实数据比。这个框架就是 Σ=ΛΦΛ′+Ψ。看懂这四个字母，CFA 输出里的大部分表你都知道在算什么。</p>
+</div>
+<p>直觉：CFA 拿着你画的图纸，“仿制”出一套题目之间的协方差，再跟真实数据的协方差对账。仿制得越像，图纸越好。</p>
+<p class="formula"><span class="mat">Σ</span> = <span class="mat2">Λ</span><span class="mat3">Φ</span><span class="mat2">Λ′</span> + <span class="mat4">Ψ</span></p>
+<div class="fourcol">
+  <div class="card" style="padding:10px 14px"><p style="margin:2px 0"><span class="mat">Σ</span> 模型隐含的协方差矩阵</p><p class="text-small text-muted" style="margin:2px 0">模型算出的题目间协方差，目标是逼近真实协方差</p></div>
+  <div class="card" style="padding:10px 14px"><p style="margin:2px 0"><span class="mat2">Λ</span> 因子载荷矩阵</p><p class="text-small text-muted" style="margin:2px 0">每题挂在哪个因子上、挂得多紧</p></div>
+  <div class="card" style="padding:10px 14px"><p style="margin:2px 0"><span class="mat3">Φ</span> 因子协方差矩阵</p><p class="text-small text-muted" style="margin:2px 0">因子之间什么关系，可以设为零也可以估计</p></div>
+  <div class="card" style="padding:10px 14px"><p style="margin:2px 0"><span class="mat4">Ψ</span> 独特方差</p><p class="text-small text-muted" style="margin:2px 0">每题里因子解释不了的误差部分</p></div>
+</div>
+<p>有个反直觉的点：方差总能被完美复制，<b>协方差不能</b>——所以 CFA 比拼的就是模型重生成的协方差与真实协方差贴得多近。</p>
+<p><b>判读与常见坑：</b>Φ 里的因子相关可以自由估计也可以固定为零，这是“斜交 vs 正交”在 CFA 里的对应设置。常见坑：把 Ψ（误差）当成要消除的东西——它不是缺陷，是模型承认“每题都有解释不了的部分”的诚实条款。</p>
+
+<h2>3.4 模型识别：参数够不够用，决定有没有解</h2>
+<div class="card" style="padding:12px 16px">
+  <p style="margin:2px 0"><b>什么时候用得上：</b>设计量表、画图纸时就要想：每因子放几道题？数据能提供的信息量是固定的——p 个题目只有 p(p+1)/2 个独特元素（方差 + 协方差）。模型要估的参数不能比这多，否则压根没有解。这道算术决定你的模型能不能跑、能不能检验。</p>
+</div>
+<p>直觉：你手里只有一沓固定大小的“信息钞票”，模型每估一个参数就要花一张。参数比钞票多，账就做不平。</p>
+<p class="formula">信息量 = p(p+1)/2；单因子 k 题、每题 1 载荷 + 1 误差、因子方差 1 个（第一题载荷固定为 1）时，参数 = 2k；df = 信息量 − 参数个数</p>
+<div class="table-responsive">
+<table class="table" style="max-width:640px">
+  <thead><tr><th>每因子题数</th><th>信息量 k(k+1)/2</th><th>参数 2k</th><th>状态</th><th>结论</th></tr></thead>
+  <tbody>
+    <tr><td>2</td><td>3</td><td>4</td><td class="val-bad">不可识别</td><td>没有解</td></tr>
+    <tr><td>3</td><td>6</td><td>6</td><td class="val-warn">恰好识别</td><td>唯一解（df=0，无法检验拟合）</td></tr>
+    <tr><td>4</td><td>10</td><td>8</td><td class="val-ok">超识别（df=2）</td><td>最佳近似解，可以看拟合度</td></tr>
+    <tr><td>5</td><td>15</td><td>10</td><td class="val-ok">超识别（df=5）</td><td>同上，检验余地更大</td></tr>
+  </tbody>
+</table>
+</div>
+<h3>演示：模型识别计算器——2、3、4、5 题各按一遍，看状态怎么变</h3>
+<div class="viz-controls" role="group" aria-label="每个因子包含的题目数">
+  <span class="form-label" style="margin-right:8px">单因子模型，题目数 k =</span>
+  <button class="btn" type="button" data-k="2" aria-pressed="false">2 题</button>
+  <button class="btn" type="button" data-k="3" aria-pressed="true">3 题</button>
+  <button class="btn" type="button" data-k="4" aria-pressed="false">4 题</button>
+  <button class="btn" type="button" data-k="5" aria-pressed="false">5 题</button>
+</div>
+<svg id="l6-ident-svg" viewBox="0 0 640 175" role="img" aria-label="单因子模型识别状态示意" style="width:100%; max-width:640px;"></svg>
+<p id="l6-ident-note" aria-live="polite"></p>
+<p><b>判读与常见坑：</b>课件结论——不可识别→<b>没有解</b>；恰好识别→<b>唯一解</b>；超识别→模型无法完美复现协方差矩阵，<b>需要通过模型拟合度来展示复现效果</b>。常见坑：恰恰在“每因子 3 题”时以为模型很稳——df=0 时拟合是完美的，但那是“没有余地的完美”，什么也检验不了。所以“多放几道题”不是浪费，是给模型留出检验的余地。</p>
+
+<h2>3.5 给潜变量定标尺：两种等价方法，顺带认识路径图四符号</h2>
+<div class="card" style="padding:12px 16px">
+  <p style="margin:2px 0"><b>什么时候用得上：</b>因子是潜变量，本身没有单位——“因子载荷是 0.7”到底高不高，得先知道尺子是什么。CFA 里必须给每个潜变量定一把尺，软件才能开算。看懂别人论文里的路径图，也需要认识四个符号。</p>
+</div>
+<p>直觉：“小明比小红高 3”没有意义——3 什么？厘米还是寸？潜变量也一样，得先定尺子。两种定法<b>完全等价</b>，拟合结果一模一样：</p>
+<p class="formula">固定载荷法（Marker Item）：把某题（通常第一题）的因子载荷设为 1　｜　固定方差法（Z-Score）：把因子方差设为 1（均值 0、方差 1 的标准尺）</p>
+<p>固定载荷法是让因子<b>借用第一个题目的量纲</b>；固定方差法是直接给因子套上标准尺，但它<b>不能用于高阶因子模型</b>。</p>
+<p>路径图四个符号：椭圆 = 潜变量（因子、构念）；矩形 = 观察变量（题目、指标）；单箭头 = 影响方向；双箭头 = 协方差（相关，<b>不能做因果解释</b>）。</p>
+<p><b>判读与常见坑：</b>两种定标尺方法没有优劣之分，拟合程度一模一样。常见坑：报告里不说明用了哪种定标尺，读者没法判断你载荷的量纲；以及在高阶因子模型里硬用固定方差法——软件会直接出错。</p>
+
+<h2>3.6 拟合好不好，看这几个数</h2>
+<div class="card" style="padding:12px 16px">
+  <p style="margin:2px 0"><b>什么时候用得上：</b>CFA 跑完，输出里一堆指标，任务是判断图纸跟数据贴得多近。χ²、RMSEA 管“差多少”，CFI 管“比烂模型好多少”，AIC/BIC 在候选模型里挑一个。不会读这几个数，跑了也白跑。</p>
+</div>
+<p>直觉：验收图纸时你会问两个问题——它跟实际尺寸<b>差多少</b>？跟随便乱画的图纸<b>好多少</b>？再想象你手里有几张备选图纸，得挑一张——这就是 AIC/BIC 的活。</p>
+<div class="table-responsive">
+<table class="table" style="max-width:780px">
+  <thead><tr><th>指标</th><th>直觉</th><th>判读标准</th></tr></thead>
+  <tbody>
+    <tr><td>χ² 卡方</td><td>(n−1) × 样本协方差矩阵与模型协方差矩阵之差</td><td><b>理想是不显著</b>（差异可视为零）</td></tr>
+    <tr><td>RMSEA</td><td>每单位自由度摊到的近似误差</td><td>&lt;.05 <span class="val-ok">良好</span>；&lt;.08 <span class="val-warn">可接受</span></td></tr>
+    <tr><td>CFI</td><td>和基线模型比改善了多少</td><td>&gt;.90 <span class="val-ok">良好</span>；&gt;.95 <span class="val-ok">非常好</span></td></tr>
+    <tr><td>AIC / BIC</td><td>2k−2ln(L) / ln(n)·k−2ln(L)，惩罚参数个数</td><td>越小越好（用于比较模型）</td></tr>
+  </tbody>
+</table>
+</div>
+<h3>演示：RMSEA 计算器——拖 χ²、df、n 三个滑块，看误差怎么摊到自由度上</h3>
+<div class="viz-controls">
+  <label class="form-label" style="min-width:170px">卡方 χ² = <b id="l6-rm-chi2v" class="tabular-nums">120</b></label>
+  <input type="range" class="form-range" id="l6-rm-chi2" min="10" max="400" step="1" value="120" style="flex:1; min-width:130px">
+  <label class="form-label" style="min-width:150px">自由度 df = <b id="l6-rm-dfv" class="tabular-nums">40</b></label>
+  <input type="range" class="form-range" id="l6-rm-df" min="1" max="200" step="1" value="40" style="flex:1; min-width:120px">
+  <label class="form-label" style="min-width:170px">样本量 n = <b id="l6-rm-nv" class="tabular-nums">400</b></label>
+  <input type="range" class="form-range" id="l6-rm-n" min="100" max="2000" step="10" value="400" style="flex:1; min-width:130px">
+</div>
+<p aria-live="polite">RMSEA = √[(χ²/df − 1)/(n − 1)] = <b id="l6-rm-val" class="tabular-nums">—</b>　<span id="l6-rm-judge"></span></p>
+<p><b>判读与常见坑：</b>同一模型，样本量越大 RMSEA 越小（分母 n−1 在稀释）；自由度越多（模型越简洁）摊到的误差越少。常见坑：<span class="val-warn">报告 RMSEA 不给 df</span>——没有 df，别人无法判断你这个数是怎么摊出来的，报告时务必同时给 χ²、df、n。</p>
+
+<h2>3.7 上软件：R（lavaan）与 Mplus 实操</h2>
+<div class="card" style="padding:12px 16px">
+  <p style="margin:2px 0"><b>什么时候用得上：</b>本讲作业就是用 R（lavaan）与 Mplus 各跑一遍 CFA。两条软件路线各有各的规矩：数据格式、路径设置、缺失值处理都不一样。规矩记不住，代码写得再对也跑不通。</p>
+</div>
+<p>直觉：R 和 Mplus 是两位都懂最大似然估计的师傅，但干活的手法不同——R 的 lavaan 像自动挡，模型一行写完；Mplus 像手动挡，输入文件要求苛刻（比如绝不能有表头）。</p>
+<p class="formula">lavaan 模型写法：VIQ =~ info + comp + arith + simil + vocab + digit（=~ 读作“测量”）</p>
+<p>lavaan 用 install.packages 装一次，以后每次用前要 library；<code>#</code> 后面是注释。</p>
+<p><b>判读与常见坑（全部来自课件作业反馈）：</b></p>
+<ul>
+  <li>R 报 cannot open the connection → 路径不对，先 <code>setwd()</code> 手动设置路径文件夹，即可读取成功。</li>
+  <li>R 读的数据<b>必须有表头</b>；Mplus <b>必须没有表头</b>（纯数字）。两份数据要区分开，别混用。</li>
+  <li>Mplus 无法识别空格：数据存在缺失值时，一定把空格<b>全部填入 999</b>。</li>
+  <li>做 CFA <b>不需要</b>处理反向记分题目；想处理就 R 一行语句或 Excel 里操作。</li>
+  <li>R 和 Mplus 都用最大似然估计，但优化方法与停止标准不同，结果会略有差异——本次练习两软件结果基本相似，选哪个都行。</li>
+  <li>报告<b>最好用标准化后的路径系数</b>（课件示范图上标的是非标准化系数，不作首选）。</li>
+  <li><span class="val-warn">Omega 是用来计算信度的，不是用来跑 CFA 图片的，跟作业无关</span>——别把它贴进 CFA 报告。</li>
+</ul>
+<p>常见坑集中提醒：Mplus 缺失值没填 999 直接跑 → 软件读不懂数据格式，作业 2 当年<b>几乎没有同学做对</b>，普遍卡在代码层面没跑通或跑错。跑完别只看图，试着提取模型参数、理解 CFA 的逻辑，有问题随时与助教沟通。</p>
+
+<h2>4. 本讲在课程里的位置</h2>
+<p>第五讲留下的问题是：EFA 探索出的结构是数据驱动的，换个样本还成立吗？这一讲给了答案：把理论结构画成图纸，用 CFA 让数据验收，χ²、RMSEA、CFI 说出图纸贴得有多近。它也为下一讲埋了伏笔：拟合再好也只说明整卷骨架立得住——<b>每道题自身的难度与区分度好不好，还得逐题体检</b>，这是第七讲「项目分析」的任务。</p>
+<p>本讲作业：用 R（lavaan）与 Mplus 对作业数据做验证性因素分析并报告结果。做完后对照「作业反馈汇总」页的对应块核对丢分点。</p>
+
+</section>
+
+
+<!-- ============ 第七讲 ============ -->
+<section id="panel-l7" role="tabpanel" aria-labelledby="tab-l7" hidden>
+
+<h2>0. 开场白：整卷骨架验收过了，现在逐题体检</h2>
+<p>上一讲的 CFA 验收的是<b>整卷骨架</b>：几个因子、每题挂在哪、拟合贴不贴。可骨架立得住，不代表每根骨头都结实——卷子里可能藏着人人都答对的送分题、人人都答错的废题、甚至对男生女生不公平的偏心题。这些问题的答案都不在拟合指标里，得把卷子拆开，<b>一道题一道题地体检</b>。</p>
+<p>这一讲就是项目分析：量表编好、数据收回之后，用两把主尺子——<b>难度</b>（这题多难）和<b>区分度</b>（能不能把不同水平的人分开）——给每道题打分，再做两个附加检查——选择题防<b>瞎猜</b>、防<b>不公平</b>（DIF）。</p>
+<p>本讲路线一句话：先学难度的三种算法和 Δ 换算，再学区分度的两种求法，然后处理猜测校正、选择题六条诊断规则，最后做 DIF 公平性检查。</p>
+<p class="text-small text-muted">上一讲的作业反馈与丢分点已整理在「作业反馈汇总」页，建议先看那一页再来学这一讲。</p>
+
+<h2>1. 专有名词速查表</h2>
+<div class="table-responsive">
+<table class="table">
+  <thead><tr><th>名词</th><th>一句话人话解释</th><th>在哪节出场</th></tr></thead>
+  <tbody>
+    <tr><td>难度 P</td><td>通过率，越大越容易</td><td>3.1</td></tr>
+    <tr><td>R / N</td><td>答对人数 / 被试总数</td><td>3.1</td></tr>
+    <tr><td>P<sub>H</sub> / P<sub>L</sub></td><td>高分组与低分组各自的通过率</td><td>3.1</td></tr>
+    <tr><td>极端分组法</td><td>按总分取前 27% 与后 27% 两组</td><td>3.1</td></tr>
+    <tr><td>非二分项目</td><td>多分题，难度 = 均分 ÷ 满分</td><td>3.1</td></tr>
+    <tr><td>Z 分数</td><td>以标准差为单位标出分数位置</td><td>3.1</td></tr>
+    <tr><td>Δ</td><td>ETS 难度指标 = 13 + 4Z，均值 13</td><td>3.1</td></tr>
+    <tr><td>正偏态 / 负偏态</td><td>分数堆在低端 / 堆在高端的形态</td><td>3.2</td></tr>
+    <tr><td>鉴别指数 D</td><td>区分度之一，D = P<sub>H</sub> − P<sub>L</sub></td><td>3.3</td></tr>
+    <tr><td>27% 分组</td><td>正态分布下取前后 27% 算 D 的口径</td><td>3.3</td></tr>
+    <tr><td>点二列相关</td><td>二分题与连续效标的相关</td><td>3.4</td></tr>
+    <tr><td>二列相关</td><td>人为二分题与连续效标的相关</td><td>3.4</td></tr>
+    <tr><td>φ 相关</td><td>两个二分变量之间的相关</td><td>3.4</td></tr>
+    <tr><td>积差相关</td><td>连续变量之间的皮尔逊相关</td><td>3.4</td></tr>
+    <tr><td>df = N − 2</td><td>相关系数显著性检验的自由度</td><td>3.4</td></tr>
+    <tr><td>D<sub>max</sub></td><td>难度卡死的区分度上限 = 2·min(P, 1−P)</td><td>3.5</td></tr>
+    <tr><td>猜测率</td><td>K 选一完全瞎猜的蒙对概率 1/K</td><td>3.6</td></tr>
+    <tr><td>CP / S</td><td>校正项目难度 / 校正被试分数</td><td>3.6</td></tr>
+    <tr><td>诱答选项</td><td>选择题里陪衬的错误答案</td><td>3.7</td></tr>
+    <tr><td>DIF</td><td>能力匹配后仍存在的组间项目差异</td><td>3.8</td></tr>
+    <tr><td>IRT</td><td>项目反应理论，下一讲的主角</td><td>3.8</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>2. 什么时候用得上这一讲</h2>
+<div class="card" style="padding:12px 16px">
+  <p style="margin:4px 0">如果你手头有每题答对人数和总人数 → 用 P = R/N → 得到每道题的难度。</p>
+  <p style="margin:4px 0">如果你手头有总分排名 → 用前后 27% 分组求 D → 得到每道题能不能把人分开。</p>
+  <p style="margin:4px 0">如果你手头有 0/1 计分和总分 → 用点二列相关（SPSS 里就是皮尔逊相关）→ 得到题总相关形式的区分度。</p>
+  <p style="margin:4px 0">如果你手头有选择题的选项分布 → 用六条诊断规则逐题审 → 得到诱答选项是否有效、题要不要重做。</p>
+  <p style="margin:4px 0">如果你怀疑某道题对男生女生不公平 → 用 T 检验 / Δ 散点 / 卡方 / IRT 四种方法 → 得到 DIF 题目清单。</p>
+</div>
+
+<h2>3.1 难度：一道题有多难，三种算法任你选</h2>
+<div class="card" style="padding:12px 16px">
+  <p style="margin:2px 0"><b>什么时候用得上：</b>测验改完了，想知道每道题出得合不合适。难度是第一把尺子：被试完成该项目时所遇到困难的程度。它决定整卷分数往哪儿堆、还能不能区分人，也是后面算区分度上限的前提。不做难度分析，你可能把一张人人都对的送分题当宝留着。</p>
+</div>
+<p>直觉：难度不是“这题折磨人的程度”，而是“多少人能闯过去”。所以符号 P 是<b>通过率</b>——先记住这个坑：<b>P 越大越容易</b>，别反过来。</p>
+<p class="formula">二分·通过率法：P = R / N　｜　二分·极端分组法：P = (P<sub>H</sub> + P<sub>L</sub>) / 2　｜　非二分：P = x̄ / x<sub>max</sub></p>
+<p>P 是通过率，R 是答对人数，N 是被试总数；极端分组法按总分取前 27% 与后 27% 两组、算两组通过率的平均；非二分项目用项目均分 x̄ 除以满分 x<sub>max</sub>。</p>
+<p>难度还能换算成<b>等距量</b>：样本大时分数近似正态，通过率对应正态曲线下的面积，反过来查出分界点的 Z 分数。通过率 50% → Z=0；通过率 84% → Z=−1（84% 的人通过，分界点在均值左边一个标准差）。ETS 在此基础上做线性变换：</p>
+<p class="formula">Δ = 13 + 4Z　（Z 为负时查右尾面积；Δ 的均值是 13，大致区间 1～25，对应 Z 取 ±3）</p>
+<h3>演示：难度实验室——拖动通过率，看 Z、Δ 和正态曲线下的阴影怎么变</h3>
+<div class="viz-controls">
+  <label class="form-label" for="l7-dif-p" style="min-width:220px">通过率 P = <b id="l7-dif-pv" class="tabular-nums">0.50</b></label>
+  <input type="range" class="form-range" id="l7-dif-p" min="0.02" max="0.98" step="0.01" value="0.50" style="flex:1; min-width:180px">
+</div>
+<div class="twocol" style="align-items:center">
+  <svg id="l7-normal-svg" viewBox="0 0 360 170" role="img" aria-label="正态曲线：通过率对应的分界点" style="width:100%;"></svg>
+  <div>
+    <p style="margin:4px 0">Z 分数 = <b id="l7-dif-z" class="tabular-nums">0.00</b>　　Δ = 13 + 4Z = <b id="l7-delta" class="tabular-nums">13.00</b></p>
+    <p style="margin:4px 0" class="text-small text-muted">阴影面积 = 通过率。拖到 0.84 看看：分界点几乎落在 −1（课件说「84% → Z=−1」是取整讲法，精确值 −0.99）。</p>
+    <p aria-live="polite" id="l7-dif-note" class="text-small"></p>
+  </div>
+</div>
+<table class="table" style="max-width:560px">
+  <thead><tr><th>通过率 P</th><th>Z</th><th>Δ = 13 + 4Z</th><th>直观含义</th></tr></thead>
+  <tbody id="l7-delta-tbody"></tbody>
+</table>
+<h3>演示：难度还会左右整卷分数的分布形态——太难、适中、太易各按一遍</h3>
+<p>把「20 道难度都是 P 的题目」的总分分布画出来（二项分布），三种典型形态一目了然：</p>
+<div class="pillbtns" role="group" aria-label="选择题目难度">
+  <button class="btn" type="button" data-shape="0.2" aria-pressed="true">题目太难 P=0.2</button>
+  <button class="btn" type="button" data-shape="0.5" aria-pressed="false">难度适中 P=0.5</button>
+  <button class="btn" type="button" data-shape="0.8" aria-pressed="false">题目太易 P=0.8</button>
+</div>
+<svg id="l7-dist-svg" viewBox="0 0 640 210" role="img" aria-label="总分分布形态演示" style="width:100%; max-width:640px;"></svg>
+<p id="l7-dist-note" aria-live="polite"></p>
+<p><b>判读与常见坑：</b>P 越大越容易——看到 P=0.95 别写成“很难”。常见坑：<span class="val-warn">把 Δ 当成“越大越难”</span>——Δ 与 P 同向，P=0.50 → Δ=13 是中等，Δ=25 反而是最容易的一端。</p>
+
+<h2>3.2 难度定多高？看测验干什么用</h2>
+<div class="card" style="padding:12px 16px">
+  <p style="margin:2px 0"><b>什么时候用得上：</b>出卷之前就要定每题的目标难度。难度没有放之四海皆准的“最佳值”——常模参照想拉开差距就取 0.5 附近，达标测验只管会不会，选拔考试直接贴着录取率出。目的定错，整卷白出。</p>
+</div>
+<p>直觉：同样是跑步计时，招聘短跑运动员要卡到只有几人达标，体质测试只要大多数人及格——标准跟着目的走。</p>
+<div class="table-responsive">
+<table class="table" style="max-width:720px">
+  <thead><tr><th>测验目的</th><th>难度怎么定</th></tr></thead>
+  <tbody>
+    <tr><td>尽可能区分被试的个体差异</td><td>难度 0.5（0.3～0.7 之间）</td></tr>
+    <tr><td>检测是否达到教学目标</td><td>不必过多考虑难度</td></tr>
+    <tr><td>选拔和录用人员</td><td>难度应接近录取率</td></tr>
+  </tbody>
+</table>
+</div>
+<p>三条注意事项：①<b>速度测验</b>不宜太难，且各题难度应基本相当（考的是快慢不是深浅）；②<b>难度测验</b>最好 0.5 左右；③<b>任何测验都要防止有人得满分</b>——满分说明最高水平没测出来。</p>
+<p><b>判读与常见坑：</b>难度还决定分数分布的形态——题目太难→<span class="val-warn">正偏态</span>（分数堆在低分端）；题目太易→<span class="val-warn">负偏态</span>（堆在高分端）；太难或太易都会让分数<b>全距缩小</b>，而<b>难度 0.5 附近分数分布最广、最拉开差距</b>。常见坑：达标测验也去追求 0.5——教学目标都该达成，人人高分是正常的，别机械套 0.5。</p>
+
+<h2>3.3 区分度之一：项目鉴别指数 D</h2>
+<div class="card" style="padding:12px 16px">
+  <p style="margin:2px 0"><b>什么时候用得上：</b>难度告诉你题目难不难，区分度告诉你题目<b>有没有用</b>：测验项目对被试心理品质水平差异的区分能力。理想状态是水平高的得高分、水平低的得低分。想知道哪道题该改该删，先算 D。</p>
+</div>
+<p>直觉：把总分最高的 27% 和最低的 27% 拉出来各答一遍这道题。高分组都对、低分组都错，这题眼睛毒；两组差不多，这题白问。</p>
+<p class="formula">D = P<sub>H</sub> − P<sub>L</sub>　（正态分布用前 27% vs 后 27%；分布平坦用 33%；N&lt;100 用前后 50%）</p>
+<div class="table-responsive">
+<table class="table" style="max-width:480px">
+  <thead><tr><th>鉴别指数 D</th><th>题目评价</th></tr></thead>
+  <tbody>
+    <tr><td>0.40 及以上</td><td class="val-ok">很好</td></tr>
+    <tr><td>0.30 ～ 0.39</td><td class="val-ok">良好，修改会更好</td></tr>
+    <tr><td>0.20 ～ 0.29</td><td class="val-warn">尚可，仍需修改</td></tr>
+    <tr><td>0.20 以下</td><td class="val-bad">差，必须淘汰</td></tr>
+  </tbody>
+</table>
+</div>
+<h3>演示：D 计算器——拖动两组通过率，看 D、判读和理论上限利用率</h3>
+<div class="viz-controls">
+  <label class="form-label" style="min-width:190px">高分组通过率 P<sub>H</sub> = <b id="l7-dc-phv" class="tabular-nums">0.90</b></label>
+  <input type="range" class="form-range" id="l7-dc-ph" min="0.3" max="1" step="0.01" value="0.9" style="flex:1; min-width:140px">
+  <label class="form-label" style="min-width:190px">低分组通过率 P<sub>L</sub> = <b id="l7-dc-plv" class="tabular-nums">0.40</b></label>
+  <input type="range" class="form-range" id="l7-dc-pl" min="0" max="0.7" step="0.01" value="0.4" style="flex:1; min-width:140px">
+</div>
+<p aria-live="polite">D = P<sub>H</sub> − P<sub>L</sub> = <b id="l7-dc-val" class="tabular-nums">—</b>　<span id="l7-dc-judge"></span>　<span class="text-small text-muted" id="l7-dc-ceiling"></span></p>
+<p><b>判读与常见坑：</b>判读标准如上表。常见坑：算出<span class="val-bad">负 D</span>——低分组反而答得更好，说明答案键有问题、题目有歧义或者根本教反了，必须回查。另一个坑：分组口径随便换（一会儿 27% 一会儿 50%），两次算出的 D 不可比。</p>
+
+<h2>3.4 区分度之二：相关法——按变量类型选公式</h2>
+<div class="card" style="padding:12px 16px">
+  <p style="margin:2px 0"><b>什么时候用得上：</b>不想分组、想用全部数据时，把题目得分（或 0/1 通过与否）和总分（效标）求相关，就是相关法区分度。四种公式对应四种变量组合——先看题目和效标各是二分还是连续，再选公式。</p>
+</div>
+<p>直觉：相关法问的是“这道题的得分跟着总分走不走”。跟着走 → 跟总分一条心 → 有区分度；各走各的 → 这题测的不是总分测的东西。</p>
+<h3>演示：相关法选择器——按变量类型点按钮换公式</h3>
+<div class="viz-controls" role="group" aria-label="项目与效标的类型">
+  <button class="btn" type="button" data-corr="0" aria-pressed="true">项目二分 × 效标连续</button>
+  <button class="btn" type="button" data-corr="1" aria-pressed="false">人为二分 × 效标连续</button>
+  <button class="btn" type="button" data-corr="2" aria-pressed="false">项目二分 × 效标二分</button>
+  <button class="btn" type="button" data-corr="3" aria-pressed="false">都连续</button>
+</div>
+<div class="card" style="padding:12px 16px; max-width:780px" aria-live="polite">
+  <p id="l7-corr-name" style="margin:2px 0; font-weight:500">点二列相关（point biserial）</p>
+  <p id="l7-corr-cond" class="text-small text-muted" style="margin:2px 0">项目是二分变量，效标分数是连续变量</p>
+  <p id="l7-corr-formula" class="formula" style="margin:6px 0">r<sub>pb</sub> = (x̄<sub>p</sub> − x̄<sub>q</sub>)/S<sub>t</sub> · √(pq)</p>
+  <p id="l7-corr-note" class="text-small" style="margin:2px 0">SPSS 提示：计算点二列相关，实际上就是算两个变量的皮尔逊相关；显著性查积差相关表 df=N−2，或做通过组与未通过组的 t 检验。</p>
+</div>
+<p><b>判读与常见坑：</b>四种方法在 SPSS 里殊途同归——<b>都是皮尔逊相关</b>，显著性检验的自由度都是 df = N − 2（φ 相关用 χ² = N·r<sub>φ</sub>²，df=1）。常见坑：<span class="val-warn">样本量小的时候相关不显著就断言题目没区分度</span>——样本量直接影响相关法的显著性，先看看 N 够不够。</p>
+
+<h2>3.5 难度卡死区分度的上限；区分度是相对的</h2>
+<div class="card" style="padding:12px 16px">
+  <p style="margin:2px 0"><b>什么时候用得上：</b>抱怨“这题 D 怎么才 0.2”之前，先看看它的难度——P=0.95 的题就算出类拔萃，D 也到不了 0.25。评估区分度前先用 D<sub>max</sub> 算出这道题的“天花板”，才知道它是真的差还是被难度卡死了。</p>
+</div>
+<p>直觉：人人都答对的题，高分组低分组通过率都顶到 1.00，D 必然是 0——不是题目没本事，是难度没给它留发挥空间。</p>
+<p class="formula">D<sub>max</sub> = 2·min(P, 1−P)　（P=1.00 → 上限 0；P=0.90 → 上限 0.20；P=0.50 → 上限 1.00；P=0.10 → 上限 0.20）</p>
+<h3>演示：Dmax 曲线——悬停各点看不同难度下的区分度天花板</h3>
+<svg id="l7-dmax-svg" viewBox="0 0 640 220" role="img" aria-label="D 的最大值随通过率变化的曲线" style="width:100%; max-width:640px;"></svg>
+<p>课件配套思考题：<b>效度和区分度什么关系？</b>区分度是效度的必要底座——题目分不开人，整卷不可能有效度；但每题区分度都高，也不保证测的就是你想测的构念。</p>
+<p><b>判读与常见坑：</b>区分度是<b>相对的</b>：①不同方法算出的数值不同；②样本量影响相关法的显著性；③分组标准影响鉴别指数；④<b>被试越同质，区分度越低</b>——大家水平差不多，还区分什么。常见坑：拿两个不同样本、不同方法算出的 D 直接比大小，比出个“这题退步了”的假结论。</p>
+
+<h2>3.6 猜测问题与猜测率：蒙对的分要不要扣</h2>
+<div class="card" style="padding:12px 16px">
+  <p style="margin:2px 0"><b>什么时候用得上：</b>选择题哪怕完全不会，K 选 1 也有 1/K 的概率蒙对：二选一 50%，四选一 25%，五选一 20%。要不要把蒙对的部分校正掉，出卷和计分前就得决定——两套公式、一堆理由，正反都有。</p>
+</div>
+<p>直觉：四个选项瞎蒙，运气好能白捡 25 分。校正公式相当于“查账”：把靠运气蒙对的部分从分数里扣回去，让分数只反映真本事。</p>
+<p class="formula">校正项目难度：CP = (KP − 1) / (K − 1)　｜　校正被试分数：S = R − W / (K − 1)</p>
+<p>P 是原始难度，K 是选项数；R 是答对数，W 是答错数。公式的<b>前提假设</b>：不会的人<b>完全随机</b>猜——这正是全部争议的根源。</p>
+<h3>演示：猜测校正计算器——拖 R、W、K，看蒙对的分怎么被扣回去</h3>
+<div class="viz-controls">
+  <label class="form-label" for="l7-g-r" style="min-width:150px">答对 R = <b id="l7-g-rv" class="tabular-nums">60</b></label>
+  <input type="range" class="form-range" id="l7-g-r" min="0" max="100" step="1" value="60" style="flex:1; min-width:140px">
+  <label class="form-label" for="l7-g-w" style="min-width:150px">答错 W = <b id="l7-g-wv" class="tabular-nums">40</b></label>
+  <input type="range" class="form-range" id="l7-g-w" min="0" max="100" step="1" value="40" style="flex:1; min-width:140px">
+  <label class="form-label" for="l7-g-k" style="min-width:150px">选项数 K = <b id="l7-g-kv" class="tabular-nums">4</b></label>
+  <input type="range" class="form-range" id="l7-g-k" min="2" max="6" step="1" value="4" style="flex:1; min-width:120px">
+</div>
+<p aria-live="polite">校正后得分 S = <b id="l7-g-s" class="tabular-nums">46.7</b><span class="text-muted">（原始 60，蒙对的部分被扣回去）</span></p>
+<div class="twocol">
+  <div class="card" style="padding:12px 16px"><p style="margin:2px 0"><b>校正的理由</b></p><p class="text-small" style="margin:2px 0">可避免降低测验信度；可反映被试真正水平；可培养诚实美德；比较公平。</p></div>
+  <div class="card" style="padding:12px 16px"><p style="margin:2px 0"><b>不校正的理由</b></p><p class="text-small" style="margin:2px 0">公式基本假设不成立；答完全部题目时校正无实质作用；不校正对信度并无重大影响；校正有时出现无法解释的现象（如负分）；合理猜测是值得鼓励的好习惯。</p></div>
+</div>
+<p><b>判读与常见坑：</b>两派理由都要背——作业考过优缺点对比。常见坑：校正后出现<span class="val-bad">负分</span>就慌——这正是“校正有时出现无法解释的现象”那条理由的现实版，不是你算错了。</p>
+
+<h2>3.7 选择题的项目分析：连错误选项一起审</h2>
+<div class="card" style="padding:12px 16px">
+  <p style="margin:2px 0"><b>什么时候用得上：</b>难度和区分度审的是“正确答案”，选择题还有第三层：四个<b>诱答选项</b>有没有各尽其责。总分前 27% / 后 27% 分组后逐题看选项分布，能发现答案有歧义、诱答没迷惑性这类只看对错看不出的问题。</p>
+</div>
+<p>直觉：错误选项是陪跑的，但陪跑也有 KPI——每个错误选项都得有人选，不然等于三选一。评估四件事：难度得当？有区分度？有无缺陷？<b>诱答选项是否都有效</b>？</p>
+<div class="table-responsive">
+<table class="table" style="max-width:820px">
+  <thead><tr><th>看到的现象</th><th>说明什么</th></tr></thead>
+  <tbody>
+    <tr><td>正确答案被所有人选择</td><td>该题太容易</td></tr>
+    <tr><td>某个错误答案没有任何人选</td><td>不具备迷惑性（应有 2% 以上的人选择）</td></tr>
+    <tr><td>所有人都选了同一错误答案</td><td>答案错了，或者教错了</td></tr>
+    <tr><td>高分组的选择集中在两个答案上</td><td>本来就有两个答案，或另一答案也有道理</td></tr>
+    <tr><td>高分组与低分组对正确答案的选择率相当</td><td>该题与被试水平无关</td></tr>
+    <tr><td>未作答人数较多，或各选项人数相当</td><td>题太难、没讲过或题干不清</td></tr>
+  </tbody>
+</table>
+</div>
+<p>课件质量分析表示范：第 1 题难度 0.71、D=0.42，<span class="val-ok">好题</span>；第 3 题正确答案是 D，但高分组选 D 的比例反而低于低分组（r<sub>pb</sub>=−0.04，D=−0.06），<span class="val-bad">必须重做</span>。</p>
+<p><b>判读与常见坑：</b>六条规则对着选项分布表逐条套，别只盯正确答案的选择率。常见坑：诱答选项“没人选”不当回事——它让题目悄悄从四选一变成三选一，猜测率跟着变了。</p>
+
+<h2>3.8 项目功能差异（DIF）：公平性检查</h2>
+<div class="card" style="padding:12px 16px">
+  <p style="margin:2px 0"><b>什么时候用得上：</b>同一道题，男生女生答对率不一样——这算性别歧视吗？不一定：可能只是两组能力分布不同。DIF 分析就是先把能力匹配上，再看还有没有差异。编写正式量表、跨群体施测时，这道检查不能省。</p>
+</div>
+<p>直觉：两个班平均分差 10 分，可能是 A 班学霸多，不能说明某道题偏心。DIF 看的是“把总分拉平之后”，这道题<b>对两个群体还是不一样难</b>吗？只有匹配了能力层级仍存在差异，才算 DIF。</p>
+<p><b>四步流程</b>：①数据准备（抽子群体，如男/女）→ ②准备性分析（删掉可能存在 DIF 的题）→ ③探索性分析（用删后的测验再做 DIF）→ ④差异根源分析（探索差异的性质与来源）。</p>
+<p><b>四种检测方法</b>：方差分析法（看组间差异是否显著）；项目难度比较法（分组各算 Δ 后做散点图，离对角线远的题可疑）；卡方检验法（答对答错与群体是否独立）；项目反应理论方法（项目特征曲线有无差异）——最后一种就是第八讲 IRT 的伏笔。课件用 read.xlsx 示范的流程 = T 检验 + 分性别算 Δ 画散点图 + 分性别算题总相关。</p>
+<p><b>判读与常见坑：</b>两组通过率有差异<b>本身不算 DIF</b>——可能只是能力分布不同。常见坑：<span class="val-bad">跳过 DIF 分析</span>（作业里真有同学没做）；以及 T 检验和方差分析结果对不上就硬写——两种方法得到的结果<b>应该一致</b>，对不上多半是数据格式或分析设置错了，先回查再下结论。</p>
+
+<h2>4. 本讲在课程里的位置</h2>
+<p>第六讲留下的问题是：CFA 拟合再好，也只证明了整卷骨架立得住，每道题自己行不行还是黑箱。这一讲给了答案：难度、区分度、猜测校正、选项诊断、DIF 五道工序逐题体检，好题 = 难度合适 + 区分得开 + 不靠猜 + 不偏心。它也为下一讲埋了伏笔：本讲所有指标都<b>拴在当次样本上</b>——同一道题换批人，P 和 D 就变了；第八讲 IRT 要把题目性质变成不随样本漂移的量。</p>
+<p>本讲作业：五道题——难度与区分度概念题、猜测校正优缺点、手算 11 名考生数据、math.sav 两种方法算难度与区分度、iqdata.csv 的难度/区分度/DIF。做完后对照「作业反馈汇总」页的对应块核对丢分点。</p>
+
+</section>
+
+
+<section id="panel-l8" role="tabpanel" aria-labelledby="tab-l8" hidden>
+
+<h2>0. 开场白：当「题目好不好」不再看样本脸色</h2>
+<p>先摆一个第七讲答不上来的问题：一个卷面 90 分的被试，适合做哪种难度的题？好像答不了——第七讲的<b>难度</b>是通过率（0～1 的比例），<b>被试水平</b>是卷面分（0～100 的分数），两把尺子刻度都不一样，怎么「配套」？再摆一个：难度、区分度换一批被试重算，数字就变脸，那题库里存的到底是题目的属性，还是那批被试的属性？</p>
+<p>这两问正是<b>项目反应理论</b>（Item Response Theory，IRT）的起点。上一讲的项目分析依赖样本：高低分组也只抓前后 27% 那几个粗格子。IRT 换了一条路——把人和题放到同一把「潜在特质」的尺子上，让每道题自带一条不随样本漂移的曲线，还给每个能力水平各配一个自己的测量误差。</p>
+<p>本讲路线一句话：先数落经典测量理论（CTT）的四大局限，再立起 S 形的项目特征曲线和 a、b、c 三个参数，然后用四大优良性质一一兑现成题库、等值、自适应测验这些应用。</p>
+<p class="beat">· CTT 问「这题在这批人里表现如何」；IRT 问「这题本身长什么样」 ·</p>
+<p class="text-small text-muted">上一讲的作业反馈与丢分点已整理在「作业反馈汇总」页，建议先看那一页再来学这一讲。</p>
+
+<h2>1. 专有名词速查表</h2>
+<div class="table-responsive">
+<table class="table">
+  <thead><tr><th>名词</th><th>一句话人话解释</th><th>在哪节出场</th></tr></thead>
+  <tbody>
+    <tr><td>CTT</td><td>经典测量理论：前几讲用的、基于卷面总分的框架</td><td>3.1</td></tr>
+    <tr><td>IRT</td><td>项目反应理论：从答对概率出发描述题目与人</td><td>3.2</td></tr>
+    <tr><td>潜在特质</td><td>制约行为的心理特征，没有物理形态</td><td>3.2</td></tr>
+    <tr><td>潜在特质空间</td><td>影响某类行为的全部潜在特质的集合</td><td>3.2</td></tr>
+    <tr><td>θ</td><td>被试的特质水平，标准 Z 分数量表</td><td>3.2</td></tr>
+    <tr><td>题总相关</td><td>题目得分与卷面总分的相关</td><td>3.3</td></tr>
+    <tr><td>ICC</td><td>项目特征曲线：答对概率随 θ 变化的 S 形曲线</td><td>3.3</td></tr>
+    <tr><td>ICF</td><td>项目特征函数：ICC 的函数表达式</td><td>3.4</td></tr>
+    <tr><td>正态卵形函数</td><td>ICF 的一种，积分形式、计算麻烦</td><td>3.4</td></tr>
+    <tr><td>Logistic 函数</td><td>ICF 的一种，S 形、好算，本讲主用</td><td>3.4</td></tr>
+    <tr><td>a（区分度参数）</td><td>曲线拐点处的陡峭程度</td><td>3.4</td></tr>
+    <tr><td>b（难度参数）</td><td>曲线拐点所在的 θ 位置</td><td>3.4</td></tr>
+    <tr><td>c（猜测参数）</td><td>伪机遇水平，曲线下渐近线的高度</td><td>3.4</td></tr>
+    <tr><td>作答反应矩阵 U</td><td>k 道题 × n 个人的 0/1 得分表</td><td>3.6</td></tr>
+    <tr><td>最大似然估计</td><td>挑一组参数，使所见作答最可能出现</td><td>3.6</td></tr>
+    <tr><td>跨群体不变性</td><td>题目参数不随被试样本变，能力不随题目变</td><td>3.7</td></tr>
+    <tr><td>量表可选择性</td><td>θ 的量表可任选，统一到同一度量系统</td><td>3.7</td></tr>
+    <tr><td>信息函数</td><td>题目或测验在每个 θ 上提供的信息量</td><td>3.7</td></tr>
+    <tr><td>标准误 SE</td><td>测量误差大小，等于信息量的倒数开方</td><td>3.7</td></tr>
+    <tr><td>模型族</td><td>Rasch、1PL、2PL、3PL，参数个数递增</td><td>3.8</td></tr>
+    <tr><td>DIF</td><td>项目功能差异；课件某图中却指难度，见坑</td><td>3.5</td></tr>
+    <tr><td>测验等值</td><td>让不同试卷的分数能在同一量表互换</td><td>3.7</td></tr>
+    <tr><td>CAT</td><td>计算机自适应测验：边考边按 θ 挑题</td><td>3.9</td></tr>
+    <tr><td>认知诊断</td><td>在 θ 之外诊断作答的认知加工过程</td><td>3.9</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>2. 什么时候用得上</h2>
+<div class="card" style="padding:12px 16px">
+  <ul style="margin:6px 0">
+    <li>如果你手头有一份 n 个被试 × k 道题的 0/1 作答矩阵 → 用 IRT 参数估计 → 得到每道题的 a、b、c 和每个人的 θ。</li>
+    <li>如果你要建题库，想让题目参数不随招募样本漂移 → 用题目参数的跨群体不变性 → 入库参数可以放心复用。</li>
+    <li>如果你想回答「我这个水平的人，这次测得准不准」 → 用信息函数 → 每个 θ 都有自己的标准误。</li>
+    <li>如果你有两份试卷，分数要互相换算 → 用潜在特质量表的可选择性 → 测验等值（第 12 讲正面开讲）。</li>
+    <li>如果你想让考试「边考边挑题、越答越对症」 → 用计算机自适应测验 CAT → 更少的题、更准的估计。</li>
+  </ul>
+</div>
+
+<h2>3.1 经典测量理论的四大局限</h2>
+<div class="card" style="padding:12px 16px"><p style="margin:2px 0"><b>什么时候用得上：</b>写论文或答辩时被问「为什么不用 IRT」，得先把 CTT 的短板说清楚；自己选方法前，也要先知道旧尺子哪里量不准。手头是已经按第七讲算出的难度、区分度、信度。用它做的是「要不要升级工具」的决定。不先看清局限，就可能拿着随样本变的参数去建一劳永逸的题库。</p></div>
+<p>先别急着记四条，去鞋店逛一圈。鞋盒上只印一个「42 码」，可你的左脚右脚、早晨晚上并不一样——标签笼统，还把所有人当成同一只脚；这家店的「42 码」和那家店的「42 码」根本不是一个标准，拿着 A 店的尺码去 B 店买鞋，对不上号。</p>
+<p>再听导购一句「这鞋偏不偏小，得看今天来店的顾客都穿多大」——尺码全由当下这批人定义；至于「磨不磨脚」，理论上得再买一双一模一样的鞋穿过才知道。CTT 的四个局限，生活里早有对应的别扭：误差人人共享、难度与水平两套标准、参数随样本漂移、精度靠平行测验撑着。</p>
+<p>CTT 用起来顺手，但课件一上来就点它四处软肋。逐条看，每条都配了课件的思考气泡——先自己想一想，再往下读。</p>
+<ul>
+  <li><b>局限一：信度估计精度不高。</b>依赖的假设不一定成立，<b>平行测验</b>（靠再造一份等价卷子来估误差的做法）本身存疑。<span class="text-small text-muted">课件思考气泡：哪些假设？什么是平行测验？什么是 τ 等价测验？</span></li>
+  <li><b>局限二：误差指标笼统单一、不精确。</b>一份卷子只给一个标准误，<span class="val-bad">所有被试测量误差等同</span>。<span class="text-small text-muted">课件思考气泡：想一下什么样的被试测量误差更大？想一下我们可不可以给每个被试估计一个测量误差／信度？</span></li>
+  <li><b>局限三：各种参数的估计对样本的依赖性大。</b><span class="val-warn">样本对总体必须具有代表性</span>，否则参数失真。<span class="text-small text-muted">课件思考气泡：思考一下「四度」（难度、区分度、信度、效度这些指标）对样本的依赖性。</span></li>
+  <li><b>局限四：各参数指标之间的配套性较差。</b><span class="val-warn">试题难度和被试水平不在同一个评价系统</span>——一个是通过率，一个是卷面分。<span class="text-small text-muted">课件思考气泡：90 分的被试适合做什么难度的题？</span></li>
+</ul>
+<p>带着这四条看本讲：IRT 的四大优良性质（3.7）几乎是一一对应的解药。先立一张对照卡，本讲读完再回头看：</p>
+<div class="twocol">
+  <div class="card" style="padding:12px 16px">
+    <p style="margin:2px 0"><b>CTT（第七讲及以前）</b></p>
+    <ul style="margin:6px 0">
+      <li>难度 P、区分度 D：换一批被试就变。</li>
+      <li>误差：全卷一个 SE，人人共享。</li>
+      <li>尺子：难度是 0～1 通过率，人是卷面分，两把尺。</li>
+      <li>分组：高低分组只有前 27%／后 27% 的粗格子。</li>
+    </ul>
+  </div>
+  <div class="card" style="padding:12px 16px">
+    <p style="margin:2px 0"><b>IRT（本讲）</b></p>
+    <ul style="margin:6px 0">
+      <li>题目参数 a、b、c：跨群体不变。</li>
+      <li>误差：SE(θ)，每个水平各是各的。</li>
+      <li>尺子：b 与 θ 共用一把 Z 分数尺。</li>
+      <li>θ 连续尺上每一点都能查到题目信息。</li>
+    </ul>
+  </div>
+</div>
+<p><b>常见坑：</b><span class="val-bad">把「所有被试误差等同」当成事实</span>——它只是 CTT 只能给一个笼统误差指标，不代表每人误差真的一样。能力两端（题目对他太易或太难）的被试，误差其实更大，这正是课件气泡要你自己想出来的答案。</p>
+
+<h2>3.2 潜在特质理论：先把「人」放上尺子</h2>
+<div class="card" style="padding:12px 16px"><p style="margin:2px 0"><b>什么时候用得上：</b>想精确谈论「这个人的水平多高」，而不满足于一个卷面总分时。手头是被试在题目上的作答。用它把人定位到一条公共量尺上，后续所有 IRT 模型都在这条尺上展开。没有这一步，题目参数和人的水平永远说不到一块儿——局限四无解。</p></div>
+<p>先想「身体健康」：它看不见、摸不着，没有物理形态，但它实实在在制约你爬几层楼会喘。心理量也一样——「数学能力」没有物理形态，却制约你能不能解出这道题。这类<b>制约人的行为的心理特征、又没有明确物理或生理形态</b>的东西，就叫<b>潜在特质</b>（Latent trait）。</p>
+<p>那影响一种行为的特质只有一个吗？往往不止。把<b>对某一特殊行为的发展起作用的所有潜在特质的集合</b>，叫<b>潜在特质空间</b>（Latent trait space）：</p>
+<p class="formula">H = (θ<sub>1</sub>, θ<sub>2</sub>, θ<sub>3</sub>, …, θ<sub>k</sub>)</p>
+<p>符号一句话：<b>H</b> 是潜在特质空间；<b>θ<sub>j</sub></b> 是第 j 个维度上的特质水平；<b>k</b> 是空间的维度个数。课件气泡把心理测量关心的两件事点得很清楚：一是潜在特质空间的<b>维度 k＝?</b>（要测几个特质），二是潜在特质的<b>水平 θ＝?</b>（这个人在该特质上有多高）。本讲后续的模型都只放一个 θ（单维，k＝1）。</p>
+<p><b>常见坑：</b><span class="val-warn">把 θ 读成卷面分或百分比</span>——θ 走的是标准 Z 分数量表（课件 3.4 会再强调），θ＝0 是平均水平，θ＝1.5 读作「高出平均水平 1.5 个标准差」。也别把「潜在」听成「不存在」：它只是没有物理形态，不是没有作用。</p>
+
+<h2>3.3 从题总相关到项目特征曲线（ICC）</h2>
+<div class="card" style="padding:12px 16px"><p style="margin:2px 0"><b>什么时候用得上：</b>想完整描述「能力越高、这道题答对可能性越大」这条规律，而不是只用一个相关系数打发时。手头是各水平被试在这道题上的通过情况。用它画出题目自己的「性能曲线」，产出「这道题对哪些水平的人最有分辨力」的判断。不做这一步，题目信息就压缩成一个数，细节全丢。</p></div>
+<p>课件先给三条观察（原文高亮）：能力低的被试在题目上正确作答的概率较小；能力高的被试正确作答的概率较大；因此随着能力从低到高，题目正确作答的概率也在从小变大。</p>
+<p>CTT 里表达「题目与能力关系」的工具是<b>题总相关</b>——题目得分与卷面总分的相关，它也能体现题目正确作答率和测验卷面总分的关系。但课件气泡当场追问：<b>用题总相关来表达上述观察，缺陷是什么？</b>缺陷在于：它把整条变化规律压缩成一个相关数。你问它「能力恰好是某个水平的被试，答对概率是多少」，它答不上——一个平均坡度替代不了整条山路。</p>
+<p>IRT 的改法干脆利落：换自变量、定因变量。用<b>能稳定反映被试水平的潜在特质变量 θ 替代卷面总分</b>作为回归曲线的自变量；用<b>题目正确作答概率 P 作为因变量</b>。这条曲线就是<b>项目特征曲线</b>（Item Characteristic Curve，ICC），记作 P(θ)：</p>
+<p class="formula">P = P(θ)　（自变量：潜在特质 θ；因变量：正确作答概率 P）</p>
+<p><b>常见坑：</b><span class="val-warn">把 ICC 的纵轴读成分数、横轴读成卷面总分</span>——纵轴永远是概率（0～1），横轴是 θ（Z 分数尺）。坐标轴读错，整张图就全盘读错。</p>
+
+<h2>3.4 项目特征函数 ICF：给 S 形曲线装上三个旋钮</h2>
+<div class="card" style="padding:12px 16px"><p style="margin:2px 0"><b>什么时候用得上：</b>拿到 0/1 作答矩阵要给每道题建模型，或要读懂软件输出的 a、b、c 时。手头是 ICC 的形状与位置。用它把「曲线长什么样」翻译成三个可解释的参数，产出对每道题「多难、多能区分、能不能蒙」的判断。不懂参数含义，软件给的数字就只是一排乱码。</p></div>
+<p>ICC 长什么样？一条 <b>S 形曲线</b>：左端贴地趴平——能力再低的人也有点答对机会；右端封顶——能力再高也到 1；中间最陡。<b>项目特征函数</b>（Item Characteristic Function，ICF）就是这条曲线的函数式，课件给了两种形式。</p>
+<p>第一种，<b>正态卵形函数</b>（把正态分布从 −∞ 积分到 a(θ−b)）：</p>
+<p class="formula">P(θ) = C + (1−C)·∫<sub>−∞</sub><sup>a(θ−b)</sup> (1/√(2π))·e<sup>−t²/2</sup> dt</p>
+<p>第二种，<b>Logistic 函数</b>：</p>
+<p class="formula">P(θ) = C + (1−C) / (1 + e<sup>−1.7a(θ−b)</sup>)</p>
+<p>符号一句话：<b>θ</b> 潜在特质水平，标准 Z 分数；<b>a</b> 区分度，看曲线拐点（最陡处）的斜率；<b>b</b> 难度，拐点的横坐标位置；<b>C</b>（小写 c）猜测参数，又称<b>伪机遇</b>水平，是曲线的<b>下渐近线</b>（曲线左端无限贴近但达不到的那条水平线）；<b>1.7</b> 是尺度常数，作用是让 Logistic 曲线的形态尽量贴近正态卵形——所以课件把两式并排给出，两者可以互相替代，Logistic 好算，实际中更常用。</p>
+<p>课件在 Logistic 式旁边留了一个气泡：<b>为什么是这个形式？思考 logistic regression。</b>逻辑回归的套路是：拿一个线性组合，送进 S 形函数，压成 0～1 之间的概率。IRT 这里一模一样——线性部分是 1.7a(θ−b)，送进同一个 S 形骨架 1/(1+e<sup>−z</sup>)：b 像「截距」，定曲线中心；a 像「斜率」，定曲线陡峭。两者同构，只是自变量从「某某预测指标」换成了潜在特质 θ。</p>
+<p>拐点处（θ＝b）的概率正好是 c＋(1−c)/2——一半的「非猜测空间」被越过；课件图示例给出了一组参数供对照：Pseudo-Guess c＝0.13、Discrimination＝1、Difficulty＝0.5。</p>
+
+<h3>演示一：ICC 实验室——三个旋钮捏出一条 ICC</h3>
+<p>拖动滑块看曲线怎么动：a 捏陡峭、b 拨左右、c 垫地板。拐点、下渐近线、拐点切线都画在图上。</p>
+<div class="viz-controls">
+  <label class="form-label" for="icc-a" style="min-width:190px">区分度 a = <b id="icc-av" class="tabular-nums">1.00</b></label>
+  <input type="range" class="form-range" id="icc-a" min="0.5" max="2.5" step="0.05" value="1" style="flex:1; min-width:140px">
+  <label class="form-label" for="icc-b" style="min-width:190px">难度 b = <b id="icc-bv" class="tabular-nums">0.50</b></label>
+  <input type="range" class="form-range" id="icc-b" min="-2" max="2" step="0.05" value="0.5" style="flex:1; min-width:140px">
+  <label class="form-label" for="icc-c" style="min-width:190px">猜测 c = <b id="icc-cv" class="tabular-nums">0.13</b></label>
+  <input type="range" class="form-range" id="icc-c" min="0" max="0.35" step="0.01" value="0.13" style="flex:1; min-width:140px">
+</div>
+<svg id="icc-svg" viewBox="0 0 640 320" role="img" aria-label="项目特征曲线 ICC，随 a、b、c 变化" style="width:100%; max-width:680px;"></svg>
+<p id="icc-read" aria-live="polite" class="text-small"></p>
+<p><b>判读：</b>对照课件图那组示例数——<span class="val-ok">c＝0.13 读作「能力再低也有约 13% 的蒙对率」</span>；<span class="val-ok">a＝1 是中等偏陡的区分力</span>；<span class="val-ok">b＝0.5 表示 θ＝0.5 的被试答对概率恰为 c＋(1−c)/2</span>。</p>
+<p><b>常见坑：</b><span class="val-bad">把 b 当成 CTT 的通过率 P</span>——方向正好相反：CTT 的 P 越大题越容易；IRT 的 b 越大题越难（要更高的 θ 才够到拐点）。两张参数表混在一起时，先认符号再说数。</p>
+
+<h2>3.5 三条不同难度的 ICC：曲线只会平移</h2>
+<div class="card" style="padding:12px 16px"><p style="margin:2px 0"><b>什么时候用得上：</b>组卷挑题、要在几道候选题之间比难度时；或拿到一张画了多条 ICC 的图需要快速读图时。手头是各题的 b。用它一眼看出谁易谁难，产出选题的先后顺序。不会读平移，就会把「难题」当「好题」。</p></div>
+<p>固定 a、固定 c，只让 b 变，会看到什么？整条 S 曲线<b>左右平移</b>，形状纹丝不动：b 越小曲线越靠左（越容易），b 越大越靠右（越难）。三条曲线各自的拐点落在 P＝0.5（本图取 c＝0）的横线上，横坐标就是各自的 b。</p>
+<div class="viz-controls" style="margin-bottom:2px"><span class="form-label">三条不同难度的 ICC（a＝1，c＝0）：</span></div>
+<svg id="dif-svg" viewBox="0 0 640 300" role="img" aria-label="三条不同难度的项目特征曲线对比" style="width:100%; max-width:640px;"></svg>
+<div style="margin:4px 0">
+  <span class="leg"><span class="sw" style="background:var(--blue)"></span>item1（DIF＝−2，最易）</span>
+  <span class="leg"><span class="sw" style="background:var(--purple)"></span>item2（DIF＝0）</span>
+  <span class="leg"><span class="sw" style="background:var(--orange)"></span>item3（DIF＝2，最难）</span>
+</div>
+<p class="text-small text-muted">本图按课件公式取 a＝1、c＝0 重绘，对应课件第 25 页原图（横轴 Ability，纵轴 Probability）。</p>
+<p>这里埋着本讲（也是跨讲次）的一个<b>高频坑</b>，课件特意加注：<span class="val-bad">图中的 DIF 并不是指项目功能差异，而是指项目的难度</span>。<b>DIF</b> 在第七讲和作业里是<b>项目功能差异</b>（同一道题在不同群体——比如男女——中表现不一致），而这张图里的 DIF 只是 difficulty（难度）的缩写。同一个缩写，两个含义，全看语境。</p>
+<p><b>常见坑：</b><span class="val-warn">考试看到「DIF」不读语境直接选「项目功能差异」</span>——先问一句：这句话在讲群体公平，还是在讲曲线位置？讲公平才是项目功能差异；讲曲线左右挪，是难度。</p>
+
+<h2>3.6 参数估计：从作答矩阵到 a、b、c、θ</h2>
+<div class="card" style="padding:12px 16px"><p style="margin:2px 0"><b>什么时候用得上：</b>拿到真实作答数据要跑 IRT，或读论文的参数表想搞懂「这些数从哪来」时。手头是 n 个被试 × k 道题的 0/1 矩阵。用它同时估出题目参数和被试水平，产出可入库、可解释的 a、b、c、θ。不懂估计逻辑，就没法判断「软件给的数能不能信」。</p></div>
+<p>先把数据摆好：把每个被试每道题的对错记成 0/1，排成<b>作答反应矩阵 U</b>。最大似然的直觉一句话：<b>挑一组参数，让「你实际看到的作答模式」出现的可能性最大</b>。像听到走廊一串脚步声猜是谁——你挑的答案是「最可能踩出这种声音的那个人」。</p>
+<p class="formula">U = (u<sub>ij</sub>)<sub>k×n</sub>　（题目 i = 1,2,…,k；被试 j = 1,2,…,n；u<sub>ij</sub> 取 0 或 1）</p>
+<p>每个格子里的对错概率由 ICF 给出（下标换成「第 i 题、第 j 人」）：</p>
+<p class="formula">P<sub>ij</sub> = C<sub>i</sub> + (1−C<sub>i</sub>) / (1 + e<sup>−1.7a<sub>i</sub>(θ<sub>j</sub>−b<sub>i</sub>)</sup>)</p>
+<p>把所有格子的概率连乘，取对数，得<b>对数似然函数</b>：</p>
+<p class="formula">ln L(U|θ, a, b, c) = ln ∏<sub>i</sub> ∏<sub>j</sub> P<sub>ij</sub><sup>u<sub>ij</sub></sup> · (1−P<sub>ij</sub>)<sup>1−u<sub>ij</sub></sup></p>
+<p>符号一句话：<b>u<sub>ij</sub></b> 第 j 人在第 i 题的作答（1 对 0 错）；<b>P<sub>ij</sub></b> 该人在该题的答对概率；<b>L</b> 似然——参数给定时「看到这批作答」的概率；<b>∏</b> 连乘号，把 k×n 个格子的概率乘起来。答对了乘 P<sub>ij</sub>，答错了乘 1−P<sub>ij</sub>。</p>
+<p>要估的参数有多少个？每道题 3 个（a、b、c），每个人 1 个（θ）——<b>k 道题、n 个被试，共 3k+n 个参数</b>。手算没戏，交给软件：老牌专用软件有 LOGIST、BILOG、MicroCAT 等；R 里约有 <span class="val-ok">45 个 IRT 相关包</span>，挑顺手的用。</p>
+<div class="stat-cards">
+  <div class="card" style="padding:10px 14px"><div class="k">待估参数个数</div><div class="v tabular-nums">3k + n</div><div class="k">每题 3 个 + 每人 1 个</div></div>
+  <div class="card" style="padding:10px 14px"><div class="k">例：10 题 × 50 人</div><div class="v tabular-nums">3×10+50 = 80</div><div class="k">个参数一次估出</div></div>
+  <div class="card" style="padding:10px 14px"><div class="k">R 的 IRT 包</div><div class="v tabular-nums">约 45 个</div><div class="k">另有 LOGIST／BILOG／MicroCAT</div></div>
+</div>
+<p><b>常见坑：</b><span class="val-warn">把 3k+n 记成 3n+k</span>——「3」跟题走（每题 a、b、c 三个），「1」跟人走（每人一个 θ）。另外记住：对数似然是「参数的函数」，换一组 a、b、c、θ 它就变一个值，估计就是找让 ln L 最大的那一组。</p>
+
+<h2>3.7 四大优良性质：每个局限都有解</h2>
+<div class="card" style="padding:12px 16px"><p style="margin:2px 0"><b>什么时候用得上：</b>要向别人（或自己）论证「为什么值得为 IRT 投入」，或在题库建设、测验编制立项前评估收益时。手头是 3.1 那四条局限。用它把「性质 → 用途」对应起来，产出立项或选型的理由。跳过这节，IRT 就只是一堆公式，看不出生产力。</p></div>
+<p>想象一家连锁超市。商品条码不因你在哪家分店扫码而变——所以才能建中央商品库，这是「不变性」；各国价签币种不同，汇率一换就能对上——不同试卷放到同一量纲，这是「量表可选择性」；全国门店统一用同一把尺标注尺寸，而不是各店自定义——b 与 θ 共用一把尺，参数才能配套。</p>
+<p>最后，营养标签按你实际买的那份标注，而不是全店一句「总体还行」——IRT 的信息函数也一样，每个 θ 各有各的精度。四条性质合起来是同一件事：把「按店浮动」升级成「全国统一、按人精确」。</p>
+<p>课件把优良性质列了四条，逐条都能接住 3.1 的一个局限，且每条旁边都有气泡点明用途。</p>
+<p><b>性质一：题目参数的跨群体不变性。</b>IRT 的题目参数估计<b>独立于被试样本</b>；被试能力参数估计<b>独立于题目样本</b>。换个群体重测，题目还是那个题目。课件气泡：<b>方便建题库</b>、<b>方便自适应</b>。</p>
+<p><b>性质二：潜在特质量表的可选择性。</b>潜在特质 θ 的量表可以任意选择，因此可以使<b>不同被试、不同试卷的所有潜在特质参数与题目参数定义在同一度量系统上</b>，枢纽就是 Logistic 里的线性部分：</p>
+<p class="formula">a(θ − b)　（θ 与 b 同一把尺，才能直接相减）</p>
+<p>课件气泡：<b>方便做测验等值</b>——这是第 12 讲的主角的钥匙，先收好。</p>
+<p><b>性质三：参数设计的科学性。</b>三条：题目难度参数 b 与被试潜在特质参数 θ <b>定义在同一度量系统上</b>；区分度参数与难度参数<b>相互独立</b>；伪机遇参数 c 具有<b>实证性</b>（从实际作答数据估出来，不是拍脑袋设定）。课件气泡：方便<b>为被试选题</b>、方便<b>为各难度编高区分度的题</b>、<b>反映实际猜测情况</b>。</p>
+<p><b>性质四：信息函数概念的引入与信息函数的可加性。</b>每道题在每个 θ 上都有一个信息量：</p>
+<p class="formula">I<sub>i</sub> = P<sub>i</sub>′(θ)² / [P<sub>i</sub>(θ) · Q<sub>i</sub>(θ)]　　SE<sub>i</sub> = [I<sub>i</sub>(θ)]<sup>−1/2</sup></p>
+<p class="formula">I(θ) = Σ<sub>i=1</sub><sup>k</sup> I<sub>i</sub>(θ)　　SE = [I(θ)]<sup>−1/2</sup></p>
+<p>符号一句话：<b>P<sub>i</sub>′(θ)</b> 是第 i 题 ICC 的导数（曲线在该点有多陡）；<b>Q<sub>i</sub>(θ) = 1 − P<sub>i</sub>(θ)</b> 答错概率；<b>I<sub>i</sub></b> 第 i 题的信息量；<b>I(θ)</b> 测验信息量——各题信息<b>直接相加</b>（可加性）；<b>SE</b> 标准误，信息量取倒数再开方。曲线陡（a 大）且 P 接近对错各半时，信息最多。</p>
+<p>这一条正面接住局限二（也顺手了结局限一）：课件气泡当初问「可不可以给每个被试估计一个测量误差／信度？」——现在答案是「能」：<b>SE 是 θ 的函数</b>，你的水平附近题目密集，你的 SE 就小；<span class="val-ok">每人有自己的误差</span>，不再共用一个笼统数，也不再靠「再造一份平行卷」来谈精度。</p>
+<div class="table-responsive">
+<table class="table">
+  <thead><tr><th>CTT 的局限（3.1）</th><th>IRT 的性质（本节）</th><th>兑现的用途（3.9）</th></tr></thead>
+  <tbody>
+    <tr><td>③ 参数估计对样本依赖大</td><td>① 题目参数跨群体不变性</td><td>建题库、自适应选题</td></tr>
+    <tr><td>④ 难度与水平不同一系统</td><td>② 量表可选择性（a(θ−b) 同一度量系统）</td><td>测验等值</td></tr>
+    <tr><td>④ 配套性差</td><td>③ b 与 θ 同尺、a 与 b 独立、c 实证</td><td>为被试选题、编高区分度的题、反映实际猜测</td></tr>
+    <tr><td>② 误差笼统单一（① 信度精度不高）</td><td>④ 信息函数可加、SE(θ) 人人不同</td><td>常模／目标参照编制、按 θ 选题</td></tr>
+  </tbody>
+</table>
+</div>
+<p><b>常见坑：</b><span class="val-warn">把「不变性」夸成「换任何样本算出的数字一位不差」</span>——课件说的是「估计独立于被试样本／独立于题目样本」，指参数由题目与 θ 的关系决定、不随样本构成漂移；别拿它当「绝对不动」的字面理解。另一个坑：I(θ) 是<b>测验</b>信息，I<sub>i</sub> 是<b>题目</b>信息，汇报时别混用。</p>
+
+<h2>3.8 模型族：Rasch、1PL、2PL、3PL 与各自的信息函数</h2>
+<div class="card" style="padding:12px 16px"><p style="margin:2px 0"><b>什么时候用得上：</b>跑软件前要选模型——「要不要猜测参数？各题区分度当不当它相等？」——以及拿到输出后要对照模型查公式时。手头是对数据的判断（有没有猜、区分度是否参差）。用它选定参数个数合适的模型，产出「这套数据用几参数模型」的决定。选错模型，参数解释就拧了。</p></div>
+<p>把 3.4 的三个旋钮逐个焊死，就得到一族模型，参数从少到多排开。课件用一张对照图并列了它们的 ICF 与信息函数（并注明出处：Rasch, 1960；Hambleton &amp; Swaminathan, 1995）。</p>
+<p class="formula">Rasch：P(θ) = 1 / (1 + e<sup>−(θ−b)</sup>)　　1PL：P(θ) = 1 / (1 + e<sup>−1.7(θ−b)</sup>)</p>
+<p class="formula">2PL：P(θ) = 1 / (1 + e<sup>−1.7a(θ−b)</sup>)　　3PL：P(θ) = c + (1−c) / (1 + e<sup>−1.7a(θ−b)</sup>)</p>
+<p>Rasch 与单参数模型（1PL）只留 b——假设各题区分度相同、不设猜测参数；两参数（2PL）放开 a；三参数（3PL）再放开 c。模型越简单越好估、越复杂越贴数据，代价是需要更多数据。</p>
+<p>每个模型配自己的信息函数（把 ICF 的导数代入 3.7 的 I<sub>i</sub> 公式整理出来的结果）：</p>
+<p class="formula">1PL：I<sub>i</sub>(θ) = P<sub>i</sub>(θ)·Q<sub>i</sub>(θ)</p>
+<p class="formula">2PL：I<sub>i</sub>(θ) = a²·P<sub>i</sub>(θ)·Q<sub>i</sub>(θ)</p>
+<p class="formula">3PL：I<sub>i</sub>(θ) = a²·[P<sub>i</sub>(θ) − c]²·Q<sub>i</sub>(θ) / [P<sub>i</sub>(θ)·(1−c)²]</p>
+<p>符号一句话：a² 说明<b>区分度翻倍、信息量翻四倍</b>；3PL 里的 [P−c]² 与 (1−c)² 说明猜测参数会把整条信息曲线压矮——能蒙对一部分的题，提供的信息天然少一截。信息量峰值都落在 <span class="val-ok">θ≈b 附近</span>：题目最卖力的时候，正是考生水平与题目难度打照面的时候。</p>
+
+<h3>演示二：信息函数实验室——钟形曲线与它的峰</h3>
+<p>切换模型、拖动参数，看信息量 I(θ) 的钟形曲线怎么变；勾选叠加第二题，验证 I(θ)＝ΣI<sub>i</sub> 的可加性。</p>
+<div class="viz-controls" role="group" aria-label="选择模型">
+  <button class="btn" type="button" id="if-m1" aria-pressed="false">1PL（a=1，无 c）</button>
+  <button class="btn" type="button" id="if-m2" aria-pressed="false">2PL（加 a）</button>
+  <button class="btn" type="button" id="if-m3" aria-pressed="true">3PL（再加 c）</button>
+</div>
+<div class="viz-controls">
+  <label class="form-label" for="if-a" style="min-width:190px">区分度 a = <b id="if-av" class="tabular-nums">1.20</b></label>
+  <input type="range" class="form-range" id="if-a" min="0.5" max="2.5" step="0.05" value="1.2" style="flex:1; min-width:140px">
+  <label class="form-label" for="if-b" style="min-width:190px">难度 b = <b id="if-bv" class="tabular-nums">0.00</b></label>
+  <input type="range" class="form-range" id="if-b" min="-2" max="2" step="0.05" value="0" style="flex:1; min-width:140px">
+  <label class="form-label" for="if-c" style="min-width:190px">猜测 c = <b id="if-cv" class="tabular-nums">0.20</b></label>
+  <input type="range" class="form-range" id="if-c" min="0" max="0.35" step="0.01" value="0.2" style="flex:1; min-width:140px">
+  <span class="form-check"><input type="checkbox" class="form-check-input" id="if-add"><label class="form-label" for="if-add">叠加第二题（a=1.2，b=1.5）</label></span>
+</div>
+<svg id="if-svg" viewBox="0 0 640 320" role="img" aria-label="信息函数曲线，随模型与参数变化" style="width:100%; max-width:680px;"></svg>
+<p id="if-read" aria-live="polite" class="text-small"></p>
+<p><b>判读：</b>把 P＝Q＝1/2 代入 2PL 信息函数得 I＝a²/4——<span class="val-ok">a＝1 的题峰值 0.25，a＝2 的题峰值 1.00</span>，1PL 各题峰值一律 0.25（区分度被焊死成相等的代价）。峰值附近 SE 最小，离 b 越远信息越少、误差越大。</p>
+<p><b>常见坑：</b><span class="val-warn">以为信息曲线是「题目难度分布」</span>——纵轴是信息量，不是人数也不是概率；同一条 ICC（3.4 演示一）换算成信息函数就成了钟形，两座山别认混。</p>
+
+<h2>3.9 应用：IRT 能帮你干的五件事</h2>
+<div class="card" style="padding:12px 16px"><p style="margin:2px 0"><b>什么时候用得上：</b>编制或改版测验、建题库、上机做自适应测验时——先弄清 IRT 在每个场景里到底替你干什么。手头是已估好参数的题库或一份待编的测验。用它决定「编哪种测验、按什么标准凑题」，产出明确的编制方案。不看用途就上公式，容易编出一个「参数漂亮但不好用」的测验。</p></div>
+<p>五件事合起来，像请了一位私人教练。他先摸你的底子（估计 θ）；他的动作库里每个动作都标好了强度和难度（题库里每题存着 a、b、c 和信息函数）；每次只挑「对你刚好有挑战」的动作（按信息量选题）。</p>
+<p>你要参加达标测试，他按「及格线」安排训练（目标参照划合格线）；你想知道自己在同龄人里的位置，他拿常模给你比（常模参照缩小误差）；练完还告诉你哪块是短板（认知诊断）。教练做的一切，IRT 在考试里都能做。</p>
+<p>课件列了五项应用，每项背后都站着 3.7 的某条性质。</p>
+<p><b>① 对题库建设的特殊贡献。</b>入库的不只是题干和答案，还有四个字段：<b>难度、区分度、猜测度、信息函数</b>。靠性质一（不变性），这些参数不随招募样本漂移，存进去的题过两年换批人还能用。</p>
+<p><b>② 常模参照测验的编制</b>（跟别人比、看相对位置的那种测验）。目标：<b>缩小误差</b>。路线：根据<b>最大允许测量误差求最小信息量</b>——把 SE＝[I(θ)]<sup>−1/2</sup> 反着用：先定「SE 不能超过多少」，换算出「I(θ) 至少要多少」，再按可加性凑题目。</p>
+<p><b>③ 目标参照测验的编制</b>（跟标准比、看达没达标的那种）。核心任务是<b>划合格线</b>：取「刚够格」的 θ，算出该水平在各题上的答对概率，平均起来就是合格线：</p>
+<p class="formula">π<sub>c</sub> = (1/k)·Σ<sub>i=1</sub><sup>k</sup> P<sub>i</sub>(θ)</p>
+<p>符号一句话：<b>π<sub>c</sub></b> 合格线（答对比例的标准）；<b>k</b> 题数；<b>P<sub>i</sub>(θ)</b> 第 i 题在指定 θ 上的答对概率。</p>
+<p><b>④ 计算机自适应测验的编制</b>（Computerized Adaptive Testing，CAT）。规则一句话：<b>根据能力 θ 推荐题目</b>——按你当前估计选信息量最大的题，答题像通关：答对下一题变难，答错下一题变易，几步就锁定你的水平。靠性质一（题库参数可复用）＋性质四（每个 θ 上都能挑到信息最大的题）撑腰。课件气泡：方便自适应。</p>
+<p><b>⑤ 认知诊断测量模型的发展基础。</b>认知诊断关心<b>作答的认知加工过程</b>——不只问「多高」，还问「哪块会哪块不会」；IRT 的概率框架是这类模型生长的地基。</p>
+
+<h3>演示三：CAT 流程示意——通关式测验怎么走</h3>
+<p>点「开始」后，用「答对了／答错了」模拟作答，看 θ 怎么被一步步逼近、题目难度怎么跟着你走。演示里 θ 按固定步长 ±0.5 更新、六题封顶，仅示意「对则变难、错则变易」的循环；真实 CAT 用最大似然等方法估计 θ，并在信息量达标时停止。</p>
+<div class="viz-controls">
+  <button class="btn" type="button" id="cat-start">开始 / 重新开始</button>
+  <button class="btn" type="button" id="cat-right">答对了 ✓</button>
+  <button class="btn" type="button" id="cat-wrong">答错了 ✗</button>
+</div>
+<svg id="cat-svg" viewBox="0 0 640 330" role="img" aria-label="计算机自适应测验 CAT 流程示意" style="width:100%; max-width:680px;"></svg>
+<p id="cat-read" aria-live="polite" class="text-small"></p>
+<p><b>判读：</b>合格线 π<sub>c</sub> 算出来后通常落在 <span class="val-ok">0.5～0.9</span> 区间视测验而定——数值本身没有普适标准，关键是它由各题 ICC 在「刚够格」的 θ 上算出，有据可查。CAT 的选题规则是<span class="val-ok">「当前 θ 附近信息量最大的题」</span>，不是「总分相近的题」。</p>
+<p><b>常见坑：</b><span class="val-bad">把 CAT 理解成「按卷面总分从题库抽题」</span>——CAT 全程不看卷面总分，看的是 θ 的当前估计与各题信息函数；这也正是它比纸笔测验省题又准的原因。</p>
+
+<h2>3.10 IRT 实践与期中考试范围</h2>
+<div class="card" style="padding:12px 16px"><p style="margin:2px 0"><b>什么时候用得上：</b>轮到上机复现课件演示时；以及期中备考、划分复习范围时。手头是课件给的数据文件与本节清单。用它明确「要动手做什么、考试考不考」，产出复习与练习的优先级。不看清范围，很容易在「不考」的内容上空耗力气。</p></div>
+<p><b>IRT 实践（课件只给任务，未给运行输出）：</b>数据文件 <b>math.csv</b>；R 代码演示两件事——计算<b>两参数（2PL）模型的难度和区分度</b>；计算<b>两组被试的项目功能差异（DIF）</b>。课件没有给出输出结果，以课堂演示为准，别自己脑补一组数背下来。</p>
+<p><b>作业：</b>这周没有要交的作业（课件原话）。</p>
+<p><b>期中考试范围：</b>考试形式——<span class="val-ok">2 节课时间、纸笔测验、闭卷考试、提供公式表</span>。<span class="val-bad">不考：验证性因素分析 CFA、项目反应理论 IRT、SPSS 操作与 R/Mplus 代码</span>。题型与题量——选择题 <span class="val-ok">30 题</span>、简答题 <span class="val-ok">2 题</span>、计算题 <span class="val-ok">2 题</span>。</p>
+<p><b>常见坑：</b><span class="val-warn">看到「提供公式表」就不理解公式、只背形状</span>——公式表给的是式子本身，a、b、c 谁是谁、SE 和信息量什么关系，这些含义表上没有，还得靠 3.4 和 3.7 吃透。</p>
+
+<h2>4. 本讲在课程里的位置</h2>
+<p>上一讲留下的问题：难度、区分度随样本变脸，高低分组只有前后 27% 的粗格子，「90 分的人适合做哪种难度的题」无人能答。这一讲给了答案：潜在特质 θ 把人与题放上同一把尺，ICC 与 a、b、c 给出不依赖样本的题目描述，信息函数给每个人自己的测量误差。为后续埋的伏笔：量表可选择性是<b>测验等值</b>的钥匙（第 12 讲正面开讲），跨群体不变性加信息函数则是<b>自适应测验</b>的地基——IRT 到此才刚打好桩。</p>
+<p class="text-small text-muted">本讲作业：这周没有要交的作业（课件原话）；空下来的时间建议把 3.4 的 ICC 实验室和 3.8 的信息函数实验室各玩五分钟，亲眼看看 a、b、c 怎么动。做完后对照「作业反馈汇总」页的对应块核对丢分点。</p>
+
+</section>
+
+
+<!-- ============ 作业实战 ============ -->
+<section id="panel-hw" role="tabpanel" aria-labelledby="tab-hw" hidden>
+<h2>0. 这一页的数从哪来</h2>
+<p>全部来自本次作业的真实运行：math.sav（N=470，16 题）、iqdata.csv（N=400，25 题 Q1–Q25，10=答对）、课本第 98 页第 11 题（11 名被试 × 6 题）。所有数字由 IBM SPSS Statistics 25 实际运行输出（语法 run_all.sps 可复现），不是编的。把课件方法用到真数据上，效果如下。</p>
+
+<h2>1. math.sav 第一题（CM155Q01S）：两种难度、两种区分度</h2>
+<div class="stat-cards">
+  <div class="card"><div class="k">通过率法 P = R/N</div><div class="v">0.847</div><div class="text-small text-muted">383/452 人答对</div></div>
+  <div class="card"><div class="k">极端分组法 P=(PH+PL)/2</div><div class="v">0.803</div><div class="text-small text-muted">前/后 27%，各 117 人</div></div>
+  <div class="card"><div class="k">鉴别指数 D = PH−PL</div><div class="v">0.325</div><div class="text-small text-muted val-ok">良好（0.30~0.39）</div></div>
+  <div class="card"><div class="k">点二列相关 r（N=434）</div><div class="v">0.425</div><div class="text-small text-muted val-ok">p&lt;.001，显著</div></div>
+</div>
+<svg id="hw-math-svg" viewBox="0 0 720 190" role="img" aria-label="第一题高分组与低分组通过率" style="width:100%;"></svg>
+<p class="text-small text-muted">读法：题目偏容易（P≈0.85），两法难度的差异来自极端分组法只用两端 54% 的信息，对高通过率题目会略低估；区分度 D=0.325 属“良好”，但 P=0.85 时 D 的天花板本来就只有 0.30 左右——想再提高区分度，得先提高难度。</p>
+
+<h2>2. iqdata.csv：25 个项目的难度全景</h2>
+<svg id="hw-diff-svg" viewBox="0 0 880 250" role="img" aria-label="25个项目的通过率柱状图" style="width:100%;"></svg>
+<p class="text-small text-muted">虚线是 0.3 和 0.7 的“适中带”边界（鼠标放到柱子上看每题数值）。第 22、21 题通过率不足 0.10，明显过难；第 2、1、9 题偏易。</p>
+
+<h2>3. 难度 × 区分度：一张图定位每道题</h2>
+<svg id="hw-quad-svg" viewBox="0 0 720 330" role="img" aria-label="难度与区分度四象限散点图" style="width:100%;"></svg>
+<div class="leg"><span class="sw" style="background:var(--viz-series-1)"></span>题总相关显著</div>
+<div class="leg"><span class="sw" style="background:var(--red)"></span>不显著（区分度差）</div>
+<p class="text-small text-muted">横轴难度、纵轴题总相关。右上=难度适中且区分度好（理想区）；左下角落着第 21、22 题（又难又分不开人）；横向看，越靠右的点区分度被难度压得越低——课件那句“难度影响区分度”在真数据里就是这个形状。</p>
+
+<h2>4. 性别 DIF：Δ 散点与 t 检验</h2>
+<svg id="hw-delta-svg" viewBox="0 0 560 380" role="img" aria-label="男女分组的 Delta 散点图" style="width:100%; max-width:560px;"></svg>
+<div class="leg"><span class="sw" style="background:var(--viz-series-1)"></span>t 检验不显著</div>
+<div class="leg"><span class="sw" style="background:var(--red)"></span>p&lt;.05（DIF 可疑）</div>
+<p class="text-small text-muted">对角线为 y=x：贴线的题男女难度一致；第 4、12、14、15、17、19 题明显偏离（男生更容易），与 t 检验显著名单完全对应。</p>
+<table class="table table-sm hw" id="hw-dif-table" style="font-size:12px">
+  <thead><tr><th>题号</th><th>P男</th><th>P女</th><th>Δ男</th><th>Δ女</th><th>|Δ差|</th><th>r男</th><th>r女</th><th>t</th><th>p</th></tr></thead>
+  <tbody></tbody>
+</table>
+<p class="text-small text-muted">底纹行 = t 检验 p&lt;.05。另注意第 22 题：方差齐性假定下 p=.086 不显著，但 Levene 检验显著，读 Welch 校正行后 p=.047，处于边缘；第 7 题 t 检验不显著，但区分度男女差异最大（0.376 vs 0.139）。</p>
+
+<h2>5. 课本第 98 页第 11 题：11 名被试 × 6 题</h2>
+<p>原始作答（颜色深浅=得分占该题满分的比例，鼠标悬停看数值）：</p>
+<div id="bk-heat"></div>
+<p>计算结果（P=均分/满分；D=前 27% vs 后 27% 各 3 人；r=题总相关，df=9）：</p>
+<table class="table table-sm hw" id="bk-res-table">
+  <thead><tr><th>题号</th><th>满分</th><th>难度 P</th><th>难度</th><th>高分组P</th><th>低分组P</th><th>D</th><th>评价</th><th>r</th><th>p</th></tr></thead>
+  <tbody></tbody>
+</table>
+<p class="text-small text-muted">结论：六题难度 0.55~0.75 适中；第 2、3、5、6 题区分度良好及以上，第 1、4 题偏低（D&lt;0.33 且 r 不显著），建议修改或替换。</p>
+</section>
+
+<!-- ============ 对照与自测 ============ -->
+<section id="panel-fb" role="tabpanel" aria-labelledby="tab-fb" hidden>
+
+<h2>0. 开场白：这份反馈，就是下一讲的入场券</h2>
+<p>这里汇总全学期四次作业的课件反馈——每次课件的<b>开头几页</b>，老师都会点评上一次作业谁在哪儿摔了跤。反馈是下一讲的入场券：第4讲作业的反馈出现在第5讲开头，第7讲作业的反馈出现在第8讲开头，环环相扣。带着上一轮的丢分点进下一讲，等于带着体检报告去复诊。</p>
+<p>另外一个规律：<b>反复点名的坑，就是考点</b>。「没报告前提检验」「只贴 SPSS 表格」「Mplus 缺失值没填 999」这些被点名两次以上的问题，都是老师专门花页面讲的——期末卷面上再见到它们，一点都不会意外。每块反馈都按「作业原题 → 参考答案要点 → 普遍丢分点」三段组织，先对题，再看坑。</p>
+
+<h2>1. 第4讲作业的反馈（在第5讲课件开头）</h2>
+<p><b>作业原题：</b>① 什么是测量效度？它与信度的关系怎样？② 假设需要编制一套小学高年级学生的阅读能力测验，试设计一个效度验证方案。</p>
+<p><b>参考答案要点：</b></p>
+<ul>
+  <li>关系题：课件明确判定「信度越高效度一般也会越高」是<b>错</b>的——信度管测得稳不稳，效度管测得准不准；测不稳固然测不准，但测得稳并不代表测的就是想要的东西。</li>
+  <li>方案题（大家完成度还不错），三层设计：<b>内容效度</b>——专家评定，明确要测的阅读能力内容和范围（阅读速度 + 阅读理解 + 阅读记忆），按目的定纲目比例、逐题对比记录，再按内容覆盖率、题目难度与能力要求差异、题目数量与分数比例、题目形式与内容的适当性做总评价。</li>
+  <li><b>结构效度</b>——用因子分析结果与阅读能力的底层理论匹配；找已有的旧阅读能力测验求相关（相容效度）；找测量易混概念的测验求相关（区分效度）；发展差异验证（六年级学生阅读平均分应显著高于五年级）。</li>
+  <li><b>效标关联效度（实证效度）</b>——以语文考试中考察阅读能力部分的得分作效标，与测验结果求相关。</li>
+</ul>
+<p><b>普遍丢分点：</b><span class="val-warn">个别同学把信度和效度的关系弄错</span>，答成「信度越高效度一般也会越高」。方案题三层都要点到：只写内容效度、不写效标关联效度，三层不全也会扣分。</p>
+
+<h2>2. 第5讲作业的反馈（在第6讲课件开头）</h2>
+<p><b>作业原题：</b>① 计算克隆巴赫 α；② 对六个项目（Extraversion、Adventure、Sociability、Arachnophobia、Anxiety、Agoraphobia）做探索性因素分析——包括「要不要删 Sociability」「oblimin 载荷超过 1 怎么回事」的追问。</p>
+<p><b>参考答案要点：</b></p>
+<div class="table-responsive">
+<table class="table">
+  <thead><tr><th>环节</th><th>课件给的参考要点</th></tr></thead>
+  <tbody>
+    <tr><td>α 系数</td><td>大家都能算出来；注意<b>不要只报告项总计统计表</b></td></tr>
+    <tr><td>前提检验</td><td>KMO 大于 0.5、Bartlett 球形检验显著、相关矩阵大多大于 0.3，才适合做 EFA</td></tr>
+    <tr><td>抽取因素</td><td>主成分分析法，按特征根大于 1 抽取 2 个成分，累积解释 <b>96.259%</b> 的变异（依据还有总方差解释率、碎石图）</td></tr>
+    <tr><td>因子旋转</td><td>初始载荷矩阵存在交叉载荷（因素间相关较高所致）→ 选 oblimin 斜交旋转；旋转后因子一 = extraversion、adventure、sociability，因子二 = arachnophobia、anxiety、agoraphobia</td></tr>
+    <tr><td>因子命名</td><td>因子一命名为<b>外倾性</b>，因子二命名为<b>焦虑障碍</b></td></tr>
+    <tr><td>删 Sociability？</td><td>其修正后的项与总计相关性仅 <b>0.099</b>（删除项后的克隆巴赫 Alpha 为 0.474）；但只有六个项目，不知道直接删是否合适——删除之后总解释由 <b>96.259% 变为 96.096%，变化不大</b></td></tr>
+    <tr><td>载荷 1.020 超 1？</td><td>三种解释：① 分析的是<b>协方差矩阵</b>（变量未标准化），载荷是回归系数/协方差，不必限于 [-1, 1]；② <b>斜交旋转</b>后模式矩阵（回归系数）≠ 结构矩阵（相关系数），模式载荷可超 [-1, 1]（即便分析的是相关矩阵）；③ 罕见 <b>Heywood case</b>（共同度超过方差，变量太少撑不起要抽的因子数，软件报错）。看到 1.020 不必改回正交旋转</td></tr>
+  </tbody>
+</table>
+</div>
+<p><b>普遍丢分点：</b><span class="val-bad">有些同学没有报告前提检验</span>——直接从抽取开始写，EFA 四步缺了第一步；<span class="val-warn">α 作业只报告项总计统计表</span>，没有给出 α 本身。</p>
+
+<h2>3. 第6讲作业的反馈（在第7讲课件开头）</h2>
+<p><b>作业原题：</b>作业 1——用课上代码对指定数据做 CFA（R 与 Mplus 各跑一遍）并报告结果；作业 2——对另一份<b>存在缺失值</b>的数据做 CFA。</p>
+<p><b>参考答案要点：</b></p>
+<ul>
+  <li><b>路径问题：</b>代码找不到路径 → 手动 <code>setwd()</code> 设置一下路径文件夹，即可读取成功。</li>
+  <li><b>反向记分：</b>做 CFA <b>不需要</b>处理反向记分题目；想处理，R 一行语句或在 Excel 里操作都行。</li>
+  <li><b>两软件差异：</b>R 和 Mplus 都用最大似然估计，但优化方法与停止标准不同，结果会略有差异；本次练习两软件结果基本相似，选哪个都可以。</li>
+  <li><b>数据格式：</b>R 读取的数据一定要有表头，Mplus 一定不能有（纯数字）；两份数据要区分开。</li>
+  <li><b>报告规范：</b>最好报告<b>标准化后的路径系数</b>（课件示范图右侧标注的是非标准化系数）。</li>
+  <li><b>Omega：</b>是用来计算信度的，不是用来跑 CFA 图片的，跟作业无关。</li>
+  <li><b>作业 2 缺失值：</b>Mplus 无法识别空格，数据处理时必须把空格<b>全部填入 999</b>。</li>
+</ul>
+<p><b>普遍丢分点：</b><span class="val-bad">作业 2 几乎没有同学做对</span>，普遍卡在代码层面（没跑通或跑错）；<span class="val-bad">Mplus 缺失值没填 999</span> 导致跑不通；<span class="val-warn">报告非标准化系数</span>；<span class="val-warn">把 Omega 混进 CFA 报告</span>。课件建议课后自己把代码跑通一遍，理解 CFA 的逻辑与模型参数的正确提取，有问题随时与助教沟通。</p>
+
+<h2>4. 第7讲作业的反馈（在第8讲课件开头）</h2>
+<p><b>作业原题：</b>五道题——① 什么是测验项目的难度和区分度？对测验各有什么影响？② 选择题猜测校正的优缺点；③ 计算 11 名考生 6 道题的难度与区分度（Example1–4 四种算法）；④ math.sav 第一题用两种方法算难度与区分度；⑤ iqdata.csv 编码后算每题难度/区分度并考察男女 DIF。</p>
+<p><b>参考答案要点：</b></p>
+<ul>
+  <li><b>第1题：</b>难度 = 被试完成项目任务时所遇困难的程度；区分度 = 项目对被试心理品质水平差异的区分能力。难度的影响：① 影响分数分布（过难→正偏态，过易→负偏态）；② 影响离散程度（0.5 左右效果最好，集中在两端最差）。区分度的影响：① 分数分布广窄；② 效度（区分度越大越能分离不同水平个体，效度越好）。</li>
+  <li><b>第2题：</b>优点——避免降低信度、更好估计特质水平、培养诚实美德、比较公平；缺点——基本假设不成立、答完全部题目时校正无实质作用、不校正对信度并无重大影响、有时出现无法解释的现象、合理猜测值得鼓励。</li>
+  <li><b>第3题（Example1–4 四种算法对比）：</b></li>
+</ul>
+<div class="table-responsive">
+<table class="table">
+  <thead><tr><th>算法</th><th>分组/方法</th><th>结果</th></tr></thead>
+  <tbody>
+    <tr><td>Example 1</td><td>按总分划分：<b>ADGHI 为高分组、BCEFK 为低分组</b>（P=R/N；非二分 P=x̄/x<sub>max</sub>）</td><td>难度依次 ≈0.64 / ≈0.55 / ≈0.75 / ≈0.64 / 0.7 / ≈0.69；D 依次 <b>−0.2</b>（PH=3/5=0.6，PL=4/5=0.8）/ <b>0.8</b>（PH=1，PL=0.2）/ 0.22 / 0.1 / 0.25 / 0.296</td></tr>
+    <tr><td>Example 2</td><td>用 SPSS 计算皮尔逊相关求区分度</td><td>六题依次 ≈ <b>0.25 / 0.60 / 0.72 / 0.37 / 0.87 / 0.95</b></td></tr>
+    <tr><td>Example 3</td><td>难度同 Example1；区分度改取<b>前 3（ADI）高分组、后 3（CFK）低分组</b></td><td>D 依次 <b>0.34 / 0.67 / 0.4 / 0.16 / 0.30 / 0.42</b>——分组口径不同，结果与 Example1 不同</td></tr>
+    <tr><td>Example 4</td><td>难度同 Example1；由得分情况可知（1）（2）为选择题，用<b>点二列相关</b> r<sub>pb</sub>=(x̄<sub>p</sub>−x̄<sub>q</sub>)/S<sub>t</sub>·√(pq)</td><td>r<sub>pb</sub> ≈ <b>0.247 / 0.603</b>；（3）～（6）为连续变量，算皮尔逊相关，同 Example2</td></tr>
+  </tbody>
+</table>
+</div>
+<ul>
+  <li><b>第4题 math.sav：</b>难度方法1 P=R/N=<b>0.85</b>；方法2 P=(P<sub>H</sub>+P<sub>L</sub>)/2=(0.969+0.681)/2=<b>0.825</b>。区分度方法1 D=P<sub>H</sub>−P<sub>L</sub>=0.969−0.681=<b>0.288</b>；方法2 点二列相关 <b>r=.425**</b>（p&lt;.001，N=434）。普遍问题：高分组与低分组怎么划分。</li>
+  <li><b>第5题 iqdata.csv：</b>难度 = 通过率；区分度 = 皮尔逊相关，<b>21、22 题与总分相关不显著</b>（r=.073/.098，难度仅 .10/.08），区分度不好。DIF 四法：T 检验 / 方差分析 / 分性别算 Δ / 分性别算区分度；<b>男女生在 4、12、14、15、17、19 题存在项目功能差异</b>。</li>
+</ul>
+<p><b>普遍丢分点：</b><span class="val-warn">第1题部分同学未答难度和区分度对测验的影响</span>（漏答「影响」类问题）；<span class="val-warn">报告只贴 SPSS 直接输出的表格</span>，不调整表格大小与字体，也没总结哪些题区分度不好、哪些题在男女群体间有显著差异；<span class="val-warn">T 检验与方差分析结果应一致</span>，得到不同结果多半是操作错误，应检查数据格式或分析设置；<span class="val-bad">部分同学未做项目功能差异分析</span>；<span class="val-warn">高低分组的划分口径</span>各家不一，答案对不上时要先核对自己的分组。</p>
+
+<h2>5. 全学期防坑清单</h2>
+<div class="table-responsive">
+<table class="table">
+  <thead><tr><th>坑</th><th>后果</th><th>正确做法</th></tr></thead>
+  <tbody>
+    <tr><td>EFA 前不做前提检验</td><td class="val-bad">结构抽出来也不知道能不能信，作业直接丢分</td><td>先报告 KMO&gt;0.5、Bartlett 显著、相关大多&gt;0.3，再往下做</td></tr>
+    <tr><td>α 作业只贴「项总计统计表」</td><td class="val-warn">等于没报告 α 本身，答非所问</td><td>直接报告 α 值，项总计统计表只作辅助证据</td></tr>
+    <tr><td>R 找不到数据就反复折腾代码</td><td class="val-warn">根因是路径，代码改再多也没用</td><td>报 cannot open the connection，先 setwd() 设置路径文件夹</td></tr>
+    <tr><td>给 Mplus 喂带表头的数据</td><td class="val-bad">Mplus 只要纯数字，读不了</td><td>R 的数据必须有表头、Mplus 的必须没有，两份数据分开管</td></tr>
+    <tr><td>Mplus 缺失值留空格</td><td class="val-bad">Mplus 无法识别空格，作业 2 跑不通</td><td>数据处理时把空格全部填入 999</td></tr>
+    <tr><td>报告非标准化路径系数</td><td class="val-warn">量纲不统一，系数难以比较解读</td><td>报告标准化后的路径系数</td></tr>
+    <tr><td>把 Omega 贴进 CFA 作业</td><td class="val-warn">Omega 是算信度的，与 CFA 画图无关</td><td>CFA 报载荷与拟合指标，信度另行计算</td></tr>
+    <tr><td>概念题只答定义不答「影响」</td><td class="val-warn">答不全直接丢分（第7讲作业第1题高发）</td><td>问什么答什么：定义和影响逐条写全</td></tr>
+    <tr><td>高低分组划分口径不一致（27%/33%/50% 混用）</td><td class="val-warn">D 值无法复现，与参考答案对不上</td><td>全卷统一口径，并在报告里写明分组标准</td></tr>
+    <tr><td>T 检验与方差分析结果对不上还硬写</td><td class="val-warn">两法结果本应一致，不一致就是操作错误</td><td>回查所用的数据格式或分析时的设置</td></tr>
+    <tr><td>作业只贴 SPSS 直接输出的表格</td><td class="val-warn">可读性差、没有结论，看不到你的判断</td><td>调整表格大小与字体，并明确报告哪些题不好 / 哪些题有 DIF</td></tr>
+    <tr><td>没做 DIF 分析</td><td class="val-bad">整道大题缺失，丢分最多</td><td>按四步流程做，报告存在差异的题号（如 4、12、14、15、17、19）</td></tr>
+    <tr><td>见 oblimin 载荷 1.020 就改回正交旋转</td><td class="val-warn">不必要的改动，暴露概念不清</td><td>模式载荷本可不限于 [-1, 1]，按理论需要选旋转方式</td></tr>
+  </tbody>
+</table>
+</div>
+
+</section>
+
+
+<section id="panel-map" role="tabpanel" aria-labelledby="tab-map" hidden>
+<h2>两讲速查表</h2>
+<div class="table-responsive">
+<table class="table table-sm" style="max-width:860px">
+  <thead><tr><th></th><th>第六讲 CFA</th><th>第七讲 项目分析</th></tr></thead>
+  <tbody>
+    <tr><td>核心问题</td><td>量表结构对不对</td><td>每道题好不好</td></tr>
+    <tr><td>关键量</td><td>Σ = ΛΦΛ′ + Ψ；χ²/RMSEA/CFI</td><td>P（难度）、D 与 r（区分度）、Δ</td></tr>
+    <tr><td>一句话口诀</td><td>先画图纸再验收，拟合指标看贴得多近</td><td>难度看通过率，区分看高低分组差和相关</td></tr>
+    <tr><td>常用软件</td><td>R lavaan / Mplus / Onyx</td><td>SPSS（描述统计、相关、t 检验）</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>五道自测（点一下看答案）</h2>
+<div class="quiz" id="quiz">
+  <p>1. P 越大，题目越难？<button class="btn btn-xs" type="button" data-q="0">看答案</button></p>
+  <p class="ans" id="ans0">错。P 是通过率，<b>P 越大越容易</b>；越难 P 越接近 0。</p>
+  <p>2. CFA 需要像 EFA 那样先做因子旋转吗？<button class="btn btn-xs" type="button" data-q="1">看答案</button></p>
+  <p class="ans" id="ans1">不需要。CFA 的结构由研究者事先指定，因子相关直接估计，<b>无需旋转</b>。</p>
+  <p>3. 一个因子配 3 个题目，模型恰好识别，自由度是多少？<button class="btn btn-xs" type="button" data-q="2">看答案</button></p>
+  <p class="ans" id="ans2">df = 0。数据信息 3×4/2=6，待估参数 V、e1~e3、λ21、λ31 共 6 个，正好用完。</p>
+  <p>4. 高分组和低分组的通过率分别是 0.9 和 0.5，D 是多少，评价如何？<button class="btn btn-xs" type="button" data-q="3">看答案</button></p>
+  <p class="ans" id="ans3">D = 0.9 − 0.5 = 0.40，按标准属于“很好”。</p>
+  <p>5. RMSEA = 0.06，这个模型拟合怎么样？<button class="btn btn-xs" type="button" data-q="4">看答案</button></p>
+  <p class="ans" id="ans4">可接受（&lt;.08），但不算良好（良好要 &lt;.05）。</p>
+</div>
+</section>
+
+<script>
+(function(){
+  var root = document.getElementById('cl-jiangjie');
+  var $ = function(id){ return document.getElementById(id); };
+
+  /* ---- tab switching (works standalone and inline) ---- */
+  var TABS = [['tab-l5','panel-l5'],['tab-l6','panel-l6'],['tab-l7','panel-l7'],['tab-l8','panel-l8'],['tab-hw','panel-hw'],['tab-fb','panel-fb'],['tab-map','panel-map']];
+  TABS.forEach(function(t){
+    var b = $(t[0]); if (!b) return;
+    b.addEventListener('click', function(){
+      TABS.forEach(function(u){
+        var bb = $(u[0]), pp = $(u[1]);
+        var on = u[0] === t[0];
+        if (!bb || !pp) return;
+        bb.classList.toggle('active', on);
+        bb.setAttribute('aria-selected', on ? 'true' : 'false');
+        pp.hidden = !on;
+      });
+    });
+  });
+
+  var NS = 'http://www.w3.org/2000/svg';
+  function el(name, attrs, parent, text){
+    var e = document.createElementNS(NS, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (text !== undefined) e.textContent = text;
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function fmt(x, d){ return (x===null||x===undefined||isNaN(+x)) ? '—' : (+x).toFixed(d); }
+  function sigT(s){ return (s===null||s===undefined||isNaN(+s)) ? '—' : (+s < 0.001 ? '<.001' : (+s).toFixed(3).replace(/^0/, '')); }
+  function stars(s){ return (s===null||s===undefined||isNaN(+s)) ? '' : (+s < 0.001 ? '***' : +s < 0.01 ? '**' : +s < 0.05 ? '*' : ''); }
+
+  /* ---- tooltip ---- */
+  var tip = document.createElement('div'); tip.className = 'viz-tip'; root.appendChild(tip);
+  function bindTip(e, html){
+    e.addEventListener('pointerenter', function(ev){ tip.innerHTML = html; tip.style.display = 'block'; move(ev); });
+    e.addEventListener('pointermove', move);
+    e.addEventListener('pointerleave', function(){ tip.style.display = 'none'; });
+    function move(ev){
+      var r = root.getBoundingClientRect();
+      var x = ev.clientX - r.left + 14, y = ev.clientY - r.top + 14;
+      if (x + 240 > r.width) x = ev.clientX - r.left - 250;
+      if (y + 80 > r.height) y = ev.clientY - r.top - 70;
+      tip.style.left = x + 'px'; tip.style.top = y + 'px';
+    }
+  }
+
+  /* ---- probit (Acklam) ---- */
+  function probit(p){
+    var a=[-39.69683028665376,220.9460984245205,-275.9285104469687,138.3577518672690,-30.66479806614716,2.506628277459239];
+    var b=[-54.47609879822406,161.5858368580409,-155.6989798598866,66.80131188771972,-13.28068155288572];
+    var c=[-0.007784894002430293,-0.3223964580411365,-2.400758277161838,-2.549732539343734,4.374664141464968,2.938163982698783];
+    var d=[0.007784695709041462,0.3224671290700398,2.445134137142996,3.754408661907416];
+    var pl=0.02425,q,r;
+    if(p<pl){ q=Math.sqrt(-2*Math.log(p));
+      return (((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);
+    } else if(p<=1-pl){ q=p-0.5; r=q*q;
+      return (((((a[0]*r+a[1])*r+a[2])*r+a[3])*r+a[4])*r+a[5])*q/(((((b[0]*r+b[1])*r+b[2])*r+b[3])*r+b[4])*r+1);
+    } else { q=Math.sqrt(-2*Math.log(1-p));
+      return -(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);
+    }
+  }
+
+  /* judgeD (作业实战需要，从旧脚本抢救) */
+  function judgeD(d){
+    if(d>=0.4) return ['很好', 'val-ok'];
+    if(d>=0.3) return ['良好，修改会更好', 'val-ok'];
+    if(d>=0.2) return ['尚可，仍需修改', 'val-warn'];
+    return ['差，必须淘汰', 'val-bad'];
+  }
+
+  /* quiz */
+  document.querySelectorAll('#quiz [data-q]').forEach(function(b){
+    b.addEventListener('click', function(){
+      $('ans'+b.dataset.q).classList.toggle('show');
+    });
+  });
+
+(function () {
+  /* 第五讲 · 探索性因子分析 —— 交互演示脚本（自包含 IIFE） */
+  var NS = "http://www.w3.org/2000/svg";
+  function $(id) { return document.getElementById(id); }
+  function el(name, attrs, parent, text) {
+    var e = document.createElementNS(NS, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (text !== undefined) e.textContent = text;
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function bindTip(elem, html) {
+    if (!bindTip.tip) {
+      bindTip.tip = document.createElement("div");
+      bindTip.tip.style.cssText = "display:none;position:absolute;z-index:30;max-width:260px;background:var(--popover,var(--card));color:var(--popover-foreground,var(--foreground));border:1px solid var(--border);border-radius:8px;padding:6px 10px;font-size:12px;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,.15)";
+      document.getElementById("cl-jiangjie").appendChild(bindTip.tip);
+    }
+    var tip = bindTip.tip;
+    elem.addEventListener("pointerenter", function (ev) { tip.innerHTML = html; tip.style.display = "block"; move(ev); });
+    elem.addEventListener("pointermove", move);
+    elem.addEventListener("pointerleave", function () { tip.style.display = "none"; });
+    function move(ev) {
+      var r = document.getElementById("cl-jiangjie").getBoundingClientRect();
+      var x = ev.clientX - r.left + 14, y = ev.clientY - r.top + 14;
+      if (x + 240 > r.width) x = ev.clientX - r.left - 250;
+      if (y + 80 > r.height) y = ev.clientY - r.top - 70;
+      tip.style.left = x + "px"; tip.style.top = y + "px";
+    }
+  }
+  function fmt(x, d) { return (x === null || x === undefined || isNaN(+x)) ? "—" : (+x).toFixed(d); }
+
+  /* ---------- 演示 1：α 演示器 ---------- */
+  (function () {
+    var svg = $("svg-l5alpha");
+    if (!svg) return;
+    var X0 = 56, X1 = 600, Y0 = 232, Y1 = 20;
+    function xOf(r) { return X0 + (X1 - X0) * r; }
+    function yOf(a) { return Y0 - (Y0 - Y1) * a; }
+
+    el("text", { x: X0 - 8, y: Y0 + 6, "text-anchor": "end", "class": "lbl" }, svg, "0");
+    el("text", { x: X1 + 6, y: Y0 + 6, "text-anchor": "start", "class": "lbl" }, svg, "1");
+    el("text", { x: X0 - 8, y: yOf(0.7) + 4, "text-anchor": "end", "class": "lbl" }, svg, ".7");
+    el("text", { x: X0 - 8, y: yOf(0.8) + 4, "text-anchor": "end", "class": "lbl" }, svg, ".8");
+    el("text", { x: X0 - 8, y: yOf(0.9) + 4, "text-anchor": "end", "class": "lbl" }, svg, ".9");
+    el("line", { x1: X0, y1: Y0, x2: X1, y2: Y0, stroke: "var(--border)", "stroke-width": 1 }, svg);
+    el("line", { x1: X0, y1: Y1, x2: X0, y2: Y0, stroke: "var(--border)", "stroke-width": 1 }, svg);
+    [0.25, 0.5, 0.75, 1].forEach(function (r) {
+      el("line", { x1: xOf(r), y1: Y0, x2: xOf(r), y2: Y0 + 4, stroke: "var(--border)", "stroke-width": 1 }, svg);
+      el("text", { x: xOf(r), y: Y0 + 18, "text-anchor": "middle", "class": "lbl" }, svg, String(r));
+    });
+    [0.7, 0.8, 0.9].forEach(function (a) {
+      el("line", { x1: X0, y1: yOf(a), x2: X1, y2: yOf(a), stroke: "var(--border)", "stroke-width": 1, "stroke-dasharray": "4 4" }, svg);
+      el("text", { x: X1 - 4, y: yOf(a) - 4, "text-anchor": "end", "class": "lbl" }, svg, "α=" + a.toFixed(1));
+    });
+    el("text", { x: (X0 + X1) / 2, y: Y0 + 36, "text-anchor": "middle", "class": "lbl" }, svg, "平均题间相关 r̄ →");
+    var curve = el("path", { fill: "none", stroke: "var(--primary)", "stroke-width": 2.5 }, svg);
+    var dot = el("circle", { r: 6, fill: "var(--primary)", stroke: "var(--background)", "stroke-width": 2 }, svg);
+
+    function judge(a) {
+      if (a >= 0.9) return ["很好（≥0.9）", "val-ok"];
+      if (a >= 0.8) return ["良好（0.8–0.9）", "val-ok"];
+      if (a >= 0.7) return ["可接受（0.7–0.8）", "val-warn"];
+      return ["偏低（<0.7）：题目太少或题间相关太低", "val-bad"];
+    }
+    function update() {
+      var k = +$("rng-l5ak").value;
+      var r = +$("rng-l5ar").value / 100;
+      $("lbl-l5ak").textContent = String(k);
+      $("lbl-l5ar").textContent = r.toFixed(2);
+      var d = "M";
+      for (var i = 0; i <= 60; i++) {
+        var rr = i / 60;
+        var aa = k * rr / (1 + (k - 1) * rr);
+        d += xOf(rr).toFixed(1) + " " + yOf(aa).toFixed(1);
+        d += (i < 60 ? " L" : "");
+      }
+      curve.setAttribute("d", d);
+      var a = k * r / (1 + (k - 1) * r);
+      dot.setAttribute("cx", xOf(r));
+      dot.setAttribute("cy", yOf(a));
+      var jd = judge(a);
+      $("out-l5alpha").innerHTML =
+        "k=" + k + "，r̄=" + r.toFixed(2) + " 时，α = " + k + "×" + r.toFixed(2) +
+        " / (1+(" + (k - 1) + ")×" + r.toFixed(2) + ") = <strong>" + a.toFixed(3) +
+        "</strong>　<span class=\"" + jd[1] + "\">" + jd[0] + "</span>" +
+        "<span class=\"text-muted text-small\">　课件例：11 题 α=.791（可接受）</span>";
+      bindTip(dot, "<b>当前设置</b><br>题目数 k = " + k + "<br>平均题间相关 r̄ = " + r.toFixed(2) +
+        "<br>α = " + a.toFixed(3) + "<br>" + jd[0]);
+    }
+    $("rng-l5ak").addEventListener("input", update);
+    $("rng-l5ar").addEventListener("input", update);
+    update();
+  })();
+
+  /* ---------- 演示 2：方差分解堆叠条 ---------- */
+  (function () {
+    var svg = $("svg-l5var");
+    if (!svg) return;
+    var BX = 24, BW = 572, BY = 40, BH = 46;
+    var rects = {};
+    var segs = [
+      { key: "common", name: "共同方差", fill: "var(--primary)", x: BX },
+      { key: "special", name: "特殊方差", fill: "var(--secondary)", x: 0 },
+      { key: "error", name: "误差方差", fill: "var(--destructive)", x: 0 }
+    ];
+    el("text", { x: BX, y: BY - 10, "class": "lbl" }, svg, "一道题的观测方差 = 共同方差 + 唯一方差（特殊 + 误差）");
+    segs.forEach(function (s) {
+      rects[s.key] = el("rect", { x: BX, y: BY, width: 0, height: BH, fill: s.fill, stroke: "var(--background)", "stroke-width": 1 }, svg);
+    });
+    var lgX = BX;
+    segs.forEach(function (s) {
+      el("rect", { x: lgX, y: 118, width: 12, height: 12, fill: s.fill }, svg);
+      var t = el("text", { x: lgX + 18, y: 128, "class": "lbl", id: "leg-l5-" + s.key }, svg, s.name);
+      lgX += 24 + s.name.length * 14 + 60;
+      s.legendText = t;
+    });
+    var hl = false;
+    function update() {
+      var r = +$("rng-l5vr").value / 100;
+      $("lbl-l5vr").textContent = r.toFixed(2);
+      var wCommon = BW * r, wRest = BW * (1 - r) / 2;
+      var xs = { common: BX, special: BX + wCommon, error: BX + wCommon + wRest };
+      var ws = { common: wCommon, special: wRest, error: wRest };
+      segs.forEach(function (s) {
+        var rc = rects[s.key];
+        rc.setAttribute("x", xs[s.key]);
+        rc.setAttribute("width", Math.max(ws[s.key], 0.5));
+        if (hl && s.key !== "common") {
+          rc.setAttribute("opacity", "0.45");
+          rc.setAttribute("stroke", "var(--foreground)");
+          rc.setAttribute("stroke-dasharray", "5 3");
+        } else {
+          rc.setAttribute("opacity", "1");
+          rc.setAttribute("stroke", "var(--background)");
+          rc.removeAttribute("stroke-dasharray");
+        }
+        var pc = s.key === "common" ? r : (1 - r) / 2;
+        s.legendText.textContent = s.name + " " + Math.round(pc * 100) + "%";
+        bindTip(rc, "<b>" + s.name + "</b><br>占观测方差约 " + Math.round(pc * 100) + "%" +
+          (s.key === "common"
+            ? "<br>题目间相关越高，共同方差占比越大"
+            : "<br>与特殊方差合并为唯一方差，两者无法分离"));
+      });
+      $("out-l5var").innerHTML =
+        "共同方差 ≈ <strong>" + Math.round(r * 100) + "%</strong>（示意：单因子近似下≈平均相关）　·　" +
+        "特殊方差 ≈ " + Math.round((1 - r) / 2 * 100) + "%　·　误差方差 ≈ " + Math.round((1 - r) / 2 * 100) + "%　→　" +
+        (hl ? "<span class=\"val-warn\">唯一方差 = 特殊 + 误差 = " + Math.round((1 - r) * 100) + "%，两部分无法分离（各半仅为示意）</span>"
+            : "唯一方差合计 = " + Math.round((1 - r) * 100) + "%");
+    }
+    $("rng-l5vr").addEventListener("input", update);
+    $("btn-l5vh").addEventListener("click", function () {
+      hl = !hl;
+      this.setAttribute("aria-pressed", hl ? "true" : "false");
+      update();
+    });
+    update();
+  })();
+
+  /* ---------- 演示 3：碎石图 ---------- */
+  (function () {
+    var svg = $("svg-l5scree");
+    if (!svg) return;
+    var eig = [7.280, 4.192, 3.041, 2.548, 2.253, 1.594, 1.318, 1.224, 1.154, 1.044, 0.966, 0.951];
+    var pct = [16.545, 9.527, 6.910, 5.790, 5.121, 3.624, 2.996, 2.781, 2.622, 2.373, 2.197, 2.161];
+    var cum = [16.545, 26.072, 32.982, 38.772, 43.893, 47.517, 50.513, 53.294, 55.916, 58.289, 60.485, 62.646];
+    var X0 = 52, X1 = 600, Y0 = 248, Y1 = 18, YMAX = 8;
+    function xOf(i) { return X0 + (X1 - X0) * (i - 1) / 11; }
+    function yOf(v) { return Y0 - (Y0 - Y1) * v / YMAX; }
+
+    el("line", { x1: X0, y1: Y0, x2: X1, y2: Y0, stroke: "var(--border)" }, svg);
+    el("line", { x1: X0, y1: Y1, x2: X0, y2: Y0, stroke: "var(--border)" }, svg);
+    [0, 2, 4, 6, 8].forEach(function (v) {
+      el("line", { x1: X0 - 4, y1: yOf(v), x2: X0, y2: yOf(v), stroke: "var(--border)" }, svg);
+      el("text", { x: X0 - 8, y: yOf(v) + 4, "text-anchor": "end", "class": "lbl" }, svg, String(v));
+    });
+    el("text", { x: 20, y: (Y1 + Y0) / 2, "class": "lbl", transform: "rotate(-90 20 " + ((Y1 + Y0) / 2) + ")", "text-anchor": "middle" }, svg, "特征值");
+    eig.forEach(function (v, idx) {
+      el("text", { x: xOf(idx + 1), y: Y0 + 16, "text-anchor": "middle", "class": "lbl" }, svg, String(idx + 1));
+    });
+    el("text", { x: (X0 + X1) / 2, y: Y0 + 34, "text-anchor": "middle", "class": "lbl" }, svg, "成分序号（personality.sav，44 题中课件列出的前 12 个成分）");
+
+    var pts = eig.map(function (v, idx) { return xOf(idx + 1).toFixed(1) + " " + yOf(v).toFixed(1); }).join(" ");
+    var line = el("polyline", { points: pts, fill: "none", stroke: "var(--foreground)", "stroke-width": 1.5 }, svg);
+    var thrLine = el("line", { x1: X0, x2: X1, y1: 0, y2: 0, stroke: "var(--destructive)", "stroke-width": 1.5, "stroke-dasharray": "6 4" }, svg);
+    var thrLbl = el("text", { x: X1 - 6, y: 0, "text-anchor": "end", "class": "lbl" }, svg, "");
+    var dots = eig.map(function (v, idx) {
+      var c = el("circle", { cx: xOf(idx + 1), cy: yOf(v), r: 5 }, svg);
+      bindTip(c, "<b>成分 " + (idx + 1) + "</b><br>特征值 " + v.toFixed(3) +
+        "<br>解释方差 " + pct[idx].toFixed(3) + "%<br>累积 " + cum[idx].toFixed(3) + "%");
+      return c;
+    });
+
+    function update() {
+      var thr = +$("rng-l5st").value / 100;
+      $("lbl-l5st").textContent = thr.toFixed(2);
+      thrLine.setAttribute("y1", yOf(thr));
+      thrLine.setAttribute("y2", yOf(thr));
+      thrLbl.setAttribute("y", yOf(thr) - 5);
+      thrLbl.textContent = "阈值 " + thr.toFixed(2);
+      var n1 = 0;
+      dots.forEach(function (c, idx) {
+        var keep = eig[idx] > thr;
+        if (keep) n1++;
+        c.setAttribute("fill", keep ? "var(--primary)" : "var(--muted-foreground)");
+        c.setAttribute("stroke", "var(--background)");
+        c.setAttribute("stroke-width", "1.5");
+      });
+      var pctCount = 0;
+      pct.forEach(function (p) { if (p > 5) pctCount++; });
+      $("out-l5scree").innerHTML =
+        "① 特征值 &gt; " + thr.toFixed(2) + " 的成分：<strong>" + n1 + " 个</strong>（Kaiser 判据）　" +
+        (thr === 1 ? "<span class=\"val-warn\">——它一口给了 10 个，偏多</span>" : "") + "<br>" +
+        "② 方差解释率 &gt; 5% 的成分：<strong>" + pctCount + " 个</strong>（16.5% / 9.5% / 6.9% / 5.8% / 5.1%，第 6 个仅 3.6%）<br>" +
+        "③ 碎石图：第 5 个成分后曲线明显变平（肘部）→ <span class=\"val-ok\">课件综合三判据：决定提取 5 个成分，解释总变异 43.89%</span>";
+    }
+    $("rng-l5st").addEventListener("input", update);
+    update();
+  })();
+})();
+
+
+(function(){
+  /* 第六讲 · CFA —— 本章专用脚本（完全自包含 IIFE，不依赖主脚本任何 helper） */
+  "use strict";
+  var NS = "http://www.w3.org/2000/svg";
+  function $(id){ return document.getElementById(id); }
+  function el(name, attrs, parent, text){
+    var e = document.createElementNS(NS, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (text !== undefined) e.textContent = text;
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function bindTip(elem, html){
+    if (!bindTip.tip) {
+      bindTip.tip = document.createElement("div");
+      bindTip.tip.style.cssText = "display:none;position:absolute;z-index:30;max-width:260px;background:var(--popover,var(--card));color:var(--popover-foreground,var(--foreground));border:1px solid var(--border);border-radius:8px;padding:6px 10px;font-size:12px;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,.15)";
+      document.getElementById("cl-jiangjie").appendChild(bindTip.tip);
+    }
+    var tip = bindTip.tip;
+    elem.addEventListener("pointerenter", function(ev){ tip.innerHTML = html; tip.style.display = "block"; move(ev); });
+    elem.addEventListener("pointermove", move);
+    elem.addEventListener("pointerleave", function(){ tip.style.display = "none"; });
+    function move(ev){
+      var r = document.getElementById("cl-jiangjie").getBoundingClientRect();
+      var x = ev.clientX - r.left + 14, y = ev.clientY - r.top + 14;
+      if (x + 240 > r.width) x = ev.clientX - r.left - 250;
+      if (y + 80 > r.height) y = ev.clientY - r.top - 70;
+      tip.style.left = x + "px"; tip.style.top = y + "px";
+    }
+  }
+
+  /* ---------- 演示 1：KMO 标尺 ---------- */
+  (function(){
+    var svg = $("l6-kmo-svg"); if(!svg) return;
+    var x0 = 60, x1 = 820, y = 30, h = 20, vmin = 0.2, vmax = 1.0;
+    function X(v){ return x0 + (v - vmin) / (vmax - vmin) * (x1 - x0); }
+    function zone(a, b, color, tip){
+      var r = el("rect", {x: X(a).toFixed(1), y: y, width: (X(b)-X(a)).toFixed(1), height: h,
+        fill: color, opacity: 0.35, rx: 4}, svg);
+      bindTip(r, tip);
+      return r;
+    }
+    zone(0.2, 0.5, "var(--red)", "KMO 在 0.5 以下：不适合做因子分析");
+    zone(0.5, 0.7, "var(--orange)", "KMO 0.5～0.7：勉强可做（0.7 以上效果比较好）");
+    zone(0.7, 1.0, "var(--green)", "KMO 0.7 以上：效果比较好");
+    [0.2, 0.4, 0.6, 0.8, 1.0].forEach(function(v){
+      el("text", {x: X(v).toFixed(1), y: y + h + 16, "text-anchor": "middle", "font-size": "11", "class": "lbl"}, svg, v.toFixed(1));
+    });
+    /* 课件示例固定参考刻度 */
+    el("line", {x1: X(0.55).toFixed(1), y1: y - 10, x2: X(0.55).toFixed(1), y2: y + h + 6,
+      stroke: "var(--muted-foreground)", "stroke-width": "1", "stroke-dasharray": "3 3"}, svg);
+    el("text", {x: X(0.55).toFixed(1), y: y - 14, "text-anchor": "middle", "font-size": "10", "class": "lbl"}, svg, "课件示例 0.550");
+    el("text", {x: X(0.35).toFixed(1), y: y + h / 2 + 4, "text-anchor": "middle", "font-size": "11", fill: "var(--red)"}, svg, "不适合做因子分析");
+    el("text", {x: X(0.6).toFixed(1), y: y + h / 2 + 4, "text-anchor": "middle", "font-size": "11", fill: "var(--orange)"}, svg, "勉强");
+    el("text", {x: X(0.85).toFixed(1), y: y + h / 2 + 4, "text-anchor": "middle", "font-size": "11", fill: "var(--green)"}, svg, "效果好（0.7 以上）");
+    /* 当前值指针 */
+    var cursor = el("line", {x1: X(0.55).toFixed(1), y1: y - 8, x2: X(0.55).toFixed(1), y2: y + h + 8,
+      stroke: "var(--foreground)", "stroke-width": "2"}, svg);
+    var cursorLabel = el("text", {x: X(0.55).toFixed(1), y: y + h + 32, "text-anchor": "middle", "font-size": "11"}, svg, "你的值 0.55");
+    function upd(){
+      var v = parseFloat($("l6-kmo-slider").value);
+      $("l6-kmo-val").textContent = v.toFixed(2);
+      cursor.setAttribute("x1", X(v).toFixed(1));
+      cursor.setAttribute("x2", X(v).toFixed(1));
+      cursorLabel.setAttribute("x", X(v).toFixed(1));
+      cursorLabel.textContent = "你的值 " + v.toFixed(2);
+      var j = $("l6-kmo-judge");
+      if (v < 0.5){ j.innerHTML = "KMO = " + v.toFixed(2) + "：<b class='val-bad'>不适合做因子分析</b>"; }
+      else if (v < 0.7){ j.innerHTML = "KMO = " + v.toFixed(2) + "：<b class='val-warn'>勉强可做</b>（0.7 以上效果比较好）"; }
+      else { j.innerHTML = "KMO = " + v.toFixed(2) + "：<b class='val-ok'>效果比较好</b>"; }
+    }
+    $("l6-kmo-slider").addEventListener("input", upd);
+    upd();
+  })();
+
+  /* ---------- 演示 2：EFA / CFA 路径图切换 ---------- */
+  (function(){
+    var svg = $("l6-efacfa-svg"); if(!svg) return;
+    var f1 = {x:160, y:90}, f2 = {x:480, y:90};
+    var itemX = [56, 148, 240, 400, 492, 584], itemY = 180;
+    var titleEl = el("text", {x: 320, y: 18, "text-anchor": "middle", style: "font-weight:500"}, svg,
+      "探索性因素分析：每个因子都试着连接所有题目");
+    el("ellipse", {cx: f1.x, cy: f1.y, rx: 58, ry: 32, fill: "none", stroke: "currentColor"}, svg);
+    el("text", {x: f1.x, y: f1.y + 5, "text-anchor": "middle"}, svg, "因子 1");
+    el("ellipse", {cx: f2.x, cy: f2.y, rx: 58, ry: 32, fill: "none", stroke: "currentColor"}, svg);
+    el("text", {x: f2.x, y: f2.y + 5, "text-anchor": "middle"}, svg, "因子 2");
+    el("path", {d: "M 205 72 Q 320 20 435 72", fill: "none", stroke: "var(--viz-series-2)"}, svg);
+    el("text", {x: 320, y: 42, "text-anchor": "middle", "class": "lbl"}, svg, "因子相关");
+    var rectDefs = [[20,"题目1"],[112,"题目2"],[204,"题目3"],[364,"题目4"],[456,"题目5"],[548,"题目6"]];
+    rectDefs.forEach(function(d, i){
+      el("rect", {x: d[0], y: itemY, width: 72, height: 34, fill: "none", stroke: "currentColor"}, svg);
+      var t = el("text", {x: d[0] + 36, y: itemY + 21, "text-anchor": "middle", "font-size": "11"}, svg, d[1]);
+      bindTip(t, d[1] + "：EFA 里被所有因子试探；CFA 里只挂指定的因子");
+    });
+    var probe = el("g", {id: "l6-lines-probe"}, svg);
+    var solid = el("g", {id: "l6-lines-solid"}, svg);
+    function buildLines(){
+      itemX.forEach(function(x, i){
+        var own = i < 3 ? f1 : f2;
+        var other = i < 3 ? f2 : f1;
+        var l1 = el("line", {x1: other.x, y1: other.y + 28, x2: x, y2: itemY,
+          stroke: "var(--muted-foreground)", "stroke-dasharray": "3 3", opacity: "0.35"}, probe);
+        bindTip(l1, "试探连线：EFA 让每个因子都试着连接所有题目");
+        var l2 = el("line", {x1: own.x, y1: own.y + 28, x2: x, y2: itemY,
+          stroke: "var(--viz-series-1)", "stroke-width": "2"}, solid);
+        bindTip(l2, (i < 3 ? "因子 1 → 题目 " + (i+1) : "因子 2 → 题目 " + (i+1)) + "：载荷非零");
+      });
+    }
+    buildLines();
+    function setMode(mode){
+      probe.style.display = mode === "efa" ? "" : "none";
+      titleEl.textContent = mode === "efa"
+        ? "探索性因素分析：每个因子都试着连接所有题目"
+        : "验证性因素分析：结构事先指定，无关载荷为零";
+      $("l6-efacfa-note").innerHTML = mode === "efa"
+        ? "EFA 模式：12 条虚线是软件在<b>全部试探</b>，实线是数据最终“认亲”的结果（题目 1–3 归因子 1，题目 4–6 归因子 2），可能还要旋转一下才看清。适合<b>不知道</b>量表几个维度的时候。"
+        : "CFA 模式：只剩 6 条实线——因子 1 只连题目 1–3，因子 2 只连题目 4–6，虚线试探根本不存在。你带着图纸来，数据只负责验收；因子相关直接估计，<b>无需旋转</b>。";
+      $("l6-btn-efa").setAttribute("aria-pressed", mode === "efa" ? "true" : "false");
+      $("l6-btn-cfa").setAttribute("aria-pressed", mode === "cfa" ? "true" : "false");
+    }
+    $("l6-btn-efa").addEventListener("click", function(){ setMode("efa"); });
+    $("l6-btn-cfa").addEventListener("click", function(){ setMode("cfa"); });
+    setMode("efa");
+  })();
+
+  /* ---------- PCA 与 FA 方向对比图（静态示意） ---------- */
+  (function(){
+    var svg = $("l6-pcafa-svg"); if(!svg) return;
+    var defs = el("defs", {}, svg);
+    var mk = el("marker", {id: "l6-arr1", markerWidth: "8", markerHeight: "8", refX: "7", refY: "4", orient: "auto"}, defs);
+    el("path", {d: "M0,0 L8,4 L0,8 z", fill: "var(--muted-foreground)"}, mk);
+    /* PCA：题目 → 成分 */
+    el("rect", {x: 30, y: 30, width: 90, height: 30, fill: "none", stroke: "currentColor"}, svg);
+    el("text", {x: 75, y: 50, "text-anchor": "middle"}, svg, "题目 y1");
+    el("rect", {x: 30, y: 95, width: 90, height: 30, fill: "none", stroke: "currentColor"}, svg);
+    el("text", {x: 75, y: 115, "text-anchor": "middle"}, svg, "题目 y2");
+    el("rect", {x: 330, y: 60, width: 90, height: 34, fill: "none", stroke: "currentColor"}, svg);
+    el("text", {x: 375, y: 82, "text-anchor": "middle"}, svg, "成分 C1");
+    var a1 = el("path", {d: "M 122 45 L 326 70", fill: "none", stroke: "var(--viz-series-1)", "marker-end": "url(#l6-arr1)"}, svg);
+    bindTip(a1, "PCA：用题目预测成分，成分是题目的线性组合");
+    var a2 = el("path", {d: "M 122 110 L 326 84", fill: "none", stroke: "var(--viz-series-1)", "marker-end": "url(#l6-arr1)"}, svg);
+    bindTip(a2, "PCA：题目数 = 成分数，没选中的成分只是被忽略");
+    el("text", {x: 225, y: 45, "text-anchor": "middle", "class": "lbl"}, svg, "PCA：题目 → 成分");
+    /* FA：因素 → 题目（带残差） */
+    el("ellipse", {cx: 560, cy: 42, rx: 42, ry: 22, fill: "none", stroke: "currentColor"}, svg);
+    el("text", {x: 560, y: 47, "text-anchor": "middle"}, svg, "因素 F1");
+    el("rect", {x: 480, y: 105, width: 80, height: 28, fill: "none", stroke: "currentColor"}, svg);
+    el("text", {x: 520, y: 123, "text-anchor": "middle"}, svg, "题目 y");
+    var a3 = el("path", {d: "M 548 62 L 528 103", fill: "none", stroke: "var(--viz-series-2)", "marker-end": "url(#l6-arr1)"}, svg);
+    bindTip(a3, "FA：用因素预测题目，因素数 < 题目数");
+    var res = el("circle", {cx: 575, cy: 119, r: 7, fill: "none", stroke: "var(--orange)"}, svg);
+    bindTip(res, "残差 u：题目里因素解释不了的部分（FA 承认每题都有）");
+    el("text", {x: 596, y: 123, "class": "lbl", style: "font-size:11px"}, svg, "残差 u");
+    el("text", {x: 470, y: 30, "text-anchor": "middle", "class": "lbl"}, svg, "FA：因素 → 题目（带残差）");
+  })();
+
+  /* ---------- 演示 3：模型识别计算器 ---------- */
+  (function(){
+    function drawIdent(k){
+      var svg = $("l6-ident-svg"); if(!svg) return;
+      svg.innerHTML = "";
+      var cx = 320, fy = 45, iy = 130;
+      el("ellipse", {cx: cx, cy: fy, rx: 52, ry: 26, fill: "none", stroke: "currentColor"}, svg);
+      el("text", {x: cx, y: fy + 5, "text-anchor": "middle"}, svg, "因子");
+      var w = 64, start = cx - (k * w) / 2 + w / 2;
+      for (var i = 0; i < k; i++){
+        var x = start + i * w;
+        el("line", {x1: cx, y1: fy + 24, x2: x, y2: iy, stroke: "var(--viz-series-1)", "stroke-width": "1.5"}, svg);
+        el("text", {x: (cx + x) / 2 - 6, y: (fy + iy) / 2, "class": "lbl", "font-size": "10"}, svg, (i === 0 ? "1" : "λ" + (i + 1)));
+        var r = el("rect", {x: x - 30, y: iy, width: 60, height: 28, fill: "none", stroke: "currentColor"}, svg);
+        bindTip(r, "题目" + (i + 1) + "：贡献 1 个载荷参数 + 1 个误差参数");
+        el("text", {x: x, y: iy + 18, "text-anchor": "middle"}, svg, "题目" + (i + 1));
+        el("text", {x: x, y: iy + 44, "text-anchor": "middle", "class": "lbl", "font-size": "10"}, svg, "e" + (i + 1));
+      }
+      var info = k * (k + 1) / 2, par = 2 * k, df = info - par, status, cls;
+      if (df < 0){ status = "不可识别 Under-identified（参数 " + par + " 个 > 信息 " + info + " 个）"; cls = "val-bad"; }
+      else if (df === 0){ status = "恰好识别 Just-identified（参数 = 信息 = 6），df = 0，无法检验拟合"; cls = "val-warn"; }
+      else { status = "超识别 Over-identified（信息 " + info + " > 参数 " + par + "），df = " + df + "，可以看拟合度了"; cls = "val-ok"; }
+      $("l6-ident-note").innerHTML = "信息量 p(p+1)/2 = " + info + "；待估参数（因子方差 V、误差 e1~e" + k + "、载荷 λ21~λ" + k + "1，第一题载荷固定为 1）= " + par + " 个。<b class='" + cls + "'>" + status + "</b>";
+    }
+    var btns = document.querySelectorAll("#panel-l6 [data-k]");
+    Array.prototype.forEach.call(btns, function(b){
+      b.addEventListener("click", function(){
+        Array.prototype.forEach.call(btns, function(x){ x.setAttribute("aria-pressed", "false"); });
+        b.setAttribute("aria-pressed", "true");
+        drawIdent(parseInt(b.getAttribute("data-k"), 10));
+      });
+    });
+    drawIdent(3);
+  })();
+
+  /* ---------- 演示 4：RMSEA 计算器 ---------- */
+  (function(){
+    if (!$("l6-rm-chi2")) return;
+    function updRM(){
+      var c = +$("l6-rm-chi2").value, d = +$("l6-rm-df").value, n = +$("l6-rm-n").value;
+      $("l6-rm-chi2v").textContent = c;
+      $("l6-rm-dfv").textContent = d;
+      $("l6-rm-nv").textContent = n;
+      var v = Math.sqrt(Math.max(0, (c / d - 1) / (n - 1)));
+      $("l6-rm-val").textContent = v.toFixed(3);
+      var j = $("l6-rm-judge");
+      if (v < 0.05){ j.textContent = "良好（<.05）"; j.className = "val-ok"; }
+      else if (v < 0.08){ j.textContent = "可接受（<.08）"; j.className = "val-warn"; }
+      else { j.textContent = "拟合较差（≥.08）"; j.className = "val-bad"; }
+    }
+    ["l6-rm-chi2", "l6-rm-df", "l6-rm-n"].forEach(function(id){ $(id).addEventListener("input", updRM); });
+    updRM();
+  })();
+
+})();
+
+
+(function(){
+  /* 第七讲 · 项目分析 —— 本章专用脚本（完全自包含 IIFE，不依赖主脚本任何 helper） */
+  "use strict";
+  var NS = "http://www.w3.org/2000/svg";
+  function $(id){ return document.getElementById(id); }
+  function el(name, attrs, parent, text){
+    var e = document.createElementNS(NS, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (text !== undefined) e.textContent = text;
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function bindTip(elem, html){
+    if (!bindTip.tip) {
+      bindTip.tip = document.createElement("div");
+      bindTip.tip.style.cssText = "display:none;position:absolute;z-index:30;max-width:260px;background:var(--popover,var(--card));color:var(--popover-foreground,var(--foreground));border:1px solid var(--border);border-radius:8px;padding:6px 10px;font-size:12px;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,.15)";
+      document.getElementById("cl-jiangjie").appendChild(bindTip.tip);
+    }
+    var tip = bindTip.tip;
+    elem.addEventListener("pointerenter", function(ev){ tip.innerHTML = html; tip.style.display = "block"; move(ev); });
+    elem.addEventListener("pointermove", move);
+    elem.addEventListener("pointerleave", function(){ tip.style.display = "none"; });
+    function move(ev){
+      var r = document.getElementById("cl-jiangjie").getBoundingClientRect();
+      var x = ev.clientX - r.left + 14, y = ev.clientY - r.top + 14;
+      if (x + 240 > r.width) x = ev.clientX - r.left - 250;
+      if (y + 80 > r.height) y = ev.clientY - r.top - 70;
+      tip.style.left = x + "px"; tip.style.top = y + "px";
+    }
+  }
+  function probit(p){
+    var a=[-39.69683028665376,220.9460984245205,-275.9285104469687,138.3577518672690,-30.66479806614716,2.506628277459239];
+    var b=[-54.47609879822406,161.5858368580409,-155.6989798598866,66.80131188771972,-13.28068155288572];
+    var c=[-0.007784894002430293,-0.3223964580411365,-2.400758277161838,-2.549732539343734,4.374664141464968,2.938163982698783];
+    var d=[0.007784695709041462,0.3224671290700398,2.445134137142996,3.754408661907416];
+    var pl=0.02425,q,r;
+    if(p<pl){ q=Math.sqrt(-2*Math.log(p));
+      return (((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);
+    } else if(p<=1-pl){ q=p-0.5; r=q*q;
+      return (((((a[0]*r+a[1])*r+a[2])*r+a[3])*r+a[4])*r+a[5])*q/(((((b[0]*r+b[1])*r+b[2])*r+b[3])*r+b[4])*r+1);
+    } else { q=Math.sqrt(-2*Math.log(1-p));
+      return -(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);
+    }
+  }
+  function binomPMF(n,k,p){
+    var logc=0; for(var i=1;i<=k;i++){ logc+=Math.log(n-i+1)-Math.log(i); }
+    if(k===0||k===n) logc=0;
+    return Math.exp(logc + k*Math.log(p) + (n-k)*Math.log(1-p));
+  }
+  function judgeD(d){
+    if(d>=0.4) return ["很好","val-ok"];
+    if(d>=0.3) return ["良好，修改会更好","val-ok"];
+    if(d>=0.2) return ["尚可，仍需修改","val-warn"];
+    return ["差，必须淘汰","val-bad"];
+  }
+
+  /* ---------- 演示 1：难度实验室（P 滑块 → Z / Δ + 正态曲线阴影） ---------- */
+  var curve = [];
+  (function(){
+    if (!$("l7-dif-p")) return;
+    for (var x = -3.4; x <= 3.4; x += 0.05){ curve.push([x, Math.exp(-x * x / 2)]); }
+    function drawNormal(p){
+      var z = probit(1 - p), delta = 13 + 4 * z;
+      $("l7-dif-pv").textContent = p.toFixed(2);
+      $("l7-dif-z").textContent = z.toFixed(2);
+      $("l7-delta").textContent = delta.toFixed(2);
+      var svg = $("l7-normal-svg"); svg.innerHTML = "";
+      var W = 360, H = 170, x0 = 30, x1 = 340, y0 = 10, y1 = 140;
+      function X(v){ return x0 + (v + 3.4) / 6.8 * (x1 - x0); }
+      function Y(v){ return y1 - v * (y1 - y0 - 20); }
+      var path = "M " + X(curve[0][0]).toFixed(1) + " " + Y(curve[0][1]).toFixed(1);
+      curve.forEach(function(pt){ path += " L " + X(pt[0]).toFixed(1) + " " + Y(pt[1]).toFixed(1); });
+      var zx = Math.max(-3.4, Math.min(3.4, z));
+      var shade = "M " + X(zx).toFixed(1) + " " + y1;
+      curve.forEach(function(pt){ if (pt[0] >= zx){ shade += " L " + X(pt[0]).toFixed(1) + " " + Y(pt[1]).toFixed(1); } });
+      shade += " L " + X(3.4).toFixed(1) + " " + y1 + " Z";
+      var sh = el("path", {d: shade, fill: "var(--viz-series-1)", opacity: "0.25"}, svg);
+      bindTip(sh, "正态曲线下分界点右侧的面积 = 通过率 " + (p * 100).toFixed(0) + "%");
+      el("path", {d: path, fill: "none", stroke: "var(--foreground)", "stroke-width": "1.5"}, svg);
+      el("line", {x1: x0, y1: y1, x2: x1, y2: y1, stroke: "var(--border)"}, svg);
+      el("line", {x1: X(zx).toFixed(1), y1: y1, x2: X(zx).toFixed(1), y2: 24,
+        stroke: "var(--viz-series-2)", "stroke-width": "1.5", "stroke-dasharray": "4 3"}, svg);
+      el("text", {x: X(zx).toFixed(1), y: y1 + 14, "text-anchor": "middle", "font-size": "11"}, svg, "Z=" + z.toFixed(2));
+      el("text", {x: ((X(zx) + x1) / 2).toFixed(1), y: 40, "text-anchor": "middle", "font-size": "11", "class": "lbl"}, svg,
+        "右侧面积 = 通过率 " + (p * 100).toFixed(0) + "%");
+      el("text", {x: (x0 + x1) / 2, y: 164, "text-anchor": "middle", "font-size": "10", "class": "lbl"}, svg, "Z 分数（Δ = 13 + 4Z）");
+      var note = $("l7-dif-note");
+      if (p < 0.31){ note.innerHTML = "P = " + p.toFixed(2) + "：<b class='val-warn'>很难</b>——分数会堆在低分端（正偏态）。"; }
+      else if (p < 0.5){ note.innerHTML = "P = " + p.toFixed(2) + "：<b class='val-warn'>偏难</b>，但还在可接受范围。"; }
+      else if (p === 0.5){ note.innerHTML = "P = 0.50：<b class='val-ok'>居中</b>——分界点正好在均值上，最能拉开差距。"; }
+      else if (p < 0.7){ note.innerHTML = "P = " + p.toFixed(2) + "：<b class='val-warn'>偏易</b>，但还在可接受范围。"; }
+      else { note.innerHTML = "P = " + p.toFixed(2) + "：<b class='val-warn'>很容易</b>——分数会堆在高分端（负偏态）。"; }
+    }
+    $("l7-dif-p").addEventListener("input", function(){ drawNormal(parseFloat(this.value)); });
+    drawNormal(0.5);
+  })();
+
+  /* ---------- 演示 2：Δ 换算表 ---------- */
+  (function(){
+    var tb = $("l7-delta-tbody"); if(!tb) return;
+    var rows = [[0.02], [0.16], [0.31], [0.50], [0.69], [0.84], [0.98]];
+    rows.forEach(function(r){
+      var p = r[0], z = probit(1 - p), d = 13 + 4 * z;
+      var meaning = p === 0.50 ? "居中" : p < 0.31 ? "很难" : p < 0.7 ? "偏难" : p < 0.9 ? "偏易" : "很容易";
+      var tr = document.createElement("tr");
+      tr.innerHTML = '<td class="tabular-nums">' + p.toFixed(2) + '</td><td class="tabular-nums">' + z.toFixed(2) +
+        '</td><td class="tabular-nums"><b>' + d.toFixed(2) + '</b></td><td class="text-small text-muted">' + meaning + '</td>';
+      tb.appendChild(tr);
+    });
+  })();
+
+  /* ---------- 演示 3：难度定分布形态（二项分布直方） ---------- */
+  (function(){
+    function drawDist(p){
+      var svg = $("l7-dist-svg"); if(!svg) return;
+      svg.innerHTML = "";
+      var n = 20, x0 = 50, x1 = 610, y1 = 160, y0 = 24;
+      var pmf = []; for (var k = 0; k <= n; k++) pmf.push(binomPMF(n, k, p));
+      var mx = Math.max.apply(null, pmf);
+      function X(k){ return x0 + k / n * (x1 - x0); }
+      function Y(v){ return y1 - v / mx * (y1 - y0); }
+      var bw = (x1 - x0) / n * 0.8;
+      pmf.forEach(function(v, k){
+        var r = el("rect", {x: X(k) - bw / 2, y: Y(v), width: bw, height: y1 - Y(v),
+          fill: "var(--viz-series-1)", opacity: "0.85", rx: "2"}, svg);
+        bindTip(r, "总分 " + k + " 分：" + (v * 100).toFixed(1) + "% 的人");
+      });
+      var mean = p * n;
+      el("line", {x1: X(mean), y1: y0, x2: X(mean), y2: y1, stroke: "var(--viz-series-2)",
+        "stroke-width": "1.5", "stroke-dasharray": "4 3"}, svg);
+      el("text", {x: X(mean), y: y0 - 6, "text-anchor": "middle", "font-size": "11"}, svg, "平均分 " + mean.toFixed(1));
+      el("line", {x1: x0, y1: y1, x2: x1, y2: y1, stroke: "var(--border)"}, svg);
+      [0, 5, 10, 15, 20].forEach(function(k){
+        el("text", {x: X(k), y: y1 + 16, "text-anchor": "middle", "font-size": "10", "class": "lbl"}, svg, String(k));
+      });
+      el("text", {x: (x0 + x1) / 2, y: y1 + 36, "text-anchor": "middle", "font-size": "11", "class": "lbl"}, svg,
+        "总分（20 题，每题 0/1 计分，难度均为 P）");
+      el("text", {x: 16, y: (y0 + y1) / 2, "font-size": "11", "class": "lbl",
+        transform: "rotate(-90 16 " + ((y0 + y1) / 2) + ")", "text-anchor": "middle"}, svg, "人数比例");
+      var note = $("l7-dist-note");
+      if (p < 0.5){ note.innerHTML = "P=0.2：<b class='val-warn'>正偏态</b>——大多数人的分数挤在低分段，少数高分拖出右侧长尾；分数全距被压窄，高分段的差异几乎测不出来。"; }
+      else if (p > 0.5){ note.innerHTML = "P=0.8：<b class='val-warn'>负偏态</b>——分数挤在高分段，低分端拖尾；太容易的卷子同样区分不开人。"; }
+      else { note.innerHTML = "P=0.5：<b class='val-ok'>对称分布</b>——分数铺得最开、全距最大，这正是“难度 0.5 附近最能区分个体差异”的原因。"; }
+    }
+    var btns = document.querySelectorAll("#panel-l7 [data-shape]");
+    Array.prototype.forEach.call(btns, function(b){
+      b.addEventListener("click", function(){
+        Array.prototype.forEach.call(btns, function(x){ x.setAttribute("aria-pressed", "false"); });
+        b.setAttribute("aria-pressed", "true");
+        drawDist(parseFloat(b.getAttribute("data-shape")));
+      });
+    });
+    drawDist(0.2);
+  })();
+
+  /* ---------- 演示 4：D 计算器（PH/PL → D + 判读 + 上限利用率） ---------- */
+  (function(){
+    if (!$("l7-dc-ph")) return;
+    function updDC(){
+      var ph = +$("l7-dc-ph").value, pl = +$("l7-dc-pl").value, d = ph - pl;
+      $("l7-dc-phv").textContent = ph.toFixed(2);
+      $("l7-dc-plv").textContent = pl.toFixed(2);
+      $("l7-dc-val").textContent = d.toFixed(2);
+      var j = judgeD(d);
+      $("l7-dc-judge").innerHTML = "<b class='" + j[1] + "'>" + j[0] + "</b>";
+      var p = (ph + pl) / 2, cap = 2 * Math.min(p, 1 - p);
+      $("l7-dc-ceiling").textContent = "（该题整体难度 P=" + p.toFixed(2) + "，D 的理论上限 " + cap.toFixed(2) +
+        "，你用掉了 " + (cap > 0 ? Math.round(d / cap * 100) : 0) + "%）";
+    }
+    ["l7-dc-ph", "l7-dc-pl"].forEach(function(id){ $(id).addEventListener("input", updDC); });
+    updDC();
+  })();
+
+  /* ---------- 演示 5：相关法选择器（四种变量组合切换公式） ---------- */
+  (function(){
+    var corrData = [
+      ["点二列相关（point biserial）", "项目是二分变量，效标分数是连续变量",
+       "r<sub>pb</sub> = (x̄<sub>p</sub> − x̄<sub>q</sub>)/S<sub>t</sub> · √(pq)",
+       "SPSS 提示：计算点二列相关，实际上就是算两个变量的皮尔逊相关；显著性查积差相关表 df=N−2，或做通过组与未通过组的 t 检验。"],
+      ["二列相关（biserial）", "项目本是连续的，被人为划成两类（高/低、及格/不及格），效标连续",
+       "r<sub>b</sub> = (x̄<sub>p</sub> − x̄<sub>q</sub>)/S<sub>t</sub> · (pq)/y　（y 是正态曲线在分割点的高度）",
+       "SPSS 提示：计算二列相关，实际上就是计算两个连续变量的皮尔逊相关；显著性 Z = r_b / [(1/y)·√(pq/N)]。"],
+      ["φ 相关（phi）", "项目与效标都是二分变量",
+       "r<sub>φ</sub> = (ad − bc)/√[(a+b)(a+c)(b+d)(c+d)]",
+       "显著性：χ² = N·r_φ²，自由度 df=1（四格表 a、b、c、d）。"],
+      ["积差相关（Pearson）", "项目与效标都是连续变量",
+       "r = 题目分数与效标分数的皮尔逊相关",
+       "显著性：自由度 df = N − 2。"]
+    ];
+    var btns = document.querySelectorAll("#panel-l7 [data-corr]");
+    Array.prototype.forEach.call(btns, function(b){
+      b.addEventListener("click", function(){
+        Array.prototype.forEach.call(btns, function(x){ x.setAttribute("aria-pressed", "false"); });
+        b.setAttribute("aria-pressed", "true");
+        var d = corrData[parseInt(b.getAttribute("data-corr"), 10)];
+        $("l7-corr-name").textContent = d[0];
+        $("l7-corr-cond").textContent = d[1];
+        $("l7-corr-formula").innerHTML = d[2];
+        $("l7-corr-note").textContent = d[3];
+      });
+    });
+  })();
+
+  /* ---------- 演示 6：Dmax 曲线 ---------- */
+  (function(){
+    var svg = $("l7-dmax-svg"); if(!svg) return;
+    var x0 = 60, x1 = 610, y0 = 20, y1 = 180;
+    function X(p){ return x0 + p * (x1 - x0); }
+    function Y(d){ return y1 - d * (y1 - y0); }
+    var path = "M " + X(0).toFixed(1) + " " + Y(0).toFixed(1);
+    for (var p = 0.01; p <= 1.001; p += 0.01){ path += " L " + X(p).toFixed(1) + " " + Y(2 * Math.min(p, 1 - p)).toFixed(1); }
+    el("path", {d: path, fill: "none", stroke: "var(--viz-series-1)", "stroke-width": "2"}, svg);
+    el("line", {x1: x0, y1: y1, x2: x1, y2: y1, stroke: "var(--border)"}, svg);
+    el("line", {x1: x0, y1: y0, x2: x0, y2: y1, stroke: "var(--border)"}, svg);
+    var pts = [[1, 0], [0.9, 0.2], [0.7, 0.6], [0.6, 0.8], [0.5, 1], [0.4, 0.8], [0.3, 0.6], [0.1, 0.2], [0, 0]];
+    pts.forEach(function(pt){
+      var c = el("circle", {cx: X(pt[0]).toFixed(1), cy: Y(pt[1]).toFixed(1), r: "3.5", fill: "var(--viz-series-2)"}, svg);
+      bindTip(c, "P=" + pt[0].toFixed(2) + " → D 最大 " + pt[1].toFixed(2));
+      el("text", {x: X(pt[0]).toFixed(1), y: y1 + 16, "text-anchor": "middle", "font-size": "10", "class": "lbl"}, svg, pt[0].toFixed(2));
+      if ([1, 0.9, 0.5, 0.1, 0].indexOf(pt[0]) >= 0){
+        el("text", {x: (X(pt[0]) + 10).toFixed(1), y: (Y(pt[1]) - 6).toFixed(1), "font-size": "10", "class": "lbl"}, svg, "D=" + pt[1].toFixed(2));
+      }
+    });
+    el("text", {x: (x0 + x1) / 2, y: 212, "text-anchor": "middle", "font-size": "11", "class": "lbl"}, svg, "项目通过率 P");
+    el("text", {x: 18, y: (y0 + y1) / 2, "font-size": "11", "class": "lbl",
+      transform: "rotate(-90 18 " + ((y0 + y1) / 2) + ")", "text-anchor": "middle"}, svg, "D 的最大值");
+  })();
+
+  /* ---------- 演示 7：猜测校正计算器（R/W/K → S） ---------- */
+  (function(){
+    if (!$("l7-g-r")) return;
+    function updGuess(){
+      var R = +$("l7-g-r").value, W = +$("l7-g-w").value, K = +$("l7-g-k").value;
+      $("l7-g-rv").textContent = R;
+      $("l7-g-wv").textContent = W;
+      $("l7-g-kv").textContent = K;
+      $("l7-g-s").textContent = (R - W / (K - 1)).toFixed(1);
+    }
+    ["l7-g-r", "l7-g-w", "l7-g-k"].forEach(function(id){ $(id).addEventListener("input", updGuess); });
+    updGuess();
+  })();
+
+})();
+
+
+(function(){
+  "use strict";
+  /* 第八讲 · 项目反应理论 IRT —— 演示脚本（自包含 IIFE） */
+  var NS = "http://www.w3.org/2000/svg";
+  function $(id){ return document.getElementById(id); }
+  function el(name, attrs, parent, text){
+    var e = document.createElementNS(NS, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (text !== undefined) e.textContent = text;
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function bindTip(elem, html){
+    if (!bindTip.tip) {
+      bindTip.tip = document.createElement("div");
+      bindTip.tip.style.cssText = "display:none;position:absolute;z-index:30;max-width:260px;background:var(--popover,var(--card));color:var(--popover-foreground,var(--foreground));border:1px solid var(--border);border-radius:8px;padding:6px 10px;font-size:12px;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,.15)";
+      document.getElementById("cl-jiangjie").appendChild(bindTip.tip);
+    }
+    var tip = bindTip.tip;
+    elem.addEventListener("pointerenter", function(ev){ tip.innerHTML = html; tip.style.display = "block"; move(ev); });
+    elem.addEventListener("pointermove", move);
+    elem.addEventListener("pointerleave", function(){ tip.style.display = "none"; });
+    function move(ev){
+      var r = document.getElementById("cl-jiangjie").getBoundingClientRect();
+      var x = ev.clientX - r.left + 14, y = ev.clientY - r.top + 14;
+      if (x + 240 > r.width) x = ev.clientX - r.left - 250;
+      if (y + 80 > r.height) y = ev.clientY - r.top - 70;
+      tip.style.left = x + "px"; tip.style.top = y + "px";
+    }
+  }
+  function fmt(x,d){ return (x===null||x===undefined||isNaN(+x))?"—":(+x).toFixed(d); }
+
+  /* ---------- 公共：3PL Logistic 与信息函数（公式均出自课件 22/23/27/32/33 页） ---------- */
+  function pLog(t,a,b,c){ return c + (1-c)/(1+Math.exp(-1.7*a*(t-b))); }
+  function infoOf(t,a,b,c){
+    var P = pLog(t,a,b,c), Q = 1-P;
+    return a*a*(P-c)*(P-c)*Q/(P*(1-c)*(1-c));
+  }
+
+  /* ============================================================
+     演示一：ICC 实验室（3.4）
+     ============================================================ */
+  var iccA = $('icc-a'), iccB = $('icc-b'), iccC = $('icc-c');
+  function frame(svg){                      /* 画坐标框，返回 {X,Y,L,T,pw,ph} */
+    svg.textContent = "";
+    var W=640, H=+svg.getAttribute("viewBox").split(" ")[3] || 320;
+    var L=48, R=16, T=26, B=36;
+    var pw=W-L-R, ph=H-T-B;
+    return {
+      L:L, T:T, W:W, H:H, pw:pw, ph:ph,
+      X:function(t){ return L+(t+4)/8*pw; },
+      Y:function(p){ return T+ph-p*ph; }
+    };
+  }
+  function drawICC(){
+    var a=+iccA.value, b=+iccB.value, c=+iccC.value;
+    $('icc-av').textContent = fmt(a,2);
+    $('icc-bv').textContent = fmt(b,2);
+    $('icc-cv').textContent = fmt(c,2);
+    var f = frame($('icc-svg'));
+    var svg = $('icc-svg');
+    var t, p, d;
+    /* 网格与刻度 */
+    [-4,-2,0,2,4].forEach(function(tv){
+      el('line',{x1:f.X(tv),y1:f.T,x2:f.X(tv),y2:f.T+f.ph,stroke:'var(--border)','stroke-width':'1'},svg);
+      el('text',{x:f.X(tv),y:f.T+f.ph+16,'text-anchor':'middle','font-size':'11',class:'lbl'},svg,String(tv));
+    });
+    [0,0.25,0.5,0.75,1].forEach(function(pv){
+      el('line',{x1:f.L,y1:f.Y(pv),x2:f.L+f.pw,y2:f.Y(pv),stroke:'var(--border)','stroke-width':'1'},svg);
+      el('text',{x:f.L-6,y:f.Y(pv)+4,'text-anchor':'end','font-size':'11',class:'lbl'},svg,fmt(pv,2));
+    });
+    el('line',{x1:f.L,y1:f.T+f.ph,x2:f.L+f.pw,y2:f.T+f.ph,stroke:'var(--muted-foreground)'},svg);
+    el('line',{x1:f.L,y1:f.T,x2:f.L,y2:f.T+f.ph,stroke:'var(--muted-foreground)'},svg);
+    el('text',{x:f.L,y:14,'text-anchor':'start','font-size':'12'},svg,'P：正确作答概率');
+    el('text',{x:f.L+f.pw,y:f.H-6,'text-anchor':'end','font-size':'12',class:'lbl'},svg,'θ（潜在特质 · 标准Z分数）');
+    /* 下渐近线 c */
+    if (c > 0.004){
+      el('line',{x1:f.L,y1:f.Y(c),x2:f.L+f.pw,y2:f.Y(c),stroke:'var(--muted-foreground)','stroke-dasharray':'5 4',opacity:'0.8'},svg);
+      el('text',{x:f.L+f.pw-4,y:f.Y(c)-5,'text-anchor':'end','font-size':'11',class:'lbl'},svg,'下渐近线 c＝'+fmt(c,2));
+    }
+    /* ICC 曲线 */
+    d='';
+    for (t=-4; t<=4.001; t+=0.08){
+      p = pLog(t,a,b,c);
+      d += (d===''?'M':'L') + f.X(t).toFixed(1) + ' ' + f.Y(p).toFixed(1) + ' ';
+    }
+    var path = el('path',{d:d,fill:'none',stroke:'var(--viz-series-1)','stroke-width':'2.5'},svg);
+    bindTip(path,'<b>ICC</b>：a＝'+fmt(a,2)+'，b＝'+fmt(b,2)+'，c＝'+fmt(c,2)+'<br>P(θ)＝c＋(1−c)/(1+e<sup>−1.7a(θ−b)</sup>)');
+    /* 拐点 (b, c+(1-c)/2) 与虚线十字 */
+    var pb = c+(1-c)/2;
+    el('line',{x1:f.X(b),y1:f.T,x2:f.X(b),y2:f.Y(pb),stroke:'var(--muted-foreground)','stroke-dasharray':'3 3',opacity:'0.6'},svg);
+    el('line',{x1:f.L,y1:f.Y(pb),x2:f.X(b),y2:f.Y(pb),stroke:'var(--muted-foreground)','stroke-dasharray':'3 3',opacity:'0.6'},svg);
+    var dot = el('circle',{cx:f.X(b),cy:f.Y(pb),r:'4.5',fill:'var(--viz-series-1)'},svg);
+    bindTip(dot,'<b>拐点</b>：θ＝b＝'+fmt(b,2)+'<br>P＝c＋(1−c)/2＝'+fmt(pb,3)+'<br>此处曲线最陡——区分度 a 看这里');
+    /* 拐点切线：斜率 P'(b) = 1.7a(1-c)/4 */
+    var sl = 1.7*a*(1-c)/4;
+    var dx = 40;
+    var dy = dx * sl * (f.ph/1) / (f.pw/8);
+    var seg = el('line',{x1:f.X(b)-dx,y1:f.Y(pb)+dy,x2:f.X(b)+dx,y2:f.Y(pb)-dy,stroke:'var(--green)','stroke-width':'2'},svg);
+    bindTip(seg,'<b>拐点切线</b>：斜率＝1.7a(1−c)/4＝'+fmt(sl,3)+'<br>a 越大，切线越陡，区分力越强');
+    /* 读数 */
+    $('icc-read').innerHTML =
+      '当前曲线：a＝<b class="tabular-nums">'+fmt(a,2)+'</b>，b＝<b class="tabular-nums">'+fmt(b,2)+'</b>，c＝<b class="tabular-nums">'+fmt(c,2)+'</b>；' +
+      '拐点 (b, c＋(1−c)/2) ＝ ('+fmt(b,2)+', <b class="tabular-nums">'+fmt(pb,3)+'</b>)；' +
+      '拐点斜率＝1.7a(1−c)/4＝<b class="tabular-nums">'+fmt(sl,3)+'</b>。' +
+      'a 捏陡中段（区分力），b 左右平移（难度位置），c 垫高左端地板（猜测）。';
+  }
+  iccA.addEventListener('input', drawICC);
+  iccB.addEventListener('input', drawICC);
+  iccC.addEventListener('input', drawICC);
+  drawICC();
+
+  /* ============================================================
+     静态图：三条不同难度 ICC（3.5，对应课件 25 页）
+     ============================================================ */
+  (function drawDIF(){
+    var f = frame($('dif-svg'));
+    var svg = $('dif-svg');
+    var t, p, d;
+    [-4,-2,0,2,4].forEach(function(tv){
+      el('line',{x1:f.X(tv),y1:f.T,x2:f.X(tv),y2:f.T+f.ph,stroke:'var(--border)'},svg);
+      el('text',{x:f.X(tv),y:f.T+f.ph+16,'text-anchor':'middle','font-size':'11',class:'lbl'},svg,String(tv));
+    });
+    [0,0.25,0.5,0.75,1].forEach(function(pv){
+      el('line',{x1:f.L,y1:f.Y(pv),x2:f.L+f.pw,y2:f.Y(pv),stroke:'var(--border)'},svg);
+      el('text',{x:f.L-6,y:f.Y(pv)+4,'text-anchor':'end','font-size':'11',class:'lbl'},svg,fmt(pv,2));
+    });
+    el('line',{x1:f.L,y1:f.T+f.ph,x2:f.L+f.pw,y2:f.T+f.ph,stroke:'var(--muted-foreground)'},svg);
+    el('line',{x1:f.L,y1:f.T,x2:f.L,y2:f.T+f.ph,stroke:'var(--muted-foreground)'},svg);
+    el('text',{x:f.L,y:14,'text-anchor':'start','font-size':'12'},svg,'Probability：正确作答概率');
+    el('text',{x:f.L+f.pw,y:f.H-6,'text-anchor':'end','font-size':'12',class:'lbl'},svg,'Ability（θ）');
+    /* P=0.5 参考线 */
+    el('line',{x1:f.L,y1:f.Y(0.5),x2:f.L+f.pw,y2:f.Y(0.5),stroke:'var(--muted-foreground)','stroke-dasharray':'4 4',opacity:'0.7'},svg);
+    var items = [
+      {b:-2, color:'var(--blue)',   name:'item1', dif:'−2', tip:'最易：b＝−2，能力较低就能答对'},
+      {b: 0, color:'var(--purple)', name:'item2', dif:'0',  tip:'中等：b＝0，拐点在平均水平'},
+      {b: 2, color:'var(--orange)', name:'item3', dif:'2',  tip:'最难：b＝2，要高能力才够到拐点'}
+    ];
+    items.forEach(function(it){
+      d='';
+      for (t=-4; t<=4.001; t+=0.08){
+        p = pLog(t,1,it.b,0);
+        d += (d===''?'M':'L') + f.X(t).toFixed(1) + ' ' + f.Y(p).toFixed(1) + ' ';
+      }
+      var path = el('path',{d:d,fill:'none',stroke:it.color,'stroke-width':'2.2'},svg);
+      bindTip(path,'<b>'+it.name+'（DIF＝'+it.dif+'）</b><br>'+it.tip+'<br>注意：图中的 DIF 指<b>项目难度</b>，不是项目功能差异（课件 25 页注）');
+      el('circle',{cx:f.X(it.b),cy:f.Y(0.5),r:'3.5',fill:it.color},svg);
+      el('text',{x:f.X(it.b),y:f.Y(0.5)-8,'text-anchor':'middle','font-size':'11',fill:it.color},svg,'b＝'+it.dif);
+    });
+  })();
+
+  /* ============================================================
+     演示二：信息函数实验室（3.8）
+     ============================================================ */
+  var mode = '3PL';
+  var ifBtns = { '1PL': $('if-m1'), '2PL': $('if-m2'), '3PL': $('if-m3') };
+  var ifA = $('if-a'), ifB = $('if-b'), ifC = $('if-c'), ifAdd = $('if-add');
+  function setMode(m){
+    mode = m;
+    Object.keys(ifBtns).forEach(function(k){ ifBtns[k].setAttribute('aria-pressed', String(k===m)); });
+    ifA.disabled = (m === '1PL');
+    ifC.disabled = (m !== '3PL');
+    drawIF();
+  }
+  ifBtns['1PL'].addEventListener('click', function(){ setMode('1PL'); });
+  ifBtns['2PL'].addEventListener('click', function(){ setMode('2PL'); });
+  ifBtns['3PL'].addEventListener('click', function(){ setMode('3PL'); });
+  function paramsNow(){
+    return {
+      a: (mode==='1PL') ? 1 : +ifA.value,
+      b: +ifB.value,
+      c: (mode==='3PL') ? +ifC.value : 0
+    };
+  }
+  function drawIF(){
+    var P0 = paramsNow();
+    $('if-av').textContent = (mode==='1PL') ? '1（固定）' : fmt(P0.a,2);
+    $('if-bv').textContent = fmt(P0.b,2);
+    $('if-cv').textContent = (mode==='3PL') ? fmt(P0.c,2) : '0（无猜测）';
+    var f = frame($('if-svg'));
+    var svg = $('if-svg');
+    var t;
+    /* 离散扫描 */
+    var ts=[], I1=[], I2=[], IT=[];
+    var P2 = { a:1.2, b:1.5, c:0 };
+    for (t=-4; t<=4.001; t+=0.02){
+      ts.push(t);
+      I1.push( infoOf(t,P0.a,P0.b,P0.c) );
+      if (ifAdd.checked) I2.push( infoOf(t,P2.a,P2.b,P2.c) );
+    }
+    if (ifAdd.checked){
+      for (t=0; t<ts.length; t++) IT.push(I1[t]+I2[t]);
+    }
+    var peakI = Math.max.apply(null, I1);
+    var peakT = ts[I1.indexOf(peakI)];
+    var yMax = peakI;
+    if (ifAdd.checked) yMax = Math.max(yMax, Math.max.apply(null, IT));
+    yMax = Math.max(0.4, yMax*1.15);
+    var Y = function(v){ return f.T + f.ph - (v/yMax)*f.ph; };
+    /* 坐标 */
+    [-4,-2,0,2,4].forEach(function(tv){
+      el('line',{x1:f.X(tv),y1:f.T,x2:f.X(tv),y2:f.T+f.ph,stroke:'var(--border)'},svg);
+      el('text',{x:f.X(tv),y:f.T+f.ph+16,'text-anchor':'middle','font-size':'11',class:'lbl'},svg,String(tv));
+    });
+    var ytN = 4, yi;
+    for (yi=0; yi<=ytN; yi++){
+      var yv = yMax*yi/ytN;
+      el('line',{x1:f.L,y1:Y(yv),x2:f.L+f.pw,y2:Y(yv),stroke:'var(--border)'},svg);
+      el('text',{x:f.L-6,y:Y(yv)+4,'text-anchor':'end','font-size':'11',class:'lbl'},svg,fmt(yv,2));
+    }
+    el('line',{x1:f.L,y1:f.T+f.ph,x2:f.L+f.pw,y2:f.T+f.ph,stroke:'var(--muted-foreground)'},svg);
+    el('line',{x1:f.L,y1:f.T,x2:f.L,y2:f.T+f.ph,stroke:'var(--muted-foreground)'},svg);
+    el('text',{x:f.L,y:14,'text-anchor':'start','font-size':'12'},svg,'I(θ)：信息量（'+mode+'）');
+    el('text',{x:f.L+f.pw,y:f.H-6,'text-anchor':'end','font-size':'12',class:'lbl'},svg,'θ（潜在特质 · 标准Z分数）');
+    /* b 参考竖线 */
+    el('line',{x1:f.X(P0.b),y1:f.T,x2:f.X(P0.b),y2:f.T+f.ph,stroke:'var(--muted-foreground)','stroke-dasharray':'4 4',opacity:'0.7'},svg);
+    el('text',{x:f.X(P0.b),y:f.T-6,'text-anchor':'middle','font-size':'11',class:'lbl'},svg,'b');
+    /* 曲线 */
+    var d1='', d2='', dT='';
+    for (t=0; t<ts.length; t+=4){
+      d1 += (d1===''?'M':'L') + f.X(ts[t]).toFixed(1) + ' ' + Y(I1[t]).toFixed(1) + ' ';
+      if (ifAdd.checked){
+        d2 += (d2===''?'M':'L') + f.X(ts[t]).toFixed(1) + ' ' + Y(I2[t]).toFixed(1) + ' ';
+        dT += (dT===''?'M':'L') + f.X(ts[t]).toFixed(1) + ' ' + Y(IT[t]).toFixed(1) + ' ';
+      }
+    }
+    if (ifAdd.checked){
+      var pth2 = el('path',{d:d2,fill:'none',stroke:'var(--viz-series-2)','stroke-width':'1.8','stroke-dasharray':'5 4',opacity:'0.85'},svg);
+      bindTip(pth2,'<b>第二题</b>（a＝1.2，b＝1.5，2PL）的信息函数');
+    }
+    var pth1 = el('path',{d:d1,fill:'none',stroke:'var(--viz-series-1)','stroke-width':'2.5'},svg);
+    bindTip(pth1,'<b>本题信息函数</b>（'+mode+'）：a＝'+fmt(P0.a,2)+'，b＝'+fmt(P0.b,2)+'，c＝'+fmt(P0.c,2)+'<br>峰值在 θ≈b 附近');
+    if (ifAdd.checked){
+      var pthT = el('path',{d:dT,fill:'none',stroke:'var(--green)','stroke-width':'2.5'},svg);
+      bindTip(pthT,'<b>合计 I(θ)＝I₁＋I₂</b><br>信息函数的可加性——两座钟形直接叠加');
+    }
+    /* 峰值标记 */
+    var mk = el('circle',{cx:f.X(peakT),cy:Y(peakI),r:'4.5',fill:'var(--viz-series-1)'},svg);
+    bindTip(mk,'<b>峰值</b>：θ＝'+fmt(peakT,2)+'（≈b），I＝'+fmt(peakI,3)+'<br>此处 SE＝1/√I＝'+fmt(1/Math.sqrt(peakI),3));
+    /* 迷你图例 */
+    var lx = f.L + f.pw - 150, ly = f.T + 8;
+    var legend = [['本题 I(θ)','var(--viz-series-1)','false']];
+    if (ifAdd.checked) legend.push(['第二题 I(θ)','var(--viz-series-2)','true'], ['合计 I(θ)','var(--green)','false']);
+    legend.forEach(function(g,i){
+      var yy = ly + i*16;
+      el('line',{x1:lx,y1:yy,x2:lx+26,y2:yy,stroke:g[1],'stroke-width':'2.4','stroke-dasharray':(g[2]==='true'?'5 4':'none')},svg);
+      el('text',{x:lx+32,y:yy+4,'text-anchor':'start','font-size':'11',class:'lbl'},svg,g[0]);
+    });
+    /* 读数 */
+    var html =
+      (mode==='1PL' ? '1PL：a 固定为 1、c＝0，各题信息峰值一律 P·Q＝0.25。'
+                    : '当前 '+mode+'：峰值 θ＝<b class="tabular-nums">'+fmt(peakT,2)+'</b>（≈b），峰值信息量 I＝<b class="tabular-nums">'+fmt(peakI,3)+'</b>，此处标准误 SE＝1/√I＝<b class="tabular-nums">'+fmt(1/Math.sqrt(peakI),3)+'</b>。');
+    if (ifAdd.checked){
+      var totPk = Math.max.apply(null, IT);
+      var totAt = ts[IT.indexOf(totPk)];
+      html += '叠加后合计峰值 θ＝<b class="tabular-nums">'+fmt(totAt,2)+'</b>，I＝<b class="tabular-nums">'+fmt(totPk,3)+'</b>，SE＝<b class="tabular-nums">'+fmt(1/Math.sqrt(totPk),3)+'</b>——I(θ)＝ΣIᵢ，信息直接相加。';
+    }
+    html += ' 离 b 越远信息越少、SE 越大——每人有自己的误差，CTT 做不到这一步。';
+    $('if-read').innerHTML = html;
+  }
+  ifA.addEventListener('input', drawIF);
+  ifB.addEventListener('input', drawIF);
+  ifC.addEventListener('input', drawIF);
+  ifAdd.addEventListener('change', drawIF);
+  setMode('3PL');
+
+  /* ============================================================
+     演示三：CAT 流程示意（3.9）
+     ============================================================ */
+  var catTheta = 0, catStarted = false, catDone = false, catN = 0, catLog = [];
+  var CAT_MAX = 6;
+  function catNodes(){
+    return [
+      { x:16,  y:24,  t:'① 起点：θ＝0',   s:'还没有任何作答信息' },
+      { x:236, y:24,  t:'② 选题',          s:'挑当前 θ 附近信息量最大的题' },
+      { x:456, y:24,  t:'③ 作答',          s:'答对 ✓ / 答错 ✗' },
+      { x:456, y:150, t:'④ 更新 θ',        s:'答对 θ 上升→下一题更难' },
+      { x:236, y:150, t:'⑤ 达到标准？',    s:(catDone?'信息量/题数达标 ✓':'信息量够不够？') },
+      { x:16,  y:150, t:'⑥ 生成报告',      s:'报告 θ 与 SE' }
+    ];
+  }
+  function drawCAT(){
+    var svg = $('cat-svg');
+    svg.textContent = '';
+    var f = frame(svg);
+    var NW = 168, NH = 66;
+    var nodes = catNodes();
+    var active;
+    if (!catStarted)      active = [0];
+    else if (catDone)     active = [4,5];
+    else                  active = [1,2];
+    /* 箭头 */
+    function arrow(x1,y1,x2,y2,dash){
+      el('line',{x1:x1,y1:y1,x2:x2,y2:y2,stroke:'var(--muted-foreground)','stroke-width':'1.4',
+        'stroke-dasharray':dash?'4 4':'none','marker-end':'url(#cat-arr)'},svg);
+    }
+    var mk = el('defs',{},svg);
+    var m = el('marker',{id:'cat-arr',markerWidth:'8',markerHeight:'8',refX:'7',refY:'4',orient:'auto'},mk);
+    el('path',{d:'M0,0 L8,4 L0,8 z',fill:'var(--muted-foreground)'},m);
+    arrow(184, 57, 234, 57, false);
+    arrow(404, 57, 454, 57, false);
+    arrow(540, 92, 540, 148, false);
+    arrow(454, 183, 406, 183, false);
+    arrow(234, 183, 186, 183, false);
+    arrow(320, 148, 320, 92, true);   /* ⑤ 未达标 → 回到 ② */
+    el('text',{x:328,y:124,'text-anchor':'start','font-size':'11',class:'lbl'},svg,'未达标 → 下一轮');
+    /* 节点 */
+    nodes.forEach(function(nd, i){
+      var on = active.indexOf(i) >= 0;
+      var r = el('rect',{x:nd.x,y:nd.y,width:NW,height:NH,rx:'10',
+        fill: on?'var(--accent)':'var(--card)',
+        stroke: on?'var(--primary)':'var(--border)',
+        'stroke-width': on?'2':'1'},svg);
+      el('text',{x:nd.x+12,y:nd.y+24,'text-anchor':'start','font-size':'13','font-weight':'500',
+        fill: on?'var(--primary)':'var(--foreground)'},svg,nd.t);
+      el('text',{x:nd.x+12,y:nd.y+46,'text-anchor':'start','font-size':'11',class:'lbl'},svg,nd.s);
+      bindTip(r, '<b>'+nd.t+'</b><br>'+nd.s);
+    });
+    /* θ 轨迹条 */
+    var x2 = function(v){ return 120 + (v+2)/4*400; };
+    el('line',{x1:x2(-2),y1:268,x2:x2(2),y2:268,stroke:'var(--muted-foreground)'},svg);
+    [-2,-1,0,1,2].forEach(function(v){
+      el('line',{x1:x2(v),y1:264,x2:x2(v),y2:272,stroke:'var(--muted-foreground)'},svg);
+      el('text',{x:x2(v),y:286,'text-anchor':'middle','font-size':'11',class:'lbl'},svg,String(v));
+    });
+    el('text',{x:120,y:308,'text-anchor':'start','font-size':'11',class:'lbl'},svg,'方块＝已答题目难度 b；圆＝当前 θ');
+    catLog.forEach(function(g){
+      el('rect',{x:x2(g.b)-4,y:262,width:8,height:8,rx:'2',
+        fill: g.ok?'var(--green)':'var(--red)'},svg);
+    });
+    if (catStarted){
+      var th = Math.max(-2, Math.min(2, catTheta));
+      var cir = el('circle',{cx:x2(th),cy:268,r:'6',fill:'var(--primary)'},svg);
+      bindTip(cir,'当前 θ 估计：'+fmt(catTheta,2));
+    }
+    /* 按钮与读数 */
+    $('cat-right').disabled = !(catStarted && !catDone);
+    $('cat-wrong').disabled = !(catStarted && !catDone);
+    var html;
+    if (!catStarted){
+      html = '点「开始 / 重新开始」：从 θ＝0 出发，系统先挑 θ 附近信息量最大的题，再由你作答。';
+    } else if (catDone){
+      html = '演示结束：共 '+catN+' 题，最终 θ＝<b class="tabular-nums">'+fmt(catTheta,2)+'</b>。真实 CAT 在信息量达标（SE 足够小）时停止并报告 θ。演示里 θ 按固定步长 ±0.5 更新，仅示意「对则变难、错则变易」的循环。';
+    } else {
+      var nb = Math.max(-2, Math.min(2, Math.round(catTheta*2)/2));
+      html = '第 '+(catN+1)+' 题：当前 θ＝<b class="tabular-nums">'+fmt(catTheta,2)+'</b> → 系统挑 b≈<b class="tabular-nums">'+fmt(nb,2)+'</b> 的题（该点信息量最大）→ 请作答。答对 θ 上升、下一题更难；答错 θ 下降、下一题更容易。';
+    }
+    $('cat-read').innerHTML = html;
+  }
+  $('cat-start').addEventListener('click', function(){
+    catTheta = 0; catStarted = true; catDone = false; catN = 0; catLog = [];
+    drawCAT();
+  });
+  $('cat-right').addEventListener('click', function(){
+    if (!catStarted || catDone) return;
+    catLog.push({ b: Math.max(-2, Math.min(2, Math.round(catTheta*2)/2)), ok: true });
+    catTheta += 0.5; catN++;
+    if (catN >= CAT_MAX) catDone = true;
+    drawCAT();
+  });
+  $('cat-wrong').addEventListener('click', function(){
+    if (!catStarted || catDone) return;
+    catLog.push({ b: Math.max(-2, Math.min(2, Math.round(catTheta*2)/2)), ok: false });
+    catTheta -= 0.5; catN++;
+    if (catN >= CAT_MAX) catDone = true;
+    drawCAT();
+  });
+  drawCAT();
+})();
+
+
+  /* ================= 作业实战 ================= */
+  var D = {"math": {"pRate": 0.8473451327433629, "pH": 0.9658, "pL": 0.641, "pExt": 0.8034, "D": 0.3248, "r": 0.425, "nItem": 452, "nCorrect": 383, "nTotal": 470, "nValidTotal": 434, "groupN": 117}, "iq": [{"i": 1, "p": 0.88, "r": 0.473, "sig": 0.0, "pm": 0.8803, "pf": 0.8783, "t": 0.056, "sig2": 0.955, "dM": 8.294, "dF": 8.335, "rM": 0.487, "rF": 0.452}, {"i": 2, "p": 0.9025, "r": 0.4, "sig": 0.0, "pm": 0.8908, "pf": 0.9304, "t": -1.205, "sig2": 0.229, "dM": 8.076, "dF": 7.084, "rM": 0.442, "rF": 0.312}, {"i": 3, "p": 0.755, "r": 0.429, "sig": 0.0, "pm": 0.7641, "pf": 0.7304, "t": 0.706, "sig2": 0.481, "dM": 10.122, "dF": 10.543, "rM": 0.434, "rF": 0.418}, {"i": 4, "p": 0.3975, "r": 0.421, "sig": 0.0, "pm": 0.4472, "pf": 0.2783, "t": 3.152, "sig2": 0.002, "dM": 13.531, "dF": 15.352, "rM": 0.42, "rF": 0.378}, {"i": 5, "p": 0.705, "r": 0.353, "sig": 0.0, "pm": 0.7218, "pf": 0.6696, "t": 1.038, "sig2": 0.3, "dM": 10.647, "dF": 11.245, "rM": 0.316, "rF": 0.445}, {"i": 6, "p": 0.63, "r": 0.486, "sig": 0.0, "pm": 0.6444, "pf": 0.5913, "t": 0.993, "sig2": 0.322, "dM": 11.519, "dF": 12.076, "rM": 0.494, "rF": 0.464}, {"i": 7, "p": 0.22, "r": 0.323, "sig": 0.0, "pm": 0.2394, "pf": 0.1739, "t": 1.43, "sig2": 0.154, "dM": 15.832, "dF": 16.755, "rM": 0.376, "rF": 0.139}, {"i": 8, "p": 0.53, "r": 0.495, "sig": 0.0, "pm": 0.5599, "pf": 0.4609, "t": 1.797, "sig2": 0.073, "dM": 12.398, "dF": 13.393, "rM": 0.502, "rF": 0.46}, {"i": 9, "p": 0.8225, "r": 0.329, "sig": 0.0, "pm": 0.8028, "pf": 0.8696, "t": -1.58, "sig2": 0.115, "dM": 9.593, "dF": 8.503, "rM": 0.332, "rF": 0.382}, {"i": 10, "p": 0.52, "r": 0.544, "sig": 0.0, "pm": 0.5387, "pf": 0.4696, "t": 1.252, "sig2": 0.211, "dM": 12.611, "dF": 13.305, "rM": 0.557, "rF": 0.502}, {"i": 11, "p": 0.6375, "r": 0.47, "sig": 0.0, "pm": 0.6514, "pf": 0.6, "t": 0.966, "sig2": 0.335, "dM": 11.443, "dF": 11.987, "rM": 0.5, "rF": 0.389}, {"i": 12, "p": 0.345, "r": 0.48, "sig": 0.0, "pm": 0.3944, "pf": 0.2261, "t": 3.235, "sig2": 0.001, "dM": 14.072, "dF": 16.007, "rM": 0.463, "rF": 0.493}, {"i": 13, "p": 0.2825, "r": 0.353, "sig": 0.0, "pm": 0.2852, "pf": 0.2783, "t": 0.139, "sig2": 0.889, "dM": 15.27, "dF": 15.352, "rM": 0.35, "rF": 0.373}, {"i": 14, "p": 0.49, "r": 0.577, "sig": 0.0, "pm": 0.5246, "pf": 0.4, "t": 2.265, "sig2": 0.024, "dM": 12.753, "dF": 14.013, "rM": 0.576, "rF": 0.561}, {"i": 15, "p": 0.645, "r": 0.617, "sig": 0.0, "pm": 0.6901, "pf": 0.5304, "t": 3.045, "sig2": 0.002, "dM": 11.015, "dF": 12.695, "rM": 0.65, "rF": 0.513}, {"i": 16, "p": 0.725, "r": 0.616, "sig": 0.0, "pm": 0.7218, "pf": 0.7304, "t": -0.174, "sig2": 0.862, "dM": 10.647, "dF": 10.543, "rM": 0.638, "rF": 0.581}, {"i": 17, "p": 0.2325, "r": 0.329, "sig": 0.0, "pm": 0.2641, "pf": 0.1565, "t": 2.311, "sig2": 0.021, "dM": 15.523, "dF": 17.035, "rM": 0.325, "rF": 0.3}, {"i": 18, "p": 0.235, "r": 0.456, "sig": 0.0, "pm": 0.2535, "pf": 0.1913, "t": 1.326, "sig2": 0.186, "dM": 15.654, "dF": 16.492, "rM": 0.432, "rF": 0.515}, {"i": 19, "p": 0.495, "r": 0.527, "sig": 0.0, "pm": 0.5317, "pf": 0.4, "t": 2.394, "sig2": 0.017, "dM": 12.682, "dF": 14.013, "rM": 0.538, "rF": 0.469}, {"i": 20, "p": 0.2625, "r": 0.379, "sig": 0.0, "pm": 0.2641, "pf": 0.2609, "t": 0.066, "sig2": 0.947, "dM": 15.523, "dF": 15.563, "rM": 0.383, "rF": 0.379}, {"i": 21, "p": 0.0975, "r": 0.073, "sig": 0.143, "pm": 0.1092, "pf": 0.0696, "t": 1.205, "sig2": 0.229, "dM": 17.924, "dF": 18.916, "rM": 0.066, "rF": 0.066}, {"i": 22, "p": 0.08, "r": 0.098, "sig": 0.051, "pm": 0.0951, "pf": 0.0435, "t": 1.721, "sig2": 0.086, "dM": 18.241, "dF": 19.847, "rM": 0.092, "rF": 0.072}, {"i": 23, "p": 0.39, "r": 0.447, "sig": 0.0, "pm": 0.412, "pf": 0.3304, "t": 1.514, "sig2": 0.131, "dM": 13.89, "dF": 14.755, "rM": 0.44, "rF": 0.452}, {"i": 24, "p": 0.4025, "r": 0.526, "sig": 0.0, "pm": 0.419, "pf": 0.3652, "t": 0.991, "sig2": 0.322, "dM": 13.818, "dF": 14.378, "rM": 0.511, "rF": 0.567}, {"i": 25, "p": 0.6275, "r": 0.444, "sig": 0.0, "pm": 0.6092, "pf": 0.6696, "t": -1.129, "sig2": 0.26, "dM": 11.892, "dF": 11.245, "rM": 0.487, "rF": 0.369}], "bk": {"full": [3, 5, 10, 12, 20, 50], "sums": [21.0, 30.0, 82.0, 84.0, 154.0, 380.0], "meansLow": [1.0, 1.67, 5.0, 6.33, 10.67, 22.67], "meansTop": [2.0, 5.0, 9.0, 8.33, 16.67, 43.67], "r": [0.247, 0.604, 0.718, 0.371, 0.869, 0.951], "sig": [0.465, 0.049, 0.013, 0.261, 0.001, 0.0], "raw": [[3, 3, 0, 3, 3, 0, 3, 0, 0, 3, 3], [5, 0, 5, 5, 0, 0, 5, 5, 5, 0, 0], [8, 8, 5, 9, 10, 3, 7, 10, 10, 5, 7], [10, 12, 7, 8, 5, 5, 9, 8, 7, 6, 7], [15, 10, 12, 17, 15, 10, 15, 17, 18, 15, 10], [45, 30, 20, 42, 35, 25, 38, 38, 44, 40, 23]], "tot": [86, 63, 49, 84, 68, 43, 77, 78, 84, 69, 50]}};
+
+  /* 1. math item1 horizontal bars */
+  (function(){
+    var svg=$('hw-math-svg');
+    var rows=[
+      ['高分组通过率 PH', D.math.pH, 'var(--viz-series-1)', '总分前 117 名'],
+      ['低分组通过率 PL', D.math.pL, 'var(--viz-series-2)', '总分后 117 名'],
+      ['通过率法难度 P=R/N', D.math.pRate, 'var(--green)', '383/452'],
+      ['极端分组法难度', D.math.pExt, 'var(--purple)', '(PH+PL)/2']
+    ];
+    var W=720, labelW=190, x0=labelW, x1=W-90, rh=34, y0=16;
+    el('line', {x1:x0, y1:y0-4, x2:x0, y2:y0+rows.length*rh, stroke:'var(--border)'}, svg);
+    [0,0.25,0.5,0.75,1.0].forEach(function(v){
+      var x=x0+v*(x1-x0);
+      el('line', {x1:x, y1:y0-4, x2:x, y2:y0+rows.length*rh, stroke:'var(--border)', opacity:'0.6'}, svg);
+      el('text', {x:x, y:y0+rows.length*rh+16, 'text-anchor':'middle', 'font-size':'10', 'class':'lbl'}, svg, v.toFixed(2));
+    });
+    rows.forEach(function(r,i){
+      var y=y0+i*rh+8;
+      el('text', {x:labelW-8, y:y+13, 'text-anchor':'end', 'font-size':'12'}, svg, r[0]);
+      var bar=el('rect', {x:x0, y:y, width:r[1]*(x1-x0), height:20, fill:r[2], rx:'3'}, svg);
+      bindTip(bar, '<b>'+r[0]+'</b> = '+r[1].toFixed(4)+'<br>'+r[3]);
+      el('text', {x:x0+r[1]*(x1-x0)+8, y:y+14, 'font-size':'12', 'font-weight':'500'}, svg, r[1].toFixed(3));
+    });
+    el('text', {x:(x0+x1)/2, y:y0+rows.length*rh+36, 'text-anchor':'middle', 'font-size':'11', 'class':'lbl'}, svg, '通过率（第一题 CM155Q01S，二分计分）');
+  })();
+
+  /* 2. iq difficulty bars */
+  (function(){
+    var svg=$('hw-diff-svg');
+    var n=D.iq.length, W=880, H=250, x0=46, x1=860, y0=26, y1=200;
+    function X(i){ return x0 + (i+0.5)/n*(x1-x0); }
+    function Y(v){ return y1 - v*(y1-y0); }
+    [0,0.25,0.5,0.75,1.0].forEach(function(v){
+      el('line', {x1:x0, y1:Y(v), x2:x1, y2:Y(v), stroke:'var(--border)', opacity: v===0?'1':'0.6'}, svg);
+      el('text', {x:x0-6, y:Y(v)+4, 'text-anchor':'end', 'font-size':'10', 'class':'lbl'}, svg, v.toFixed(2));
+    });
+    [0.3,0.7].forEach(function(v){
+      el('line', {x1:x0, y1:Y(v), x2:x1, y2:Y(v), stroke:'var(--viz-series-2)', 'stroke-dasharray':'5 4', opacity:'0.7'}, svg);
+      el('text', {x:x1, y:Y(v)-4, 'text-anchor':'end', 'font-size':'10', 'class':'lbl'}, svg, 'P='+v);
+    });
+    D.iq.forEach(function(d,i){
+      var bw=(x1-x0)/n*0.62;
+      var col = d.p<0.3 ? 'var(--orange)' : d.p>0.7 ? 'var(--purple)' : 'var(--viz-series-1)';
+      var r=el('rect', {x:X(i)-bw/2, y:Y(d.p), width:bw, height:y1-Y(d.p), fill:col, rx:'2'}, svg);
+      bindTip(r, '<b>第'+d.i+'题</b><br>难度 P = '+d.p.toFixed(3)+'（'+(d.p<0.3?'偏难':d.p>0.7?'偏易':'适中')+'）<br>区分度 r = '+d.r.toFixed(3)+(d.sig<0.001?' (p<.001)':' (p='+d.sig.toFixed(3)+')'));
+      el('text', {x:X(i), y:y1+14, 'text-anchor':'middle', 'font-size':'9', 'class':'lbl'}, svg, String(d.i));
+    });
+    el('text', {x:(x0+x1)/2, y:H-8, 'text-anchor':'middle', 'font-size':'11', 'class':'lbl'}, svg, '题号（iqdata.csv Q1–Q25，N=400，0-1 编码后通过率）');
+    el('text', {x:14, y:(y0+y1)/2, 'font-size':'11', 'class':'lbl', transform:'rotate(-90 14 '+((y0+y1)/2)+')', 'text-anchor':'middle'}, svg, '难度 P');
+  })();
+
+  /* 3. quadrant P vs r */
+  (function(){
+    var svg=$('hw-quad-svg');
+    var W=720,H=330,x0=56,x1=690,y0=18,y1=282;
+    function X(p){ return x0+p*(x1-x0); }
+    function Y(r){ return y1 - r/0.8*(y1-y0); }
+    [0,0.2,0.4,0.6,0.8].forEach(function(v){
+      el('line', {x1:x0, y1:Y(v), x2:x1, y2:Y(v), stroke:'var(--border)', opacity: v===0?'1':'0.5'}, svg);
+      el('text', {x:x0-6, y:Y(v)+4, 'text-anchor':'end', 'font-size':'10', 'class':'lbl'}, svg, v.toFixed(1));
+    });
+    [0,0.2,0.4,0.6,0.8,1.0].forEach(function(v){
+      el('line', {x1:X(v), y1:y0, x2:X(v), y2:y1, stroke:'var(--border)', opacity:'0.5'}, svg);
+      el('text', {x:X(v), y:y1+16, 'text-anchor':'middle', 'font-size':'10', 'class':'lbl'}, svg, v.toFixed(1));
+    });
+    [0.3,0.7].forEach(function(v){
+      el('line', {x1:X(v), y1:y0, x2:X(v), y2:y1, stroke:'var(--viz-series-2)', 'stroke-dasharray':'5 4', opacity:'0.7'}, svg);
+    });
+    el('line', {x1:x0, y1:Y(0.2), x2:x1, y2:Y(0.2), stroke:'var(--red)', 'stroke-dasharray':'5 4', opacity:'0.6'}, svg);
+    el('text', {x:X(0.5), y:Y(0.2)-5, 'text-anchor':'middle', 'font-size':'10', 'class':'lbl'}, svg, 'r=0.2：区分度参考线（下方 = 偏低）');
+    el('text', {x:X(0.3)+4, y:y0+12, 'font-size':'10', 'class':'lbl'}, svg, '适中带下界');
+    el('text', {x:X(0.7)+4, y:y0+12, 'font-size':'10', 'class':'lbl'}, svg, '适中带上界');
+    D.iq.forEach(function(d){
+      var c=el('circle', {cx:X(d.p).toFixed(1), cy:Y(d.r).toFixed(1), r:'6', fill: d.sig<0.05?'var(--viz-series-1)':'var(--red)', opacity:'0.85', stroke:'none'}, svg);
+      bindTip(c, '<b>第'+d.i+'题</b><br>难度 P = '+d.p.toFixed(3)+'<br>题总相关 r = '+d.r.toFixed(3)+(d.sig<0.001?'（p<.001）':'（p='+d.sig.toFixed(3)+'）')+(d.sig>=0.05?'<br><span style="color:var(--red)">不显著：区分度差</span>':''));
+    });
+    el('line', {x1:x0, y1:y1, x2:x1, y2:y1, stroke:'var(--border)'}, svg);
+    el('text', {x:(x0+x1)/2, y:H-8, 'text-anchor':'middle', 'font-size':'11', 'class':'lbl'}, svg, '难度 P（越右越容易）');
+    el('text', {x:16, y:(y0+y1)/2, 'font-size':'11', 'class':'lbl', transform:'rotate(-90 16 '+((y0+y1)/2)+')', 'text-anchor':'middle'}, svg, '题总相关 r');
+  })();
+
+  /* 4. delta scatter */
+  (function(){
+    var svg=$('hw-delta-svg');
+    var W=560,H=380,x0=64,x1=530,y0=24,y1=330;
+    function X(v){ return x0+(v-7)/(21-7)*(x1-x0); }
+    function Y(v){ return y1-(v-7)/(21-7)*(y1-y0); }
+    [8,10,12,14,16,18,20].forEach(function(v){
+      el('line', {x1:X(v), y1:y0, x2:X(v), y2:y1, stroke:'var(--border)', opacity:'0.5'}, svg);
+      el('line', {x1:x0, y1:Y(v), x2:x1, y2:Y(v), stroke:'var(--border)', opacity:'0.5'}, svg);
+      el('text', {x:x0-6, y:Y(v)+4, 'text-anchor':'end', 'font-size':'10', 'class':'lbl'}, svg, String(v));
+      el('text', {x:X(v), y:y1+16, 'text-anchor':'middle', 'font-size':'10', 'class':'lbl'}, svg, String(v));
+    });
+    el('line', {x1:X(7), y1:Y(7), x2:X(21), y2:Y(21), stroke:'var(--muted-foreground)', 'stroke-dasharray':'6 4'}, svg);
+    el('text', {x:X(19.2), y:Y(20.4), 'text-anchor':'start', 'font-size':'10', 'class':'lbl'}, svg, 'y=x 对角线');
+    D.iq.forEach(function(d){
+      var c=el('circle', {cx:X(d.dF).toFixed(1), cy:Y(d.dM).toFixed(1), r:'7', fill: d.sig2<0.05?'var(--red)':'var(--viz-series-1)', opacity:'0.85'}, svg);
+      bindTip(c, '<b>第'+d.i+'题</b>'+(d.sig2<0.05?'（DIF 可疑）':'')+'<br>Δ男 = '+d.dM.toFixed(2)+'，Δ女 = '+d.dF.toFixed(2)+'<br>|Δ差| = '+Math.abs(d.dM-d.dF).toFixed(2)+'<br>t = '+d.t.toFixed(2)+'，p = '+sigT(d.sig2));
+      el('text', {x:X(d.dF).toFixed(1), y:(Y(d.dM)-10).toFixed(1), 'text-anchor':'middle', 'font-size':'9', 'class':'lbl'}, svg, String(d.i));
+    });
+    el('line', {x1:x0, y1:y1, x2:x1, y2:y1, stroke:'var(--border)'}, svg);
+    el('text', {x:(x0+x1)/2, y:H-10, 'text-anchor':'middle', 'font-size':'11', 'class':'lbl'}, svg, 'Δ 女生（Δ = 13 + 4Z）');
+    el('text', {x:18, y:(y0+y1)/2, 'font-size':'11', 'class':'lbl', transform:'rotate(-90 18 '+((y0+y1)/2)+')', 'text-anchor':'middle'}, svg, 'Δ 男生');
+  })();
+
+  /* DIF table */
+  (function(){
+    var tb=document.querySelector('#hw-dif-table tbody');
+    D.iq.forEach(function(d){
+      var tr=document.createElement('tr');
+      if(d.sig2<0.05) tr.className='hw-sig';
+      tr.innerHTML='<td>'+d.i+'</td><td class="tabular-nums">'+d.pm.toFixed(3)+'</td><td class="tabular-nums">'+d.pf.toFixed(3)+'</td>'
+        +'<td class="tabular-nums">'+d.dM.toFixed(2)+'</td><td class="tabular-nums">'+d.dF.toFixed(2)+'</td>'
+        +'<td class="tabular-nums">'+Math.abs(d.dM-d.dF).toFixed(2)+'</td>'
+        +'<td class="tabular-nums">'+d.rM.toFixed(3)+'</td><td class="tabular-nums">'+d.rF.toFixed(3)+'</td>'
+        +'<td class="tabular-nums">'+d.t.toFixed(2)+'</td><td class="tabular-nums">'+sigT(d.sig2)+'</td>';
+      tb.appendChild(tr);
+    });
+  })();
+
+  /* 5. textbook ex.11 heat table + results */
+  (function(){
+    var bk=D.bk, full=bk.full, sums=bk.sums;
+    var names=['A','B','C','D','E','F','G','H','I','J','K'];
+    var html='<table class="table table-sm hw" style="font-size:12px"><thead><tr><th>题号</th><th>满分</th>';
+    names.forEach(function(nm){ html+='<th>'+nm+'</th>'; });
+    html+='<th>合计</th></tr></thead><tbody>';
+    for(var i=0;i<6;i++){
+      html+='<tr><td>'+(i+1)+'</td><td>'+full[i]+'</td>';
+      for(var j=0;j<11;j++){
+        var v=bk.raw[i][j], a=v/full[i];
+        html+='<td class="heat" style="background:color-mix(in srgb, var(--viz-series-1) '+Math.round(a*70)+'%, transparent)">'+v+'</td>';
+      }
+      html+='<td><b>'+sums[i]+'</b></td></tr>';
+    }
+    html+='<tr><td>合计</td><td>100</td>';
+    bk.tot.forEach(function(t){ html+='<td><b>'+t+'</b></td>'; });
+    html+='<td>751</td></tr></tbody></table>';
+    $('bk-heat').innerHTML=html;
+
+    var rt=document.querySelector('#bk-res-table tbody');
+    for(var k=0;k<6;k++){
+      var P=sums[k]/(full[k]*11);
+      var PH=bk.meansTop[k]/full[k], PL=bk.meansLow[k]/full[k], d=PH-PL;
+      var j=judgeD(d);
+      var ev = d>=0.4?'很好':d>=0.3?'良好':d>=0.2?'尚可':'差';
+      var tr=document.createElement('tr');
+      tr.innerHTML='<td>'+(k+1)+'</td><td>'+full[k]+'</td>'
+        +'<td class="tabular-nums"><span class="cellbar"><span style="width:'+(P*100).toFixed(0)+'%"></span></span>'+P.toFixed(3)+'</td>'
+        +'<td class="text-small">'+(P<0.3?'偏难':P>0.7?'偏易':'适中')+'</td>'
+        +'<td class="tabular-nums">'+PH.toFixed(3)+'</td><td class="tabular-nums">'+PL.toFixed(3)+'</td>'
+        +'<td class="tabular-nums"><span class="cellbar"><span style="width:'+(d*100).toFixed(0)+'%; background:'+(d>=0.3?'var(--green)':d>=0.2?'var(--orange)':'var(--red)')+'"></span></span>'+d.toFixed(3)+'</td>'
+        +'<td class="text-small '+j[1]+'">'+ev+'</td>'
+        +'<td class="tabular-nums">'+bk.r[k].toFixed(3)+stars(bk.sig[k])+'</td>'
+        +'<td class="tabular-nums">'+sigT(bk.sig[k])+'</td>';
+      rt.appendChild(tr);
+    }
+  })();
+})();
+</script>
+</div>
+
+</body>
+</html>
